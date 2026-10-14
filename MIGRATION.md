@@ -24,24 +24,28 @@ Amaç: aynı ürün, aynı görünüm, aynı adresler. Kullanıcı farkı görme
 
 ```
 app/
-  [locale]/(site)/page.tsx            ← landing.html
-  [locale]/(site)/check/page.tsx      ← app.html (form)   (eski /de, /tr adresleri buraya yönlenir)
-  [locale]/r/[id]/page.tsx            ← bericht.html (rapor)
-  [locale]/feedback/[id]/page.tsx     ← feedback.html
-  [locale]/plan/[id]/page.tsx         ← plan.html
-  [locale]/confirm/page.tsx           ← api/confirm.js'in HTML sayfası
-  admin/...                           ← admin.html + rapor.html
-  api/...                             ← route handler'lar
-  manifest.ts
+  [locale]/start/page.tsx             ← landing.html   (/ = /de/start, proxy rewrite; /tr/start)
+  [locale]/page.tsx                   ← app.html (form) (/de, /tr – v1 ile aynı)
+  [locale]/r/page.tsx                 ← bericht.html   (/de/r?id=… – v1 ile aynı)
+  [locale]/feedback/page.tsx          ← feedback.html  (/de/feedback?id=…)
+  [locale]/plan/page.tsx              ← plan.html      (/de/plan?id=…)
+  admin/...                           ← admin.html + rapor.html (dil öneki yok)
+  api/...                             ← route handler'lar (/api/confirm?id=&t= v1 ile aynı)
+  icon.svg, apple-icon.png, manifest.ts
+proxy.ts                               ← next-intl (Next 16'da middleware → proxy)
+i18n/routing.ts  i18n/request.ts       ← dil algılama ve dil çerezi kapalı
 lib/
   domain/calc.ts  plan.ts  brief.ts  quality.ts   ← v1'den birebir (TS'ye çevir)
   report/render.ts                                 ← render.js (rapor Markdown → HTML)
   ai/draft.ts  kb.ts                               ← lib/draft.js, lib/kb.js
   mail.ts  ratelimit.ts  auth.ts
-  db/schema.ts  db/index.ts
+  db/schema.ts  db/index.ts                        ← drizzle/0000_init.sql
 messages/de.json  messages/tr.json
 scripts/import-blob.ts                             ← v1 verisini taşır
+legacy/                                            ← v1 (canlıdaki kod, referans)
 ```
+
+Karar: v1 adresleri birebir korunur (sorgu parametreleri dahil), böylece eski e-postalardaki linkler için yönlendirme gerekmez. `cacheComponents` kapalı (sayfalar kişiye özel, dinamik).
 
 ## 3. Veri modeli (Drizzle)
 
@@ -78,8 +82,8 @@ Not: `confirm_token` düz değil hash'lenmiş saklansın.
 
 ## 7. Adımlar
 
-1. **Repo:** GitHub'da private repo. v1 kodu `legacy/` klasörüne (referans için), yeni Next.js projesi kökte.
-2. **İskelet:** `create-next-app` (TypeScript, App Router, ESLint), next-intl, Drizzle, Neon bağlantısı, ilk migration.
+1. ✅ (yerel; GitHub remote henüz yok) **Repo:** GitHub'da private repo. v1 kodu `legacy/` klasörüne (referans için), yeni Next.js projesi kökte.
+2. ✅ (Neon bağlantısı hariç – migration üretildi, DB'ye uygulanmadı) **İskelet:** `create-next-app` (TypeScript, App Router, ESLint), next-intl, Drizzle, Neon bağlantısı, ilk migration.
 3. **Saf mantık:** `calc`, `plan`, `brief`, `quality`, `render` dosyalarını TS'ye çevir; Vitest ile v1 çıktılarıyla aynı sonucu verdiğini test et.
 4. **Sayfalar:** landing → form → onay → rapor → geri bildirim → plan. Görünüm v1 ile birebir (ekran görüntüsü karşılaştırması).
 5. **API'ler:** submit, confirm, draft (arka plan), report, feedback, plan, stats, submissions (admin).
