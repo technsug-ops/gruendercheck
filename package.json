@@ -1,0 +1,10 @@
+{
+  "name": "gruendercheck-form",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@vercel/blob": "^2.8.1",
+    "nodemailer": "6.10.1",
+    "@vercel/functions": "^3.9.0"
+  }
+}

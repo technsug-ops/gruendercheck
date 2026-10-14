@@ -1,0 +1,139 @@
+{
+  "cleanUrls": true,
+  "fluid": true,
+  "functions": {
+    "api/submit.js": {
+      "maxDuration": 300
+    },
+    "api/draft.js": {
+      "maxDuration": 300
+    },
+    "api/confirm.js": {
+      "maxDuration": 300
+    }
+  },
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "gruenderchek.de"
+        }
+      ],
+      "destination": "https://foundercheck.de/$1",
+      "permanent": true
+    },
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.gruenderchek.de"
+        }
+      ],
+      "destination": "https://foundercheck.de/$1",
+      "permanent": true
+    },
+    {
+      "source": "/lib/:path*",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/landing"
+    },
+    {
+      "source": "/de/start",
+      "destination": "/landing"
+    },
+    {
+      "source": "/tr/start",
+      "destination": "/landing"
+    },
+    {
+      "source": "/de",
+      "destination": "/app"
+    },
+    {
+      "source": "/tr",
+      "destination": "/app"
+    },
+    {
+      "source": "/de/plan",
+      "destination": "/plan"
+    },
+    {
+      "source": "/tr/plan",
+      "destination": "/plan"
+    },
+    {
+      "source": "/de/feedback",
+      "destination": "/feedback"
+    },
+    {
+      "source": "/tr/feedback",
+      "destination": "/feedback"
+    },
+    {
+      "source": "/de/r",
+      "destination": "/bericht"
+    },
+    {
+      "source": "/tr/r",
+      "destination": "/bericht"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/sw.js",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "no-cache"
+        },
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    },
+    {
+      "source": "/manifest-(de|tr).webmanifest",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/manifest+json"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+        }
+      ]
+    }
+  ]
+}

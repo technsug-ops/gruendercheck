@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Başvurular</title>
+<style>
+:root{--bg:#f3f6f9;--card:#fff;--ink:#16202c;--muted:#56616f;--line:#dfe4ea;--accent:#0f2d4a;--accent-ink:#fff;--soft:#e6eef7;--err:#b42318}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#141614;--card:#1c1f1c;--ink:#ecebe6;--muted:#a6a89f;--line:#33372f;--accent:#5fb795;--accent-ink:#0d1a14;--soft:#1f2e27;--err:#ef7d72}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+.wrap{max-width:960px;margin:0 auto;padding:28px 16px 60px}
+h1{font-size:24px;margin:0 0 4px}
+.muted{color:var(--muted)}
+.login{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;max-width:420px;margin-top:24px}
+input,select{font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 10px}
+input[type=password]{width:100%;margin:8px 0 12px}
+button{font:inherit;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:8px 12px;cursor:pointer}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent);font-weight:600}
+button.danger{color:var(--err)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:18px 0}
+.stats{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 20px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.stat b{font-size:18px;display:block}
+.item{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
+.head h2{font-size:16px;margin:0}
+.tag{font-size:12px;background:var(--soft);color:var(--accent);border-radius:999px;padding:2px 8px;margin-left:6px}
+.idea{margin:8px 0 12px;white-space:pre-wrap}
+.actions{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+details{margin-top:10px}
+details pre{white-space:pre-wrap;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px;font-size:13px}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+.err{color:var(--err)}
+.draft{margin-top:12px;border-top:1px dashed var(--line);padding-top:10px}
+.draft textarea{width:100%;min-height:340px;margin:8px 0;font:12.5px/1.45 ui-monospace,Menlo,Consolas,monospace;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:10px}
+.precheck{background:#fbf1dc;color:#5a3d0a;border:1px solid #efd9a8;border-radius:8px;padding:8px 12px;margin:8px 0}
+.precheck pre{background:transparent;border:0;padding:4px 0;margin:0}
+.tag.warn{background:#fbf1dc;color:#7a4f0e}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin:18px 0 0}
+.tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;background:none;padding:10px 14px;font-weight:600;color:var(--muted)}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--accent)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin:16px 0}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-size:24px;line-height:1.2;color:var(--accent)}
+.kpi span{font-size:13px;color:var(--muted)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.panel h3{font-size:15px;margin:0 0 12px}
+.grid2s{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:720px){.grid2s{grid-template-columns:1fr}}
+.daily{display:flex;align-items:flex-end;gap:3px;height:150px;padding-top:18px}
+.daily div{flex:1;min-width:4px;background:var(--accent);border-radius:3px 3px 0 0;position:relative;opacity:.85}
+.daily div:hover{opacity:1}
+.daily div span{position:absolute;top:-17px;left:50%;transform:translateX(-50%);font-size:10px;color:var(--muted);white-space:nowrap}
+.daxis{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:4px}
+.hb{display:grid;grid-template-columns:minmax(90px,40%) 1fr 48px;gap:8px;align-items:center;font-size:13.5px;margin:0 0 6px}
+.hb .lab{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hb .tr{height:10px;background:var(--soft);border-radius:999px;overflow:hidden}
+.hb .tr i{display:block;height:100%;background:var(--accent);border-radius:999px}
+.hb .n{text-align:right;font-weight:600}
+.funnel .hb{grid-template-columns:minmax(130px,34%) 1fr 90px}
+.period{display:flex;gap:6px}
+.period button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.note{background:#fbf1dc;color:#5a3d0a;border:1px solid #efd9a8;border-radius:10px;padding:12px 14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Başvurular</h1>
+  <div class="muted">Gründungs-Check / İş Fikri Kontrolü · test formu</div>
+
+  <div class="login" id="login">
+    <label for="pw"><b>Yönetici şifresi</b></label>
+    <input type="password" id="pw" autocomplete="current-password">
+    <button class="primary" id="go">Giriş</button>
+    <p class="err" id="loginerr" hidden>Şifre yanlış.</p>
+  </div>
+
+  <div id="app" hidden>
+    <div class="bar">
+      <button id="reload">Yenile</button>
+      <button id="logout">Çıkış</button>
+      <a href="/rapor" target="_blank" rel="noopener">Rapor PDF sayfası</a>
+      <span class="muted" id="count"></span>
+    </div>
+    <div class="tabs"><button class="on" data-tab="subs">Başvurular</button><button data-tab="ana">İstatistik</button></div>
+    <div id="tab-subs">
+    <div class="stats" id="stats" style="margin-top:16px"></div>
+    <div id="gate" style="margin:-8px 0 8px"></div>
+    <div class="muted" id="channels" style="margin:0 0 18px"></div>
+    <div id="list"></div>
+    </div>
+    <div id="tab-ana" hidden>
+      <div class="bar" style="margin-bottom:0"><div class="period" id="period"><button data-d="7">7 gün</button><button data-d="30" class="on">30 gün</button><button data-d="90">90 gün</button></div><span class="muted" id="anastate"></span></div>
+      <div id="ana"></div>
+    </div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script type="module">
+import { VAT_OPTIONS, suggestVat } from '/calc.js';
+import { buildPlan, planToText, planToCsv } from '/plan.js';
+import { Q, val, calcText as calcTextFor, briefText } from '/brief.js';
+const STATUS = [["new","Yeni"],["report_sent","Rapor gönderildi"],["feedback","Geri bildirim geldi"],["follow_up","Takip hizmeti istedi"],["plan_link_sent","Plan formu gönderildi"],["plan_sent","Plan gönderildi"],["paid","Ödedi"],["closed","Kapandı"]];
+const FB = { next:{plan:"İş planı istiyor",talk:"Görüşme istiyor",none:"Şimdilik bir şey istemiyor"},
+  wtp:{"0":"Hiç (sadece ücretsiz)","lt50":"50 €'dan az","50-150":"50–150 €","150-300":"150–300 €","300+":"300 €'dan fazla"} };
+const isFollow = (i) => ['follow_up','plan_link_sent','plan_sent','paid'].includes(i.status) || (i.feedback && i.feedback.next !== 'none');
+const isPayer = (i) => i.status === 'paid' || (i.feedback && ['50-150','150-300','300+'].includes(i.feedback.wtp));
+const PQ = { start_month:"Planlanan başlangıç", t_offer:"Ürün/hizmet ayrıntısı", t_target:"Hedef müşteri", t_competitors:"Rakipler", t_usp:"Neden biz", t_location:"Konum",
+  t_marketing:"Müşteri kazanımı", t_org:"Organizasyon, tedarikçiler, ortaklar", t_cv:"Kurucu özgeçmişi", t_risks:"Riskler ve önlemler", gz_apply:"Gründungszuschuss başvurusu" };
+
+const $ = id => document.getElementById(id);
+let PW = '';
+try { PW = sessionStorage.getItem('gc_pw') || ''; } catch {}
+
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('show'); setTimeout(()=>t.classList.remove('show'),1800); }
+
+async function api(method, body){
+  const r = await fetch('/api/submissions', { method, headers: { 'authorization':'Bearer '+PW, 'content-type':'application/json' }, body: body ? JSON.stringify(body) : undefined });
+  if (r.status === 401) { throw new Error('unauthorized'); }
+  if (!r.ok) throw new Error('http '+r.status);
+  return r.json();
+}
+
+async function call(url, method, body){
+  const r = await fetch(url, { method, headers: { 'authorization':'Bearer '+PW, 'content-type':'application/json' }, body: body ? JSON.stringify(body) : undefined });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.error === 'no_key' ? 'ANTHROPIC_API_KEY Vercel\'de tanımlı değil' : j.error === 'mail' ? 'E-posta gönderilemedi: ' + (j.detail || '') : (j.error || 'http ' + r.status));
+  return j;
+}
+const fmtDate = (d) => d ? new Date(d).toLocaleString('tr-TR', { dateStyle:'short', timeStyle:'short' }) : '';
+function draftBlock(it){
+  const d = it.draft;
+  if (!d) return `<div class="draft"><b>Rapor taslağı:</b> <span class="muted">yok</span> <button data-a="mkdraft">Taslak oluştur</button></div>`;
+  if (d.pending) return `<div class="draft"><b>Rapor taslağı yazılıyor…</b> <span class="muted">(başladı ${esc(fmtDate(d.created_at))}; genelde 1–3 dakika, sayfa kendini yeniler)</span> <button data-a="mkdraft">Yeniden başlat</button></div>`;
+  if (d.insufficient) return `<div class="draft"><div class="precheck"><b>Başvuru yetersiz – rapor yazılmadı.</b> Başvurana gönderilebilecek mesaj:<pre>${esc(d.message || '')}</pre><button data-a="copymsg">Mesajı kopyala</button> <button data-a="forcedraft">Yine de rapor yaz</button></div></div>`;
+  if (d.error) return `<div class="draft"><b class="err">Taslak oluşturulamadı:</b> ${esc(d.error)} <button data-a="mkdraft">Tekrar dene</button></div>`;
+  return `<details class="draft" ${it.report ? '' : 'open'}><summary><b>Rapor taslağı</b> <span class="muted">· ${esc(d.model || '')}${d.seconds ? ' · ' + d.seconds + ' sn' : ''} · ${esc(fmtDate(d.edited_at || d.created_at))}${d.edited_at ? ' (düzeltildi)' : ''}</span></summary>
+    ${d.precheck ? `<div class="precheck"><b>Göndermeden önce sorulabilir:</b><pre>${esc(d.precheck)}</pre><button data-a="copyq">Soruları kopyala</button></div>` : ''}
+    <textarea data-a="md" spellcheck="false">${esc(d.md || '')}</textarea>
+    <div class="actions">
+      <button data-a="preview">Önizle / PDF</button>
+      <button data-a="savedraft">Düzeltmeyi kaydet</button>
+      <button class="primary" data-a="send">${it.report ? 'Tekrar gönder' : 'Onayla ve gönder'}</button>
+      <button data-a="mkdraft">Yeniden oluştur</button>
+    </div></details>`;
+}
+
+// Text for Claude: no name, no e-mail.
+const vatChoice = {};
+const calcText = (it) => calcTextFor(it, vatChoice[it.pathname] || suggestVat(it));
+const planRes = (it) => buildPlan(it, it.plan, vatChoice[it.pathname] || suggestVat(it));
+function forClaudePlan(it){
+  const tr = it.lang === 'tr';
+  const lines = ['İş planı yaz (projedeki BUSINESSPLAN-TALIMATI belgesine göre). Plan dili: Almanca.' + (tr ? ' Kurucu Türkçe konuşuyor: sona 1 sayfalık Türkçe özet ekle.' : ''), ''];
+  lines.push('DENETİM FORMU CEVAPLARI');
+  for (const [k,label] of Object.entries(Q)) { if (it[k] === undefined || it[k] === '') continue; lines.push(`${label}: ${val(k, it[k])}`); }
+  lines.push('', 'PLAN FORMU METİN CEVAPLARI');
+  for (const [k,label] of Object.entries(PQ)) { const v = it.plan[k]; if (v === undefined || v === '') continue; lines.push(`${label}: ${v}`); }
+  lines.push('', planToText(planRes(it)));
+  return lines.join('\n');
+}
+function download(name, text){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], { type:'text/csv;charset=utf-8' })); a.download = name;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+const forClaude = (it) => briefText(it, vatChoice[it.pathname] || suggestVat(it));
+
+async function copy(text, msg){
+  try { await navigator.clipboard.writeText(text); toast(msg); }
+  catch { prompt('Kopyala:', text); }
+}
+
+function render(items){
+  ITEMS = items;
+  $('count').textContent = `${items.length} başvuru`;
+  const counts = Object.fromEntries(STATUS.map(([k])=>[k,0]));
+  items.forEach(i => counts[i.status || 'new'] = (counts[i.status || 'new']||0) + 1);
+  $('stats').innerHTML = STATUS.map(([k,l]) => `<div class="stat"><b>${counts[k]||0}</b>${l}</div>`).join('');
+  const nf = items.filter(isFollow).length, np = items.filter(isPayer).length, nr = items.filter(i => i.status && i.status !== 'new').length;
+  $('gate').innerHTML = `<b>Karar kapısı:</b> rapor gönderilen ${nr} · takip isteği <b>${nf}</b> / 5 · ödeme isteği (≥ 50 € veya ödedi) <b>${np}</b> / 2` + (nf >= 5 && np >= 2 ? ' — <b>kapı geçildi</b>' : '');
+  const ch = {};
+  for (const i of items) {
+    const c = ch[i.src || '(etiketsiz)'] ||= { n: 0, fu: 0, paid: 0 };
+    c.n++; if (isFollow(i)) c.fu++; if (isPayer(i)) c.paid++;
+  }
+  $('channels').innerHTML = items.length ? '<b>Kanallar:</b> ' + Object.entries(ch).sort((a,b)=>b[1].n-a[1].n)
+    .map(([k,c]) => `${esc(k)} ${c.n} başvuru · ${c.fu} takip · ${c.paid} ödeme isteği`).join(' &nbsp;|&nbsp; ') : '';
+  $('list').innerHTML = items.length ? '' : '<p class="muted">Henüz başvuru yok.</p>';
+  for (const it of items) {
+    const el = document.createElement('div'); el.className = 'item';
+    const date = new Date(it.submitted_at).toLocaleString('tr-TR', { dateStyle:'medium', timeStyle:'short' });
+    el.innerHTML = `
+      <div class="head">
+        <h2>${esc(it.first_name || '(isimsiz)')} <span class="tag">${it.lang === 'tr' ? 'TR' : 'DE'}</span>${it.src ? `<span class="tag">${esc(it.src)}</span>` : ''}${it.feedback ? `<span class="tag">Geri bildirim ${esc(it.feedback.useful)}/5</span>` : ''}${it.plan ? '<span class="tag">Plan verisi var</span>' : ''}${it.confirmed === false ? '<span class="tag warn">E-posta onayı bekleniyor</span>' : ''}${it.report ? `<span class="tag">Rapor gönderildi ${esc(fmtDate(it.report.sent_at))}</span>` : (it.draft && it.draft.md && !it.draft.pending ? '<span class="tag warn">Taslak onay bekliyor</span>' : '')}</h2>
+        <span class="muted">${esc(date)} · ${esc(it.city || '')}</span>
+      </div>
+      <div class="muted">${esc(it.email)} · ${esc(val('business_type', it.business_type))} · ${esc(val('residence', it.residence))}</div>
+      <div class="idea">${esc(it.idea)}</div>
+      <div class="actions">
+        <button class="primary" data-a="claude">Claude için kopyala</button>
+        <button data-a="email">E-postayı kopyala</button>
+        <button data-a="fblink">Geri bildirim linki</button>
+        <button data-a="planlink">Plan formu linki</button>
+        ${it.plan ? '<button class="primary" data-a="planclaude">Plan için Claude\'a kopyala</button><button data-a="csv">Plan CSV</button>' : ''}
+        <select data-a="vat" title="KDV varsayımı (hesap için)">${Object.entries(VAT_OPTIONS).map(([k,o]) => `<option value="${k}" ${(vatChoice[it.pathname] || suggestVat(it))===k ? 'selected':''}>${o.label}</option>`).join('')}</select>
+        <select data-a="status">${STATUS.map(([k,l]) => `<option value="${k}" ${ (it.status||'new')===k ? 'selected':''}>${l}</option>`).join('')}</select>
+        <button class="danger" data-a="delete">Sil</button>
+      </div>
+      ${draftBlock(it)}
+      ${it.report ? `<div class="muted" style="margin-top:6px">Rapor linki: <a href="/${it.lang === 'tr' ? 'tr' : 'de'}/r?id=${it.id}" target="_blank" rel="noopener">/${it.lang === 'tr' ? 'tr' : 'de'}/r?id=${esc(String(it.id).slice(0,8))}…</a></div>` : ''}
+      ${it.feedback ? `<details open><summary>Geri bildirim (${esc(String(it.feedback.at).slice(0,10))})</summary><pre>Fayda: ${esc(it.feedback.useful)}/5\nSıradaki adım: ${esc(FB.next[it.feedback.next] || it.feedback.next)}\nİş planına ödeme isteği: ${esc(FB.wtp[it.feedback.wtp] || it.feedback.wtp)}${it.feedback.best ? '\nEn faydalı: ' + esc(it.feedback.best) : ''}${it.feedback.missing ? '\nEksik/yanlış: ' + esc(it.feedback.missing) : ''}</pre></details>` : ''}
+      <details open><summary>Hesaplar</summary><pre data-a="calc">${esc(calcText(it))}</pre></details>
+      ${it.plan ? `<details><summary>Finans planı (${esc(String(it.plan.submitted_at).slice(0,10))})</summary><pre data-a="plantext">${esc(planToText(planRes(it)))}</pre></details>` : ''}
+      <details><summary>Tüm cevaplar</summary><pre>${esc(forClaude(it))}</pre></details>`;
+    el.querySelector('[data-a=claude]').onclick = () => copy(forClaude(it), 'Kopyalandı (isim ve e-posta hariç)');
+    el.querySelector('[data-a=vat]').onchange = (e) => {
+      vatChoice[it.pathname] = e.target.value; el.querySelector('[data-a=calc]').textContent = calcText(it);
+      const pt = el.querySelector('[data-a=plantext]'); if (pt) pt.textContent = planToText(planRes(it));
+    };
+    el.querySelector('[data-a=fblink]').onclick = () => copy(`${location.origin}/${it.lang === 'tr' ? 'tr' : 'de'}/feedback?id=${it.id}`, 'Geri bildirim linki kopyalandı');
+    el.querySelector('[data-a=planlink]').onclick = () => copy(`${location.origin}/${it.lang === 'tr' ? 'tr' : 'de'}/plan?id=${it.id}`, 'Plan formu linki kopyalandı');
+    if (it.plan) {
+      el.querySelector('[data-a=planclaude]').onclick = () => copy(forClaudePlan(it), 'Plan metni kopyalandı (isim ve e-posta hariç)');
+      el.querySelector('[data-a=csv]').onclick = () => download(`finanzplan_${String(it.id).slice(0,8)}.csv`, planToCsv(planRes(it)));
+    }
+    el.querySelector('[data-a=email]').onclick = () => copy(it.email, 'E-posta kopyalandı');
+    el.querySelector('[data-a=status]').onchange = async (e) => {
+      try { await api('PATCH', { pathname: it.pathname, status: e.target.value }); it.status = e.target.value; render(items); toast('Durum kaydedildi'); }
+      catch { toast('Kaydedilemedi'); }
+    };
+    el.querySelector('[data-a=delete]').onclick = async () => {
+      if (!confirm('Bu başvuru kalıcı olarak silinsin mi?')) return;
+      try { await api('DELETE', { pathname: it.pathname }); load(); toast('Silindi'); } catch { toast('Silinemedi'); }
+    };
+    const on = (k, fn) => el.querySelectorAll(`[data-a=${k}]`).forEach(b => b.onclick = fn);
+    const mdEl = () => el.querySelector('[data-a=md]');
+    on('mkdraft', async () => {
+      if (it.draft && (it.draft.md || it.draft.insufficient) && !confirm('Mevcut taslak silinip yeniden yazılsın mı?')) return;
+      try { await call('/api/draft', 'POST', { pathname: it.pathname }); toast('Taslak yazılıyor (1–3 dk)'); load(); } catch (e) { toast(e.message); }
+    });
+    on('copyq', () => copy(it.draft.precheck, 'Sorular kopyalandı'));
+    on('forcedraft', async () => {
+      try { await call('/api/draft', 'POST', { pathname: it.pathname, force: true }); toast('Rapor yazılıyor (1–3 dk)'); load(); } catch (e) { toast(e.message); }
+    });
+    on('copymsg', () => copy(it.draft.message, 'Mesaj kopyalandı'));
+    on('preview', () => {
+      try { sessionStorage.setItem('rapor_md', mdEl().value); sessionStorage.setItem('rapor_lang', it.lang === 'tr' ? 'tr' : 'de'); } catch {}
+      window.open('/rapor', '_blank');
+    });
+    on('savedraft', async () => {
+      try { await call('/api/draft', 'PUT', { pathname: it.pathname, md: mdEl().value }); it.draft.md = mdEl().value; toast('Taslak kaydedildi'); } catch (e) { toast(e.message); }
+    });
+    on('send', async (ev) => {
+      if (!confirm(`Rapor ${it.email} adresine gönderilsin mi?`)) return;
+      ev.target.disabled = true;
+      try { const r = await call('/api/report', 'POST', { pathname: it.pathname, md: mdEl().value }); toast(r.mail_skipped ? 'Kaydedildi, e-posta ayarı yok' : 'Rapor gönderildi'); load(); }
+      catch (e) { toast(e.message); ev.target.disabled = false; }
+    });
+    $('list').appendChild(el);
+  }
+}
+
+let pollTimer = null, polls = 0;
+let ITEMS = [], DAYS = 30, ANA = null;
+
+// ---- İstatistik ----
+const PATHNAME = { '/': 'Ana sayfa (DE)', '/tr/start': 'Ana sayfa (TR)', '/de/start': 'Ana sayfa (DE)', '/de': 'Form (DE)', '/tr': 'Form (TR)', '/de/r': 'Rapor sayfası (DE)', '/tr/r': 'Rapor sayfası (TR)', '/de/feedback': 'Geri bildirim (DE)', '/tr/feedback': 'Geri bildirim (TR)' };
+const fmtN = (n) => n == null ? '–' : Number(n).toLocaleString('tr-TR');
+function hbars(rows, label = (k) => k, extra) {
+  if (!rows || !rows.length) return '<p class="muted" style="margin:0">Henüz veri yok.</p>';
+  const max = Math.max(...rows.map((r) => r.n)) || 1;
+  return rows.map((r) => `<div class="hb"><span class="lab" title="${esc(r.key)}">${esc(label(r.key))}</span><span class="tr"><i style="width:${(r.n / max * 100).toFixed(1)}%"></i></span><span class="n">${extra ? extra(r) : fmtN(r.n)}</span></div>`).join('');
+}
+function renderAna() {
+  const d = ANA; if (!d) return;
+  if (d.error === 'no_token') {
+    $('ana').innerHTML = `<div class="note"><b>Bir adım kaldı:</b> İstatistikleri burada görmek için Vercel erişim anahtarı gerekiyor.<br>1) vercel.com → sağ üst profil → <b>Account Settings → Tokens</b> → <b>Create Token</b> (Scope: technsug-ops-projects, isim: <i>foundercheck-stats</i>).<br>2) Proje → <b>Settings → Environment Variables</b> → anahtar adı <code>VERCEL_API_TOKEN</code>, değer: oluşturduğun token, ortam: Production, <b>Sensitive</b> işaretli.<br>3) Bana „token ekledim“ yaz, yeniden yayına alayım.</div>`;
+    return;
+  }
+  if (d.error) { $('ana').innerHTML = `<div class="note">Vercel verisi alınamadı: ${esc(d.detail || d.error)}</div>`; return; }
+  const since = Date.parse(d.since);
+  const inP = ITEMS.filter((i) => Date.parse(i.submitted_at) >= since);
+  const subs = inP.length, conf = inP.filter((i) => i.confirmed !== false).length, rep = inP.filter((i) => i.report).length, fb = inP.filter((i) => i.feedback).length;
+  const pv = (keys) => (d.requestPath || []).filter((r) => keys.includes(r.key)).reduce((a, r) => a + r.n, 0);
+  const home = pv(['/', '/tr/start', '/de/start']), form = pv(['/de', '/tr']);
+  const vis = d.total.v;
+  const conv = vis ? (subs / vis * 100).toFixed(1).replace('.', ',') + ' %' : '–';
+  $('ana').innerHTML = `
+    <div class="kpis">
+      <div class="kpi"><b>${fmtN(d.total.n)}</b><span>Sayfa görüntüleme</span></div>
+      <div class="kpi"><b>${fmtN(vis)}</b><span>Tekil ziyaretçi</span></div>
+      <div class="kpi"><b>${fmtN(subs)}</b><span>Başvuru</span></div>
+      <div class="kpi"><b>${fmtN(conf)}</b><span>E-posta onaylı</span></div>
+      <div class="kpi"><b>${fmtN(rep)}</b><span>Rapor gönderildi</span></div>
+      <div class="kpi"><b>${conv}</b><span>Ziyaretçiden başvuruya</span></div>
+    </div>
+    <div class="panel"><h3>Günlük sayfa görüntüleme</h3>${dailyChart(d.daily)}</div>
+    <div class="panel funnel"><h3>Huni (seçili dönem)</h3>${hbars([
+      { key: 'Ana sayfa görüntüleme', n: home }, { key: 'Form görüntüleme', n: form }, { key: 'Başvuru gönderildi', n: subs },
+      { key: 'E-posta onaylandı', n: conf }, { key: 'Rapor gönderildi', n: rep }, { key: 'Geri bildirim', n: fb }])}</div>
+    <div class="grid2s">
+      <div class="panel"><h3>Sayfalar</h3>${hbars(d.requestPath, (k) => PATHNAME[k] || k)}</div>
+      <div class="panel"><h3>Gelinen siteler</h3>${hbars(d.referrerHostname, (k) => k || '(doğrudan)')}</div>
+      <div class="panel"><h3>Kampanya kaynağı (utm_source)</h3>${hbars(d.utmSource, (k) => k || '(yok)')}</div>
+      <div class="panel"><h3>Ülkeler</h3>${hbars(d.country)}</div>
+      <div class="panel"><h3>Cihaz</h3>${hbars(d.deviceType, (k) => ({ mobile: 'Telefon', desktop: 'Bilgisayar', tablet: 'Tablet' }[k] || k))}</div>
+      <div class="panel"><h3>Başvuru kanalı (?k= etiketi)</h3>${hbars(Object.entries(inP.reduce((a, i) => (a[i.src || '(etiketsiz)'] = (a[i.src || '(etiketsiz)'] || 0) + 1, a), {})).map(([key, n]) => ({ key, n })).sort((a, b) => b.n - a.n))}</div>
+    </div>
+    <p class="muted" style="font-size:13px">Kaynak: Vercel Web Analytics (çerezsiz). Başvuru sayıları kendi kayıtlarımızdan.</p>`;
+}
+function dailyChart(rows) {
+  if (!rows || !rows.length) return '<p class="muted" style="margin:0">Henüz veri yok. İlk ziyaretler birkaç dakika içinde görünür.</p>';
+  rows = [...rows].sort((a, b) => String(a.key).localeCompare(String(b.key)));
+  const max = Math.max(...rows.map((r) => r.n)) || 1, f = (k) => new Date(k).toLocaleDateString('tr-TR', { day: '2-digit', month: '2-digit' });
+  return `<div class="daily">${rows.map((r) => `<div style="height:${Math.max(r.n / max * 100, 2)}%" title="${esc(f(r.key))}: ${r.n}">${rows.length <= 31 ? `<span>${r.n}</span>` : ''}</div>`).join('')}</div><div class="daxis"><span>${esc(f(rows[0].key))}</span><span>${esc(f(rows[rows.length - 1].key))}</span></div>`;
+}
+async function loadAna() {
+  $('anastate').textContent = 'Yükleniyor…';
+  try { const r = await fetch('/api/stats?days=' + DAYS, { headers: { authorization: 'Bearer ' + PW } }); ANA = await r.json(); }
+  catch { ANA = { error: 'network' }; }
+  $('anastate').textContent = ''; renderAna();
+}
+document.querySelectorAll('.tabs button').forEach((b) => b.onclick = () => {
+  document.querySelectorAll('.tabs button').forEach((x) => x.classList.toggle('on', x === b));
+  $('tab-subs').hidden = b.dataset.tab !== 'subs'; $('tab-ana').hidden = b.dataset.tab !== 'ana';
+  if (b.dataset.tab === 'ana') loadAna();
+});
+document.querySelectorAll('#period button').forEach((b) => b.onclick = () => {
+  DAYS = +b.dataset.d; document.querySelectorAll('#period button').forEach((x) => x.classList.toggle('on', x === b)); loadAna();
+});
+async function load(){
+  try {
+    const { items } = await api('GET');
+    $('login').hidden = true; $('app').hidden = false;
+    render(items);
+    clearTimeout(pollTimer);
+    if (items.some(i => i.draft && i.draft.pending) && polls++ < 20) pollTimer = setTimeout(load, 20000); else polls = 0;
+  } catch (e) {
+    $('app').hidden = true; $('login').hidden = false;
+    if (PW) $('loginerr').hidden = false;
+    PW = ''; try { sessionStorage.removeItem('gc_pw'); } catch {}
+  }
+}
+
+$('go').onclick = () => { PW = $('pw').value; try { sessionStorage.setItem('gc_pw', PW); } catch {} $('loginerr').hidden = true; load(); };
+$('pw').addEventListener('keydown', e => { if (e.key === 'Enter') $('go').click(); });
+$('reload').onclick = load;
+$('logout').onclick = () => { PW=''; try { sessionStorage.removeItem('gc_pw'); } catch {} location.reload(); };
+if (PW) load();
+</script>
+</body>
+</html>

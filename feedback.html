@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Feedback</title>
+<style>
+:root{--bg:#f3f6f9;--card:#fff;--ink:#16202c;--muted:#56616f;--line:#dfe4ea;--accent:#0f2d4a;--accent-ink:#fff;--accent-soft:#e6eef7;--err:#b42318;--focus:#1d5fa8}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:40px 16px 64px}
+.kicker{font-size:15px;color:var(--accent);font-weight:700}
+h1{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:8px 0 12px;color:var(--accent)}
+.lead{color:var(--muted);margin:0 0 24px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:16px}
+fieldset{border:0;margin:0 0 22px;padding:0}
+legend,label.q{display:block;font-weight:600;margin-bottom:8px;padding:0}
+.opts{display:grid;gap:8px}
+.opts.row{grid-template-columns:repeat(5,1fr)}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;background:var(--bg)}
+.opts.row .opt{justify-content:center;flex-direction:column;gap:4px;padding:10px 4px;text-align:center}
+.opt input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.scale{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:6px}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:84px;resize:vertical}
+input:focus-visible,textarea:focus{outline:2px solid var(--focus);outline-offset:1px}
+.field{margin-bottom:20px}
+.hidden{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button.primary{appearance:none;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:600;padding:14px 22px;cursor:pointer;width:100%}
+button.primary:disabled{opacity:.6;cursor:wait}
+.error{color:var(--err);font-size:14px;margin-top:6px}
+.notice{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 20px;text-align:center}
+.notice h2{margin:0 0 8px}
+footer{margin-top:32px;color:var(--muted);font-size:14px}
+footer details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+footer summary{cursor:pointer;font-weight:600;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="kicker" data-t="kicker"></div>
+  <h1 data-t="title"></h1>
+  <p class="lead" data-t="lead"></p>
+
+  <div class="notice hidden" id="invalid" role="alert"><h2 data-t="invh"></h2><p data-t="invp"></p></div>
+  <form id="f" class="hidden" novalidate>
+    <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <section class="card">
+      <fieldset id="fs_useful"><legend data-t="q_useful"></legend><div class="opts row" id="o_useful"></div>
+        <div class="scale"><span data-t="s_low"></span><span data-t="s_high"></span></div></fieldset>
+      <div class="field"><label class="q" for="best" data-t="q_best"></label><textarea id="best" name="best" maxlength="1500"></textarea></div>
+      <div class="field"><label class="q" for="missing" data-t="q_missing"></label><textarea id="missing" name="missing" maxlength="1500"></textarea></div>
+      <fieldset id="fs_next"><legend data-t="q_next"></legend><div class="opts" id="o_next"></div></fieldset>
+      <fieldset id="fs_wtp"><legend data-t="q_wtp"></legend><div class="opts" id="o_wtp"></div></fieldset>
+      <button class="primary" type="submit" id="submit" data-t="submit"></button>
+      <p class="error hidden" id="formerror" role="alert"></p>
+    </section>
+  </form>
+  <div class="notice hidden" id="done" role="status"><h2 data-t="doneh"></h2><p data-t="donep"></p></div>
+
+  <footer><details><summary>Impressum</summary><div id="imp"></div></details></footer>
+</div>
+<script>
+const OPERATOR = { company:"TechNS UG (haftungsbeschränkt)", address:"Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Deutschland",
+  register:"Amtsgericht Bad Homburg, HRB 16236", vat:"USt-IdNr. DE312006599", ceo:"Geschäftsführer: Halil Yaprakli", phone:"+49 6171 277 51 37", email:"info@dgitmarkt.de" };
+const T = {
+de:{ kicker:'Gründungs-Check – Feedback', title:'Wie hilfreich war dein Bericht?', lead:'Zwei Minuten, fünf Fragen. Deine ehrliche Antwort hilft uns, den Check besser zu machen.',
+  q_useful:'Wie hilfreich war der Bericht für deine Entscheidung?', s_low:'gar nicht', s_high:'sehr',
+  q_best:'Was war am nützlichsten?', q_missing:'Was hat gefehlt oder war falsch?',
+  q_next:'Was wäre der nächste Schritt für dich?', next:[['plan','Ein Businessplan für Bank oder Arbeitsagentur'],['talk','Ein 30-minütiges Gespräch zu meinem Bericht'],['none','Im Moment nichts']],
+  q_wtp:'Wie viel wäre dir ein einreichungsfähiger Businessplan auf Basis dieses Berichts wert?', wtp:[['0','Nichts – nur kostenlos'],['lt50','Unter 50 €'],['50-150','50–150 €'],['150-300','150–300 €'],['300+','Mehr als 300 €']],
+  submit:'Feedback senden', sending:'Wird gesendet …', err:'Bitte beantworte die markierten Fragen.', err_send:'Das hat nicht geklappt. Bitte versuch es später noch einmal.',
+  doneh:'Danke für dein Feedback!', donep:'Wenn du einen nächsten Schritt gewählt hast, melden wir uns per E-Mail.',
+  invh:'Dieser Link ist nicht gültig.', invp:'Bitte nutze den Link aus unserer E-Mail.' },
+tr:{ kicker:'İş Fikri Kontrolü – Geri bildirim', title:'Raporun ne kadar işine yaradı?', lead:'İki dakika, beş soru. Dürüst cevabın bu kontrolü geliştirmemize yardım ediyor.',
+  q_useful:'Rapor kararın için ne kadar faydalı oldu?', s_low:'hiç', s_high:'çok',
+  q_best:'En faydalı olan neydi?', q_missing:'Eksik veya yanlış olan neydi?',
+  q_next:'Senin için sıradaki adım ne olurdu?', next:[['plan','Banka veya Arbeitsagentur için iş planı'],['talk','Raporum üzerine 30 dakikalık görüşme'],['none','Şimdilik bir şey istemiyorum']],
+  q_wtp:'Bu rapora dayanan, bankaya sunulabilir bir iş planı senin için ne kadar eder?', wtp:[['0','Hiç – sadece ücretsizse'],['lt50','50 €\'dan az'],['50-150','50–150 €'],['150-300','150–300 €'],['300+','300 €\'dan fazla']],
+  submit:'Gönder', sending:'Gönderiliyor …', err:'Lütfen işaretli soruları cevapla.', err_send:'Gönderilemedi. Lütfen biraz sonra tekrar dene.',
+  doneh:'Geri bildirimin için teşekkürler!', donep:'Bir sonraki adım seçtiysen e-postayla dönüyorum.',
+  invh:'Bu link geçerli değil.', invp:'Lütfen e-postadaki linki kullan.' }
+};
+const lang = /\/tr(\/|$)/.test(location.pathname) ? 'tr' : 'de', t = T[lang];
+document.documentElement.lang = lang; document.title = t.kicker;
+document.querySelectorAll('[data-t]').forEach(el => { if (typeof t[el.dataset.t] === 'string') el.textContent = t[el.dataset.t]; });
+document.getElementById('imp').innerHTML = `<p>Angaben gemäß § 5 DDG</p><p>${OPERATOR.company}<br>${OPERATOR.address}<br>${OPERATOR.ceo}<br>${OPERATOR.register}<br>${OPERATOR.vat}<br>Telefon: ${OPERATOR.phone}<br>E-Mail: <a href="mailto:${OPERATOR.email}">${OPERATOR.email}</a></p>`;
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const radios = (name, opts) => opts.map(([v, l]) => `<label class="opt"><input type="radio" name="${name}" value="${v}"><span>${esc(l)}</span></label>`).join('');
+$('o_useful').innerHTML = radios('useful', [1,2,3,4,5].map(n => [String(n), String(n)]));
+$('o_next').innerHTML = radios('next', t.next);
+$('o_wtp').innerHTML = radios('wtp', t.wtp);
+const id = new URLSearchParams(location.search).get('id') || '';
+document.querySelectorAll('fieldset').forEach(fs => fs.addEventListener('change', () => { fs.querySelector('legend').style.color = ''; }));
+
+(async () => {
+  if (!/^[0-9a-f-]{36}$/.test(id)) return $('invalid').classList.remove('hidden');
+  try { const r = await fetch('/api/feedback?id=' + encodeURIComponent(id)); if (!r.ok) throw 0; $('f').classList.remove('hidden'); }
+  catch { $('invalid').classList.remove('hidden'); }
+})();
+
+$('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const fd = new FormData($('f')), data = { id };
+  for (const [k, v] of fd.entries()) { const s = String(v).trim(); if (s) data[k] = s; }
+  const missing = ['useful', 'next', 'wtp'].filter(k => !data[k]);
+  document.querySelectorAll('fieldset legend').forEach(l => l.style.color = '');
+  missing.forEach(k => { $('fs_' + k).querySelector('legend').style.color = 'var(--err)'; });
+  if (missing.length) { $('formerror').textContent = t.err; $('formerror').classList.remove('hidden'); $('fs_' + missing[0]).scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
+  $('formerror').classList.add('hidden');
+  const btn = $('submit'); btn.disabled = true; btn.textContent = t.sending;
+  try {
+    const r = await fetch('/api/feedback', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+    if (!r.ok) throw 0;
+    $('f').classList.add('hidden'); $('done').classList.remove('hidden'); window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch { $('formerror').textContent = t.err_send; $('formerror').classList.remove('hidden'); btn.disabled = false; btn.textContent = t.submit; }
+});
+</script>
+</body>
+</html>

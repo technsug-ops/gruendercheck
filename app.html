@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="color-scheme" content="light">
+<title>Gründungs-Check</title>
+<style>
+:root{
+  --ink:#16202c;--muted:#56616f;--faint:#8a94a1;--line:#dfe4ea;--line-2:#c5cfda;--zebra:#f6f8fb;
+  --accent:#0f2d4a;--accent-2:#1b4673;--soft:#e6eef7;--paper:#fff;--bg:#f3f6f9;--sand:#f3f6f9;
+  --err:#b42318;--err-soft:#fdeceb;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:var(--sans);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
+a{color:var(--accent)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.hidden{display:none!important}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+h1,h2,h3{font-family:var(--sans);font-weight:700;letter-spacing:-.015em;margin:0;color:var(--accent)}
+
+/* Kopf */
+header.top{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--accent);font-weight:700;font-size:18px;letter-spacing:-.01em;white-space:nowrap}
+.logo svg{width:30px;height:30px}
+nav.menu{display:flex;align-items:center;gap:18px;font-size:14.5px}
+nav.menu a{color:var(--muted);text-decoration:none}
+nav.menu a:hover{color:var(--ink)}
+.lang a{font-size:14.5px;color:var(--muted);text-decoration:none}
+@media (max-width:560px){nav.menu a.nl{display:none}}
+
+/* Seitenkopf */
+.pagehead{padding:48px 0 40px;border-bottom:1px solid var(--line);background:var(--paper)}
+.pagehead h1{font-size:clamp(30px,4vw,44px);line-height:1.1;letter-spacing:-.025em;margin:0 0 14px;max-width:18em}
+.pagehead .lead{font-size:17.5px;color:var(--muted);margin:0 0 20px;max-width:40em}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;font-size:15px;color:var(--ink);margin-right:18px}
+.chip svg{width:17px;height:17px;color:#1f7a45;flex:0 0 auto}
+
+/* Layout */
+.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:40px;align-items:start;padding-top:36px;padding-bottom:72px}
+aside.side{position:sticky;top:88px}
+.steps{list-style:none;margin:0 0 20px;padding:0;position:relative}
+.steps::before{content:"";position:absolute;left:15px;top:18px;bottom:18px;width:2px;background:var(--line)}
+.steps li{position:relative}
+.steps a{display:flex;align-items:center;gap:12px;padding:8px 0;text-decoration:none;color:var(--muted);font-size:15px}
+.steps .n{position:relative;z-index:1;width:32px;height:32px;border-radius:50%;background:var(--bg);border:2px solid var(--line-2);display:inline-flex;align-items:center;justify-content:center;font:600 14px/1 var(--sans);color:var(--muted);flex:0 0 auto;transition:all .15s}
+.steps a.active{color:var(--ink);font-weight:600}
+.steps a.active .n{border-color:var(--accent);color:var(--accent);background:var(--paper)}
+.steps a.ok .n{background:var(--accent);border-color:var(--accent);color:#fff}
+.prog{margin:0 0 22px}
+.prog .row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+.prog .track{height:6px;background:var(--line);border-radius:999px;overflow:hidden}
+.prog .fill{height:100%;width:0;background:var(--accent);border-radius:999px;transition:width .25s}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px;margin-bottom:14px}
+.box h3{font:700 15px/1.3 var(--sans);color:var(--accent);margin:0 0 12px}
+.points{list-style:none;padding:0;margin:0;display:grid;gap:9px;font-size:14px;line-height:1.45}
+.points li{display:flex;gap:9px;align-items:flex-start}
+.points li::before{content:"";flex:0 0 16px;height:16px;margin-top:2px;border-radius:50%;background:var(--soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4.5 8.2l2.2 2.2 4.8-4.8' fill='none' stroke='%230f2d4a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat}
+.trust{font-size:13px;color:var(--muted);line-height:1.5;display:grid;gap:6px}
+.trust div{display:flex;gap:8px;align-items:flex-start}
+.trust svg{width:14px;height:14px;margin-top:3px;color:var(--accent);flex:0 0 auto}
+
+/* Mobile Fortschrittsleiste */
+.mprog{display:none}
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr;gap:0;padding-top:20px}
+  aside.side{position:static}
+  aside.side .steps,aside.side .prog{display:none}
+  aside.side{order:2;margin-top:24px}
+  .mprog{display:block;position:sticky;top:72px;z-index:9;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);padding:10px 0}
+  .mprog .row{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px}
+  .mprog .row b{color:var(--ink);font-weight:600}
+  .mprog .track{height:5px;background:var(--line);border-radius:999px;overflow:hidden}
+  .mprog .fill{height:100%;width:0;background:var(--accent);transition:width .25s}
+  html{scroll-padding-top:130px}
+}
+
+/* Formular-Karten */
+section.card{background:var(--paper);border:1px solid var(--line);border-radius:12px;margin-bottom:20px}
+.card-head{display:flex;gap:14px;align-items:flex-start;padding:22px 28px 18px;border-bottom:1px solid var(--line)}
+.card-head .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff!important;color:var(--accent);display:inline-flex;align-items:center;justify-content:center;font:700 15px/1 var(--sans);flex:0 0 auto;margin-top:2px}
+.card-head h2{font-size:23px;line-height:1.25}
+.card-head .sub{color:var(--muted);font-size:14.5px;margin:3px 0 0}
+.card-body{padding:24px 28px 28px}
+@media (max-width:560px){.card-head{padding:18px 18px 14px}.card-body{padding:20px 18px 22px}.card-head h2{font-size:21px}}
+
+.card-body{display:flex;flex-direction:column;gap:24px}
+.field{margin:0}
+label.q{display:block;font-weight:600;font-size:15.5px;margin-bottom:8px;line-height:1.4}
+.hint{display:block;color:var(--muted);font-size:13.5px;font-weight:400;margin-top:2px}
+.req{color:var(--accent);margin-left:3px}
+.opt{color:var(--faint);font-weight:400;font-size:13px;margin-left:6px}
+input[type=text],input[type=email],input[type=number],select,textarea{
+  width:100%;font:inherit;font-size:16px;color:var(--ink);background:var(--paper);border:1px solid var(--line-2);border-radius:10px;padding:0 14px;
+  transition:border-color .15s,box-shadow .15s;appearance:none;-webkit-appearance:none;-moz-appearance:textfield;
+}
+input[type=text],input[type=email],input[type=number],select{height:48px}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+select{padding-right:40px;cursor:pointer;background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 6l4 4 4-4' fill='none' stroke='%235b645e' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") right 14px center/16px no-repeat}
+select:invalid,select.empty{color:var(--faint)}
+textarea{min-height:120px;padding:12px 14px;resize:vertical;line-height:1.55}
+input:hover,select:hover,textarea:hover{border-color:#aeb7b0}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(31,95,74,.15)}
+[aria-invalid=true]{border-color:var(--err)!important;background-color:var(--err-soft)}
+.money{position:relative}
+.money input{padding-right:40px}
+.money::after{content:"€";position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--faint);pointer-events:none}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:22px 18px}
+.grid2>div{display:flex;flex-direction:column}
+.grid2>div>input,.grid2>div>select,.grid2>div>.money{margin-top:auto}
+@supports (grid-template-rows:subgrid){
+  .grid2{grid-auto-rows:auto}
+  .grid2>div{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0}
+  .grid2>div>label.q{align-self:end}
+  .grid2>div>input,.grid2>div>select,.grid2>div>.money{margin-top:0;grid-row:2}
+  .grid2>div>.error{grid-row:3}
+}
+@media (max-width:560px){.grid2{grid-template-columns:1fr;row-gap:0}.grid2>div+div{margin-top:22px}}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:15px;cursor:pointer}
+.check input{margin-top:3px;width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto;cursor:pointer}
+.sub-field{margin-top:12px;padding:14px 16px;background:var(--zebra);border:1px solid var(--line);border-radius:10px}
+.error{color:var(--err);font-size:13.5px;margin-top:7px;display:flex;gap:6px;align-items:flex-start}
+.error::before{content:"!";flex:0 0 16px;height:16px;border-radius:50%;background:var(--err);color:#fff;font:700 11px/16px var(--sans);text-align:center;margin-top:2px}
+
+.submitrow{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+button.primary{appearance:none;border:0;border-radius:8px;background:var(--accent);color:#fff;font:inherit;font-size:16.5px;font-weight:600;padding:15px 26px;cursor:pointer;width:100%;transition:background .15s;display:flex;align-items:center;justify-content:center;gap:10px}
+button.primary:hover{background:var(--accent-2)}
+button.primary:disabled{opacity:.65;cursor:wait}
+button.primary svg{width:18px;height:18px}
+.after{font-size:13.5px;color:var(--muted);text-align:center;margin:12px 0 0}
+.formerror{color:var(--err);background:var(--err-soft);border:1px solid #f0cfcc;border-radius:10px;padding:10px 14px;margin:14px 0 0;font-size:14.5px}
+
+/* Fertig */
+.done{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:40px 32px;text-align:center;box-shadow:0 1px 2px rgba(0,0,0,.03)}
+.done .ico{width:60px;height:60px;border-radius:50%;background:var(--soft);display:inline-flex;align-items:center;justify-content:center;margin-bottom:16px}
+.done .ico svg{width:28px;height:28px;color:var(--accent)}
+.done h2{font-size:clamp(24px,3vw,30px);line-height:1.2;margin:0 0 10px}
+.done p{color:var(--muted);max-width:34em;margin:0 auto}
+.nextsteps{list-style:none;padding:0;margin:26px auto 22px;max-width:420px;text-align:left;display:grid;gap:12px;counter-reset:s}
+.nextsteps li{display:flex;gap:12px;align-items:center;font-size:15px;counter-increment:s}
+.nextsteps li::before{content:counter(s);width:28px;height:28px;border-radius:50%;background:var(--accent);color:#fff;font:600 13px/28px var(--sans);text-align:center;flex:0 0 auto}
+body.sent .layout{grid-template-columns:minmax(0,680px);justify-content:center}
+body.sent aside.side,body.sent .mprog{display:none}
+
+/* Fuß */
+footer.foot{border-top:1px solid var(--line);background:var(--paper);padding:28px 0 36px;color:var(--muted);font-size:14px}
+footer.foot .disc{margin:0 0 14px}
+footer.foot details{border-top:1px solid var(--line);padding:12px 0}
+footer.foot summary{cursor:pointer;font-weight:600;color:var(--ink)}
+footer.foot details p{margin:8px 0;max-width:62em}
+footer.foot .copy{margin-top:14px;font-size:13px;color:var(--faint)}
+</style>
+<meta name="theme-color" content="#0f2d4a">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" id="mf" href="/manifest-de.webmanifest">
+<script>if(/^\/tr(\/|$)/.test(location.pathname))document.getElementById('mf').href='/manifest-tr.webmanifest'</script>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="logo" id="homelink" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#0f2d4a"/><path d="M9 16.5l4.5 4.5L23 11.5" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="brandname"></span></a>
+  <nav class="menu"><a class="nl" href="#datenschutz" id="navds" data-t="dsh"></a><span class="lang" id="langswitch"></span></nav>
+</div></header>
+
+<div class="pagehead"><div class="wrap">
+  <h1 data-t="title"></h1>
+  <p class="lead" data-t="lead"></p>
+  <div class="chips">
+    <span class="chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.2"/><path d="M8 4.6V8l2.2 1.4" stroke-linecap="round"/></svg><span data-t="chip1"></span></span>
+    <span class="chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 2.8h7l3 3v7.4H3z"/><path d="M5.5 8h5M5.5 10.5h5" stroke-linecap="round"/></svg><span data-t="chip2"></span></span>
+    <span class="chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.8l5 2v4c0 3-2.2 5.2-5 6.4C5.2 13 3 10.8 3 7.8v-4z"/></svg><span data-t="chip3"></span></span>
+    <span class="chip"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.5 8.4l3 3 6-6.4" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-t="badge"></span></span>
+  </div>
+</div></div>
+
+<div class="mprog" id="mprog"><div class="wrap"><div class="row"><b id="mstep"></b><span id="mpct"></span></div><div class="track"><div class="fill" id="mfill"></div></div></div></div>
+
+<main class="wrap layout">
+  <aside class="side">
+    <div class="prog"><div class="row"><span data-t="progress"></span><span id="pct">0 %</span></div><div class="track"><div class="fill" id="fill"></div></div></div>
+    <ol class="steps" id="steps">
+      <li><a href="#s1"><span class="n">1</span><span data-t="s1"></span></a></li>
+      <li><a href="#s2"><span class="n">2</span><span data-t="s2"></span></a></li>
+      <li><a href="#s3"><span class="n">3</span><span data-t="s3"></span></a></li>
+      <li><a href="#s4"><span class="n">4</span><span data-t="s4"></span></a></li>
+    </ol>
+    <div class="box"><h3 data-t="gets"></h3><ul class="points" id="points"></ul></div>
+    <div class="trust" id="trust"></div>
+  </aside>
+
+  <div class="content">
+  <form id="f" novalidate>
+    <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+    <section class="card" id="s1">
+      <div class="card-head"><span class="n">1</span><div><h2 data-t="s1"></h2><p class="sub" data-t="s1sub"></p></div></div>
+      <div class="card-body">
+      <div class="field">
+        <label class="q" for="idea"><span data-t="q1"></span><span class="req">*</span><span class="hint" data-t="q1h"></span></label>
+        <textarea id="idea" name="idea" required maxlength="3000"></textarea>
+      </div>
+      <div class="field">
+        <label class="q" for="current_solution"><span data-t="q2"></span><span class="req">*</span><span class="hint" data-t="q2h"></span></label>
+        <textarea id="current_solution" name="current_solution" required maxlength="2000"></textarea>
+      </div>
+      <div class="field grid2">
+        <div>
+          <label class="q" for="talked"><span data-t="q3"></span></label>
+          <select id="talked" name="talked"></select>
+        </div>
+        <div>
+          <label class="q" for="paid"><span data-t="q3b"></span></label>
+          <select id="paid" name="paid"></select>
+        </div>
+      </div>
+      <div class="field grid2">
+        <div>
+          <label class="q" for="business_type"><span data-t="q4"></span><span class="req">*</span></label>
+          <select id="business_type" name="business_type" required></select>
+        </div>
+        <div>
+          <label class="q" for="customers"><span data-t="q4b"></span></label>
+          <select id="customers" name="customers"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="q" for="city"><span data-t="q5"></span><span class="req">*</span></label>
+        <input type="text" id="city" name="city" required maxlength="120">
+      </div>
+      </div>
+    </section>
+
+    <section class="card" id="s2">
+      <div class="card-head"><span class="n">2</span><div><h2 data-t="s2"></h2><p class="sub" data-t="s2sub"></p></div></div>
+      <div class="card-body">
+      <div class="field">
+        <label class="q" for="residence"><span data-t="q6"></span><span class="req">*</span><span class="hint" data-t="q6h"></span></label>
+        <select id="residence" name="residence" required></select>
+      </div>
+      <div class="field">
+        <label class="q" for="situation"><span data-t="q7"></span><span class="req">*</span></label>
+        <select id="situation" name="situation" required></select>
+      </div>
+      <div class="field grid2">
+        <div>
+          <label class="q" for="hours"><span data-t="q8"></span></label>
+          <input type="number" id="hours" name="hours" min="0" max="100" inputmode="numeric">
+        </div>
+        <div>
+          <label class="q" for="founders"><span data-t="q9"></span></label>
+          <select id="founders" name="founders"></select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="q" for="experience"><span data-t="q10"></span><span class="hint" data-t="q10h"></span></label>
+        <textarea id="experience" name="experience" maxlength="2000"></textarea>
+      </div>
+      </div>
+    </section>
+
+    <section class="card" id="s3">
+      <div class="card-head"><span class="n">3</span><div><h2 data-t="s3"></h2><p class="sub" data-t="s3sub"></p></div></div>
+      <div class="card-body">
+      <div class="field grid2">
+        <div>
+          <label class="q" for="capital"><span data-t="q11"></span><span class="req">*</span></label>
+          <select id="capital" name="capital" required></select>
+        </div>
+        <div>
+          <label class="q" for="rev_model"><span data-t="q12m"></span><span class="req">*</span></label>
+          <select id="rev_model" name="rev_model" required></select>
+        </div>
+      </div>
+      <div class="field">
+        <label class="q" for="price"><span id="pricelabel" data-t="q12a"></span><span class="req">*</span><span class="hint" data-t="q12ah"></span></label>
+        <div class="money"><input type="number" id="price" name="price" min="0" step="0.01" inputmode="decimal"></div>
+        <label class="check" style="margin-top:12px"><input type="checkbox" id="price_unknown" name="price_unknown"><span data-t="q12u"></span></label>
+        <div class="hidden sub-field" id="compwrap">
+          <label class="q" for="competitor_price"><span data-t="q12cp"></span></label>
+          <div class="money"><input type="number" id="competitor_price" name="competitor_price" min="0" step="0.01" inputmode="decimal"></div>
+        </div>
+      </div>
+      <div class="field grid2">
+        <div>
+          <label class="q" for="unit_cost"><span data-t="q12c"></span><span class="hint" data-t="q12ch"></span></label>
+          <div class="money"><input type="number" id="unit_cost" name="unit_cost" min="0" step="0.01" inputmode="decimal"></div>
+        </div>
+        <div>
+          <label class="q" for="fixed_costs"><span data-t="q12b"></span><span class="hint" data-t="q12bh"></span></label>
+          <div class="money"><input type="number" id="fixed_costs" name="fixed_costs" min="0" step="1" inputmode="numeric"></div>
+        </div>
+      </div>
+      <div class="field hidden" id="rentwrap">
+        <label class="q" for="rent"><span data-t="q12r"></span><span class="hint" data-t="q12rh"></span></label>
+        <div class="money"><input type="number" id="rent" name="rent" min="0" step="1" inputmode="numeric"></div>
+      </div>
+      <div class="field grid2">
+        <div>
+          <label class="q" for="investment"><span data-t="q12d"></span><span class="hint" data-t="q12dh"></span></label>
+          <div class="money"><input type="number" id="investment" name="investment" min="0" step="1" inputmode="numeric"></div>
+        </div>
+        <div>
+          <label class="q" for="personal_need"><span data-t="q15"></span><span class="hint" data-t="q15h"></span></label>
+          <div class="money"><input type="number" id="personal_need" name="personal_need" min="0" step="1" inputmode="numeric"></div>
+        </div>
+      </div>
+      <div class="field hidden" id="netwrap">
+        <label class="check"><input type="checkbox" id="price_is_net" name="price_is_net"><span data-t="q12net"></span></label>
+      </div>
+      <div class="field hidden" id="deliverywrap">
+        <label class="q" for="delivery_days"><span data-t="q16"></span></label>
+        <input type="number" id="delivery_days" name="delivery_days" min="0" step="1" inputmode="numeric">
+      </div>
+      </div>
+    </section>
+
+    <section class="card" id="s4">
+      <div class="card-head"><span class="n">4</span><div><h2 data-t="s4"></h2><p class="sub" data-t="s4sub"></p></div></div>
+      <div class="card-body">
+      <div class="field">
+        <label class="q" for="worry"><span data-t="q13"></span></label>
+        <textarea id="worry" name="worry" maxlength="2000"></textarea>
+      </div>
+      <div class="field grid2">
+        <div>
+          <label class="q" for="first_name"><span data-t="qname"></span></label>
+          <input type="text" id="first_name" name="first_name" maxlength="80" autocomplete="given-name">
+        </div>
+        <div>
+          <label class="q" for="email"><span data-t="q14"></span><span class="req">*</span></label>
+          <input type="email" id="email" name="email" required maxlength="200" autocomplete="email">
+        </div>
+      </div>
+      <div class="field">
+        <label class="check"><input type="checkbox" id="consent" name="consent" required><span data-t="consent"></span></label>
+      </div>
+      <div class="submitrow">
+        <button class="primary" type="submit" id="submit"><span data-t="submit" id="submittxt"></span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <p class="after" data-t="after"></p>
+        <p class="formerror hidden" id="formerror" role="alert"></p>
+      </div>
+      </div>
+    </section>
+  </form>
+
+  <div class="done hidden" id="done" role="status">
+    <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5" stroke-linejoin="round"/></svg></div>
+    <h2 data-t="doneh"></h2>
+    <p data-t="donep"></p>
+    <ol class="nextsteps" id="nextsteps"></ol>
+    <a href="/" id="donehome" data-t="back"></a>
+  </div>
+  </div>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <p class="disc" data-t="disclaimer"></p>
+  <details id="datenschutz"><summary data-t="dsh"></summary><div id="dsbody"></div></details>
+  <details id="impressum"><summary>Impressum</summary><div id="impbody"></div></details>
+  <div class="copy">© 2026 TechNS UG (haftungsbeschränkt)</div>
+</div></footer>
+
+<script>
+// ---- Betreiberangaben (Impressum) ----
+const OPERATOR = {
+  company: "TechNS UG (haftungsbeschränkt)",
+  address: "Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Deutschland",
+  register: "Amtsgericht Bad Homburg, HRB 16236",
+  vat: "USt-IdNr. DE312006599",
+  ceo: "Geschäftsführer: Halil Yaprakli",
+  phone: "+49 6171 277 51 37",
+  email: "info@dgitmarkt.de"
+};
+
+const T = {
+de: {
+ brand:"Gründungs-Check", chip1:"ca. 8 Minuten", chip2:"Bericht in ca. 30 Minuten", chip3:"Daten in Frankfurt, keine Cookies",
+  progress:"Pflichtangaben", gets:"Das steht in deinem Bericht", s4sub:"Wohin sollen wir deinen Bericht schicken?",
+  after:"Du bekommst gleich eine E-Mail mit einem Bestätigungslink.", back:"Zur Startseite", stepof:"Schritt {n} von 4",
+  trust:["Gespeichert auf Servern in Frankfurt am Main","Keine Cookies, keine Werbe-Tracker","Löschung jederzeit auf Wunsch"],
+  next:["Öffne die E-Mail von uns","Klicke auf „E-Mail bestätigen“","Dein Bericht kommt in ca. 30 Minuten"],
+  kicker:"Gründungs-Check · Testphase", title:"Trägt deine Geschäftsidee?",
+  lead:"Füll das Formular aus (ca. 8 Minuten). In etwa 30 Minuten bekommst du einen persönlichen Bericht zu deiner Idee – ehrlich, konkret und mit Zahlen.",
+  points:["Brauchst du einen Meister, eine Erlaubnis oder einen bestimmten Aufenthaltstitel?","Welche Rechtsform passt – Einzelunternehmen, UG oder etwas anderes?","Ab wie vielen Kunden trägt sich dein Geschäft, und wie viel Kapital brauchst du?","Was solltest du in den ersten 30 Tagen testen, bevor du Geld ausgibst?"],
+  badge:"Kostenlos für die ersten 20 Personen",
+  s1:"Deine Idee", s1sub:"Schreib so, wie du es einer Freundin erklären würdest.",
+  q1:"Beschreibe deine Geschäftsidee in 3–5 Sätzen.", q1h:"Was bietest du an, und wem?",
+  q2:"Wie lösen deine Kunden dieses Problem heute?", q2h:"Bei wem kaufen sie heute, und was zahlen sie dafür ungefähr?",
+  q3:"Mit wie vielen potenziellen Kunden hast du darüber gesprochen?", q3b:"Hat schon jemand bezahlt oder fest zugesagt?",
+  q4:"Art des Geschäfts", q4b:"Wer sind deine Kunden?",
+  q5:"Stadt und Stadtteil (oder PLZ)",
+  s2:"Über dich", s2sub:"Diese Angaben entscheiden, welche Regeln für dich gelten.",
+  q6:"Aufenthaltsstatus", q6h:"Wichtig, weil nicht jeder Aufenthaltstitel eine Selbstständigkeit erlaubt.",
+  q7:"Aktuelle Situation", q8:"Stunden pro Woche für das Vorhaben", q9:"Wie viele Gründer seid ihr?",
+  q10:"Ausbildung und Erfahrung in diesem Bereich", q10h:"z. B. Gesellen- oder Meisterbrief, Studium, Jahre im Beruf",
+  s3:"Zahlen", s3sub:"Schätzungen reichen. Leere Felder ersetzen wir durch Branchenwerte und kennzeichnen sie im Bericht.",
+  q11:"Wie viel Eigenkapital hast du für den Start?",
+  q12m:"Wie verdienst du Geld?", q12a:"Durchschnittspreis pro Verkauf (€)", q12a_sub:"Monatspreis pro Kunde (€)", q12a_com:"Durchschnittliche Provision pro Vermittlung (€)", q12ah:"Was der Kunde zahlt, inkl. MwSt.",
+  q12u:"Ich kenne meinen Preis noch nicht", q12cp:"Was verlangen Wettbewerber ungefähr? (€, optional)", err_price:"Bitte gib einen Preis an oder kreuze „Ich kenne meinen Preis noch nicht“ an.",
+  q12b:"Monatliche Fixkosten (€)", q12c:"Material- / Wareneinsatz pro Verkauf (€)", q12d:"Anfangsinvestition (€)", q12ch:"Leer lassen, wenn es keine gibt", q12bh:"Miete, Versicherung, Software usw.", q12dh:"Einmalig: Geräte, Fahrzeug, Einrichtung, Ware",
+  q12r:"Davon Miete (€ pro Monat)", q12rh:"Warmmiete für dein Ladenlokal",
+  q12net:"Meine Preise sind Nettopreise (ohne MwSt.) – meine Kunden sind Unternehmen.",
+  q15:"Wie viel brauchst du monatlich privat zum Leben? (€)", q15h:"inkl. Miete und Krankenversicherung",
+  q16:"Wie schnell kannst du liefern? (Tage von Bestellung bis Zustellung)",
+  s4:"Zum Schluss",
+  q13:"Was macht dir am meisten Sorgen?", qname:"Vorname (optional)", q14:"E-Mail-Adresse für den Bericht",
+  consent:"Ich bin einverstanden, dass meine Angaben zur Erstellung meines Berichts verarbeitet werden. Details in der Datenschutzerklärung unten.",
+  submit:"Bericht anfordern",
+  doneh:"Fast geschafft – bitte bestätige deine E-Mail.", donep:"Wir haben dir eine E-Mail mit einem Bestätigungslink geschickt. Nach der Bestätigung bekommst du deinen Bericht in etwa 30 Minuten. Keine E-Mail da? Schau im Spam-Ordner nach.",
+  err_idea:"Bitte beschreibe deine Idee in mindestens 2–3 ganzen Sätzen: was du anbietest, wem und wie.", err_sol:"Bitte schreib kurz, wie deine Kunden das heute lösen und was sie dafür zahlen.", err_rate:"Du hast heute schon mehrere Anfragen gesendet. Bitte versuch es morgen wieder oder antworte auf unsere E-Mail.",
+  disclaimer:"Der Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung.",
+  dsh:"Datenschutz",
+  err_required:"Bitte fülle dieses Feld aus.", err_email:"Bitte gib eine gültige E-Mail-Adresse ein.", err_consent:"Bitte bestätige die Einwilligung.",
+  err_send:"Das hat nicht geklappt. Bitte versuch es in ein paar Minuten noch einmal.", sending:"Wird gesendet …",
+  opt:{
+    talked:[["","Bitte wählen"],["0","Mit niemandem"],["1-5","1–5"],["6-20","6–20"],["20+","Mehr als 20"]],
+    paid:[["","Bitte wählen"],["no","Nein"],["yes","Ja"]],
+    business_type:[["","Bitte wählen"],["location","Ladenlokal, Café, Salon (fester Standort)"],["onsite_service","Dienstleistung beim Kunden vor Ort"],["online_service","Online-Dienstleistung"],["online_products","Online-Verkauf von Produkten"],["production","Herstellung / Produktion"],["other","Sonstiges"]],
+    customers:[["","Bitte wählen"],["b2c","Privatpersonen"],["b2b","Unternehmen"],["both","Beides"]],
+    rev_model:[["","Bitte wählen"],["one_time","Einmaliger Verkauf pro Kunde/Auftrag"],["subscription","Monatliches Abo / Wartungsvertrag"],["project","Projekte mit unterschiedlichem Umfang"],["commission","Provision / Vermittlung"]],
+    residence:[["","Bitte wählen"],["de_eu","Deutsche/r oder EU/EWR/Schweiz"],["settlement","Niederlassungserlaubnis / Daueraufenthalt-EU"],["student","Aufenthaltserlaubnis zum Studium"],["job_search","Aufenthaltserlaubnis zur Arbeitsplatzsuche nach dem Studium"],["blue_card","Blaue Karte EU / Fachkraft"],["family","Familiennachzug"],["other","Sonstiges"],["abroad","Ich lebe noch nicht in Deutschland"]],
+    situation:[["","Bitte wählen"],["employed_full","Angestellt, Vollzeit"],["employed_part","Angestellt, Teilzeit"],["alg1","Arbeitslos (ALG I)"],["buergergeld","Bürgergeld"],["student","Studium"],["self_employed","Bereits selbstständig"]],
+    founders:[["","Bitte wählen"],["1","Allein"],["2","Zu zweit"],["3+","Drei oder mehr"]],
+    capital:[["","Bitte wählen"],["0-5k","0–5.000 €"],["5-15k","5.000–15.000 €"],["15-50k","15.000–50.000 €"],["50k+","Mehr als 50.000 €"]]
+  },
+  ds: (o)=>`<p><b>Verantwortlich:</b> ${o.company}, ${o.address}. Kontakt: ${o.email}</p>
+<p><b>Zweck:</b> Wir verarbeiten deine Angaben ausschließlich, um deinen persönlichen Bericht zu erstellen und dir per E-Mail zu senden, sowie für Rückfragen zu deinem Bericht. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit per E-Mail widerrufen kannst.</p>
+<p><b>Speicherung:</b> Die Angaben werden bei unserem Hosting-Dienstleister Vercel Inc. auf Servern in Frankfurt am Main gespeichert. Wir löschen sie spätestens 90 Tage nach Versand des Berichts, auf Wunsch sofort.</p>
+<p><b>Erstellung des Berichts:</b> Einen ersten Entwurf erstellt ein KI-Modell der Anthropic PBC (USA) über deren Programmierschnittstelle; die Übermittlung stützt sich auf die EU-Standardvertragsklauseln, und Anthropic nutzt diese Daten nicht zum Training. Dabei geben wir deine Antworten <i>ohne</i> Namen und E-Mail-Adresse weiter. Bitte schreib in die Freitextfelder keine Daten, die dich direkt identifizieren.</p>\n<p><b>E-Mail-Versand:</b> Bestätigung und Bericht versenden wir über unseren E-Mail-Anbieter ALL-INKL.COM (Deutschland). Den Bericht rufst du über einen persönlichen Link ab, den nur du kennst.</p>
+<p><b>Reichweitenmessung ohne Cookies:</b> Um zu sehen, wie viele Menschen die Seite besuchen und woher sie kommen, nutzen wir Vercel Web Analytics (Vercel Inc.). Dabei werden keine Cookies gesetzt und keine IP-Adressen gespeichert; Besuche werden nur anonym und zusammengefasst ausgewertet (Art. 6 Abs. 1 lit. f DSGVO). Werbe-Tracker setzen wir nicht ein, externe Schriften oder Skripte laden wir nicht.</p>\n<p><b>App-Funktion:</b> Wenn du die Seite als App installierst oder erneut besuchst, speichert dein Browser die Seitendateien (nicht deine Angaben), damit sie schneller und auch ohne Internet öffnet. Du kannst sie in den Browser-Einstellungen jederzeit löschen.</p>
+<p><b>Deine Rechte:</b> Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerruf (Art. 15–21 DSGVO) sowie Beschwerde bei einer Datenschutzaufsichtsbehörde, z. B. dem Hessischen Beauftragten für Datenschutz und Informationsfreiheit.</p>`
+},
+tr: {
+ brand:"İş Fikri Kontrolü", chip1:"≈ 8 dakika", chip2:"Rapor ≈ 30 dakikada", chip3:"Veriler Frankfurt'ta, çerez yok",
+  progress:"Zorunlu alanlar", gets:"Raporunda neler var", s4sub:"Raporunu nereye gönderelim?",
+  after:"Birazdan onay linki içeren bir e-posta alacaksın.", back:"Ana sayfaya dön", stepof:"Adım {n} / 4",
+  trust:["Frankfurt'taki sunucularda saklanır","Çerez yok, reklam takibi yok","İstediğin an silinir"],
+  next:["Sana gönderdiğimiz e-postayı aç","„E-postamı onayla“ düğmesine tıkla","Raporun yaklaşık 30 dakikada gelir"],
+  kicker:"İş Fikri Kontrolü · Test aşaması", title:"İş fikrin Almanya'da yürür mü?",
+  lead:"Formu doldur (≈ 8 dakika). Yaklaşık 30 dakika içinde fikrine özel bir rapor gönderiyorum: dürüst, somut ve rakamlarla.",
+  points:["Oturum iznin bu işe izin veriyor mu? Meister veya özel izin gerekiyor mu?","Hangi şirket türü uygun: Gewerbe, UG veya başka bir şey?","Kaç müşteriyle başa baş noktasına gelirsin, ne kadar sermaye lazım?","Para harcamadan önce ilk 30 günde neyi test etmelisin?"],
+  badge:"İlk 20 kişi için ücretsiz",
+  s1:"Fikrin", s1sub:"Bir arkadaşına anlatır gibi yaz.",
+  q1:"İş fikrini 3–5 cümleyle anlat.", q1h:"Ne satıyorsun, kime?",
+  q2:"Müşterilerin bu ihtiyacı bugün nasıl karşılıyor?", q2h:"Bugün kimden alıyorlar, buna yaklaşık ne ödüyorlar?",
+  q3:"Bu fikir hakkında kaç potansiyel müşteriyle konuştun?", q3b:"Biri sana ödeme yaptı veya kesin söz verdi mi?",
+  q4:"İşin türü", q4b:"Müşterilerin kim?",
+  q5:"Şehir ve semt (veya posta kodu)",
+  s2:"Sen", s2sub:"Bu bilgiler hangi kuralların sana uygulanacağını belirliyor.",
+  q6:"Oturum durumun", q6h:"Önemli, çünkü her oturum izni serbest çalışmaya izin vermiyor.",
+  q7:"Şu anki durumun", q8:"Haftada kaç saat ayırabilirsin?", q9:"Kaç kurucu olacaksınız?",
+  q10:"Bu işle ilgili eğitimin ve deneyimin", q10h:"Örn. Geselle/Meister belgesi, üniversite, kaç yıl deneyim",
+  s3:"Rakamlar", s3sub:"Tahmin yeterli. Boş bıraktıklarını sektör ortalamasıyla doldurup raporda belirtiyorum.",
+  q11:"Başlangıç için ne kadar paran var?",
+  q12m:"Nasıl para kazanacaksın?", q12a:"Bir satışın ortalama fiyatı (€)", q12a_sub:"Müşteri başına aylık ücret (€)", q12a_com:"Aracılık başına ortalama komisyon (€)", q12ah:"Müşterinin ödediği, KDV dahil",
+  q12u:"Fiyatımı henüz bilmiyorum", q12cp:"Rakipler yaklaşık ne kadar alıyor? (€, isteğe bağlı)", err_price:"Lütfen bir fiyat yaz ya da „Fiyatımı henüz bilmiyorum“ kutusunu işaretle.",
+  q12b:"Aylık sabit gider (€)", q12c:"Bir satışın malzeme/mal maliyeti (€)", q12d:"Kuruluş yatırımı (€)", q12ch:"Yoksa boş bırak", q12bh:"Kira, sigorta, yazılım vb.", q12dh:"Bir kerelik: cihaz, araç, tefrişat, mal",
+  q12r:"Bunun ne kadarı kira? (€/ay)", q12rh:"Mekanın sıcak kirası",
+  q12net:"Fiyatlarım net (KDV hariç) – müşterilerim şirketler.",
+  q15:"Ayda kişisel olarak ne kadara ihtiyacın var? (€)", q15h:"Kira ve sağlık sigortası dahil",
+  q16:"Ürünü müşteriye kaç günde ulaştırabilirsin? (siparişten teslime)",
+  s4:"Son olarak",
+  q13:"Seni en çok ne endişelendiriyor?", qname:"Adın (isteğe bağlı)", q14:"Raporun gönderileceği e-posta adresi",
+  consent:"Bilgilerimin raporumun hazırlanması için işlenmesine onay veriyorum. Ayrıntılar aşağıdaki Datenschutz bölümünde.",
+  submit:"Raporu iste",
+  doneh:"Neredeyse tamam – lütfen e-postanı onayla.", donep:"Sana onay linki içeren bir e-posta gönderdik. Onayladıktan sonra raporun yaklaşık 30 dakika içinde gelir. E-posta gelmediyse spam klasörüne bak.",
+  err_idea:"Lütfen fikrini en az 2–3 tam cümleyle anlat: ne sunuyorsun, kime ve nasıl.", err_sol:"Lütfen müşterilerin bugün bu ihtiyacı nasıl karşıladığını ve ne ödediğini kısaca yaz.", err_rate:"Bugün zaten birkaç başvuru gönderdin. Lütfen yarın tekrar dene ya da e-postamıza cevap yaz.",
+  disclaimer:"Rapor genel bilgidir, hukuki veya vergisel danışmanlık değildir.",
+  dsh:"Datenschutz (veri koruma)",
+  err_required:"Lütfen bu alanı doldur.", err_email:"Lütfen geçerli bir e-posta adresi gir.", err_consent:"Lütfen onay kutusunu işaretle.",
+  err_send:"Gönderilemedi. Lütfen birkaç dakika sonra tekrar dene.", sending:"Gönderiliyor …",
+  opt:{
+    talked:[["","Seç"],["0","Kimseyle"],["1-5","1–5"],["6-20","6–20"],["20+","20'den fazla"]],
+    paid:[["","Seç"],["no","Hayır"],["yes","Evet"]],
+    business_type:[["","Seç"],["location","Mekan (dükkan, kafe, salon)"],["onsite_service","Müşteriye giderek hizmet"],["online_service","Online hizmet"],["online_products","Online ürün satışı"],["production","Üretim"],["other","Diğer"]],
+    customers:[["","Seç"],["b2c","Bireyler"],["b2b","Şirketler"],["both","İkisi de"]],
+    rev_model:[["","Seç"],["one_time","Müşteri/iş başına tek seferlik satış"],["subscription","Aylık abonelik / bakım sözleşmesi"],["project","Büyüklüğü değişen projeler"],["commission","Komisyon / aracılık"]],
+    residence:[["","Seç"],["de_eu","Alman veya AB/EEA/İsviçre vatandaşı"],["settlement","Niederlassungserlaubnis / Daueraufenthalt-EU"],["student","Öğrenci oturumu"],["job_search","Mezuniyet sonrası iş arama oturumu"],["blue_card","Blaue Karte / Fachkraft"],["family","Aile birleşimi"],["other","Diğer"],["abroad","Henüz Almanya'da değilim"]],
+    situation:[["","Seç"],["employed_full","Tam zamanlı çalışan"],["employed_part","Yarı zamanlı çalışan"],["alg1","İşsiz (ALG I)"],["buergergeld","Bürgergeld"],["student","Öğrenci"],["self_employed","Zaten serbest çalışıyorum"]],
+    founders:[["","Seç"],["1","Tek başıma"],["2","İki kişi"],["3+","Üç veya daha fazla"]],
+    capital:[["","Seç"],["0-5k","0–5.000 €"],["5-15k","5.000–15.000 €"],["15-50k","15.000–50.000 €"],["50k+","50.000 €'dan fazla"]]
+  },
+  ds: (o)=>`<p><b>Sorumlu:</b> ${o.company}, ${o.address}. İletişim: ${o.email}</p>
+<p><b>Amaç:</b> Bilgilerini yalnızca sana özel raporu hazırlamak, e-postayla göndermek ve raporla ilgili soruların için kullanıyoruz. Hukuki dayanak açık rızandır (DSGVO md. 6/1-a); istediğin zaman e-postayla geri alabilirsin.</p>
+<p><b>Saklama:</b> Bilgiler barındırma hizmeti Vercel Inc.'in Frankfurt'taki sunucularında saklanır. Rapor gönderildikten en geç 90 gün sonra, istersen hemen silinir.</p>
+<p><b>Raporun hazırlanması:</b> İlk taslağı Anthropic PBC'nin (ABD) yapay zeka modeli, programlama arayüzü üzerinden yazar; aktarım AB Standart Sözleşme Maddelerine dayanır ve Anthropic bu verileri model eğitiminde kullanmaz. Cevaplarını adın ve e-posta adresin <i>olmadan</i> aktarıyoruz. Lütfen serbest metin alanlarına seni doğrudan tanıtan bilgiler yazma.</p>\n<p><b>E-posta gönderimi:</b> Onay e-postasını ve raporu e-posta sağlayıcımız ALL-INKL.COM (Almanya) üzerinden gönderiyoruz. Raporu yalnızca senin bildiğin kişisel bir linkten açarsın.</p>
+<p><b>Çerezsiz ziyaret ölçümü:</b> Sayfayı kaç kişinin ziyaret ettiğini ve nereden geldiğini görmek için Vercel Web Analytics (Vercel Inc.) kullanıyoruz. Çerez kullanılmaz, IP adresi saklanmaz; ziyaretler yalnızca anonim ve toplu olarak değerlendirilir (DSGVO md. 6/1-f). Reklam takibi yapmıyoruz, dış yazı tipi veya betik yüklemiyoruz.</p>\n<p><b>Uygulama özelliği:</b> Sayfayı uygulama olarak yüklersen veya tekrar ziyaret edersen tarayıcın sayfa dosyalarını (bilgilerini değil) saklar; böylece daha hızlı ve internetsiz de açılır. Tarayıcı ayarlarından istediğin zaman silebilirsin.</p>
+<p><b>Hakların:</b> Bilgi alma, düzeltme, silme, kısıtlama, veri taşınabilirliği ve rızayı geri alma (DSGVO md. 15–21) ile bir veri koruma denetim makamına, örneğin Hessen veri koruma yetkilisine şikayet hakkı.</p>`
+}};
+
+const lang = location.pathname.replace(/\/+$/,'').endsWith('/tr') ? 'tr' : 'de';
+const t = T[lang];
+document.documentElement.lang = lang;
+document.title = t.brand;
+
+document.querySelectorAll('[data-t]').forEach(el => { const k = el.getAttribute('data-t'); if (t[k] != null) el.textContent = t[k]; });
+document.getElementById('points').innerHTML = t.points.map(p => `<li>${p}</li>`).join('');
+for (const [name, opts] of Object.entries(t.opt)) {
+  const sel = document.getElementById(name);
+  sel.innerHTML = opts.map(([v,l]) => `<option value="${v}">${l}</option>`).join('');
+}
+document.getElementById('dsbody').innerHTML = t.ds(OPERATOR);
+document.getElementById('impbody').innerHTML =
+  `<p>Angaben gemäß § 5 DDG</p><p>${OPERATOR.company}<br>${OPERATOR.address}<br>${OPERATOR.ceo}<br>${OPERATOR.register}<br>${OPERATOR.vat}<br>Telefon: ${OPERATOR.phone}<br>E-Mail: <a href="mailto:${OPERATOR.email}">${OPERATOR.email}</a></p>`;
+// Sprachumschalter nur auf der türkischen Seite (auf der deutschen Seite bewusst ohne Hinweis auf andere Sprachen)
+if (lang === 'tr') document.getElementById('langswitch').innerHTML = '<a href="/de">Deutsch</a>';
+const HOME = lang === 'tr' ? '/tr/start' : '/';
+document.getElementById('brandname').textContent = t.brand;
+document.getElementById('homelink').href = HOME;
+document.getElementById('donehome').href = HOME;
+const CK = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3.5 8.4l3 3 6-6.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+document.getElementById('trust').innerHTML = t.trust.map(x => `<div>${CK}<span>${x}</span></div>`).join('');
+document.getElementById('nextsteps').innerHTML = t.next.map(x => `<li>${x}</li>`).join('');
+// Platzhalterfarbe für leere Auswahlfelder
+document.querySelectorAll('select').forEach(sel => { const f = () => sel.classList.toggle('empty', !sel.value); sel.addEventListener('change', f); f(); });
+
+// Fortschritt + Schrittnavigation
+const REQ = { s1:['idea','current_solution','business_type','city'], s2:['residence','situation'], s3:['capital','rev_model','price'], s4:['email','consent'] };
+const filled = id => id === 'consent' ? document.getElementById('consent').checked : id === 'price' ? (document.getElementById('price').value.trim() !== '' || document.getElementById('price_unknown').checked) : document.getElementById(id).value.trim() !== '';
+let current = 's1';
+function progress() {
+  const all = Object.values(REQ).flat(), n = all.filter(filled).length, pct = Math.round(n / all.length * 100);
+  document.getElementById('fill').style.width = pct + '%'; document.getElementById('mfill').style.width = pct + '%';
+  document.getElementById('pct').textContent = pct + ' %'; document.getElementById('mpct').textContent = pct + ' %';
+  for (const [sec, ids] of Object.entries(REQ)) {
+    const a = document.querySelector(`.steps a[href="#${sec}"]`);
+    const ok = ids.every(filled);
+    a.classList.toggle('ok', ok); a.querySelector('.n').innerHTML = ok ? CK : sec.slice(1);
+    a.classList.toggle('active', sec === current);
+  }
+  const i = +current.slice(1);
+  document.getElementById('mstep').textContent = t.stepof.replace('{n}', i) + ': ' + t['s' + i];
+}
+document.getElementById('f').addEventListener('input', progress);
+document.getElementById('f').addEventListener('change', progress);
+const io = new IntersectionObserver(es => {
+  const vis = es.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+  if (vis[0]) { current = vis[0].target.id; progress(); }
+}, { rootMargin: '-35% 0px -60% 0px' });
+['s1','s2','s3','s4'].forEach(id => io.observe(document.getElementById(id)));
+progress();
+
+const $ = id => document.getElementById(id);
+function toggle() {
+  const bt = $('business_type').value, cu = $('customers').value;
+  $('deliverywrap').classList.toggle('hidden', !(bt === 'online_products' || bt === 'production'));
+  $('netwrap').classList.toggle('hidden', !(cu === 'b2b' || cu === 'both'));
+  $('rentwrap').classList.toggle('hidden', bt !== 'location');
+  if ($('netwrap').classList.contains('hidden')) $('price_is_net').checked = false;
+  const rm = $('rev_model').value;
+  $('pricelabel').textContent = rm === 'subscription' ? t.q12a_sub : rm === 'commission' ? t.q12a_com : t.q12a;
+  $('compwrap').classList.toggle('hidden', !$('price_unknown').checked);
+}
+$('business_type').addEventListener('change', toggle);
+$('customers').addEventListener('change', toggle);
+$('rev_model').addEventListener('change', toggle);
+$('price_unknown').addEventListener('change', toggle);
+
+function showErr(el, msg) {
+  clearErr(el);
+  const p = document.createElement('div'); p.className = 'error'; p.textContent = msg; p.dataset.errFor = el.id;
+  (el.closest('.grid2 > div') || el.closest('.field') || el.parentElement).appendChild(p);
+  el.setAttribute('aria-invalid','true');
+}
+function clearErr(el) {
+  const f = el.closest('.grid2 > div') || el.closest('.field') || el.parentElement;
+  f.querySelectorAll(`.error[data-err-for="${el.id}"]`).forEach(n => n.remove());
+  el.removeAttribute('aria-invalid');
+}
+
+$('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  $('formerror').classList.add('hidden');
+  let first = null;
+  for (const id of ['idea','current_solution','business_type','city','residence','situation','capital','rev_model','email']) {
+    const el = $(id);
+    if (!el.value.trim()) { showErr(el, t.err_required); first = first || el; } else clearErr(el);
+  }
+  const W = (v) => (v.toLowerCase().match(/[\p{L}\p{N}]{2,}/gu) || []);
+  const iv = $('idea').value.trim(), iw = W(iv);
+  if (iv && (iv.length < 80 || iw.length < 12 || new Set(iw).size < 8 || iw.filter(x => !/[aeiouyäöüıâîû]/.test(x)).length / iw.length > 0.4)) { showErr($('idea'), t.err_idea); first = first || $('idea'); }
+  const sv = $('current_solution').value.trim();
+  if (sv && (sv.length < 25 || W(sv).length < 4)) { showErr($('current_solution'), t.err_sol); first = first || $('current_solution'); }
+  const pr = $('price');
+  if (!pr.value.trim() && !$('price_unknown').checked) { showErr(pr, t.err_price); first = first || pr; } else clearErr(pr);
+  const em = $('email');
+  if (em.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())) { showErr(em, t.err_email); first = first || em; }
+  const c = $('consent');
+  if (!c.checked) { showErr(c, t.err_consent); first = first || c; } else clearErr(c);
+  if (first) { first.focus(); return; }
+
+  const fd = new FormData($('f'));
+  const data = { lang };
+  for (const [k,v] of fd.entries()) data[k] = typeof v === 'string' ? v.trim() : v;
+  data.consent = true;
+  data.price_is_net = $('price_is_net').checked;
+  data.price_unknown = $('price_unknown').checked;
+  if (!data.price_unknown) delete data.competitor_price;
+  const k = new URLSearchParams(location.search).get('k');
+  if (k && /^[a-z0-9_-]{1,30}$/i.test(k)) data.src = k.toLowerCase();
+
+  const btn = $('submit'); btn.disabled = true; $('submittxt').textContent = t.sending;
+  try {
+    const r = await fetch('/api/submit', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(data) });
+    if (!r.ok) {
+      const j = await r.json().catch(() => ({}));
+      if (j.error === 'quality') { for (const f of j.fields || []) showErr($(f), f === 'idea' ? t.err_idea : t.err_sol); $((j.fields || ['idea'])[0]).focus(); btn.disabled = false; $('submittxt').textContent = t.submit; return; }
+      if (j.error === 'rate') { $('formerror').textContent = t.err_rate; $('formerror').classList.remove('hidden'); btn.disabled = false; $('submittxt').textContent = t.submit; return; }
+      throw new Error(String(r.status));
+    }
+    $('f').classList.add('hidden');
+    $('done').classList.remove('hidden');
+    document.body.classList.add('sent');
+    document.querySelector('.pagehead').classList.add('hidden'); window.scrollTo({ top: 0 });
+  } catch (err) {
+    $('formerror').textContent = t.err_send;
+    $('formerror').classList.remove('hidden');
+    btn.disabled = false; $('submittxt').textContent = t.submit;
+  }
+});
+</script>
+<script src="/pwa.js" defer></script>
+</body>
+</html>

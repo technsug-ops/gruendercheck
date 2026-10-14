@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Businessplan</title>
+<style>
+:root{--bg:#f3f6f9;--card:#fff;--ink:#16202c;--muted:#56616f;--line:#dfe4ea;--accent:#0f2d4a;--accent-ink:#fff;--accent-soft:#e6eef7;--err:#b42318;--focus:#1d5fa8}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:40px 16px 64px}
+header .kicker{font-size:15px;color:var(--accent);font-weight:700}
+h1{font-size:clamp(26px,5vw,36px);line-height:1.15;margin:8px 0 12px;letter-spacing:-.01em;color:var(--accent)}
+.lead{color:var(--muted);margin:0 0 24px;max-width:62ch}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px 20px;margin-bottom:16px}
+section.card h2{font-size:18px;margin:0 0 4px}
+section.card .sub{color:var(--muted);font-size:14px;margin:0 0 18px}
+.field{margin-bottom:18px}
+label.q{display:block;font-weight:600;margin-bottom:6px}
+.hint{display:block;color:var(--muted);font-size:14px;font-weight:400;margin-top:2px}
+.req{color:var(--accent);margin-left:2px}
+input[type=text],input[type=number],input[type=month],select,textarea{
+  width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;
+}
+textarea{min-height:96px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--focus);outline-offset:1px;border-color:transparent}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px 14px}
+.grid2 .field{margin-bottom:0}
+@media (max-width:560px){.grid2{grid-template-columns:1fr}}
+.lines{display:grid;gap:10px}
+.line{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px}
+.lineh{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:8px;font-size:13px;color:var(--muted)}
+@media (max-width:560px){.line,.lineh{grid-template-columns:1fr 1fr}.lineh{display:none}.line input:first-child{grid-column:1/-1}}
+.check{display:flex;gap:10px;align-items:flex-start;font-weight:400}
+.check input{margin-top:4px;width:18px;height:18px;accent-color:var(--accent);flex:0 0 auto}
+.hidden{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button.primary{appearance:none;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:600;padding:14px 22px;cursor:pointer;width:100%}
+button.primary:disabled{opacity:.6;cursor:wait}
+.error{color:var(--err);font-size:14px;margin-top:6px}
+.formerror{color:var(--err);margin:12px 0 0}
+.notice{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 20px;text-align:center}
+.notice h2{margin:0 0 8px}
+footer{margin-top:36px;color:var(--muted);font-size:14px}
+footer details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+footer summary{cursor:pointer;font-weight:600;color:var(--ink)}
+footer p{margin:8px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="kicker" data-t="kicker"></div>
+    <h1 data-t="title"></h1>
+    <p class="lead" data-t="lead"></p>
+  </header>
+
+  <div class="notice hidden" id="invalid" role="alert"><h2 data-t="invh"></h2><p data-t="invp"></p></div>
+  <form id="f" novalidate class="hidden">
+    <div class="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+    <div id="sections"></div>
+    <section class="card">
+      <div class="field">
+        <label class="check"><input type="checkbox" id="consent" name="consent"><span data-t="consent"></span></label>
+      </div>
+      <button class="primary" type="submit" id="submit" data-t="submit"></button>
+      <p class="formerror hidden" id="formerror" role="alert"></p>
+    </section>
+  </form>
+  <div class="notice hidden" id="done" role="status"><h2 data-t="doneh"></h2><p data-t="donep"></p></div>
+
+  <footer>
+    <p data-t="disclaimer"></p>
+    <details><summary data-t="dsh"></summary><div id="dsbody"></div></details>
+    <details><summary>Impressum</summary><div id="impbody"></div></details>
+  </footer>
+</div>
+
+<script>
+const OPERATOR = {
+  company: "TechNS UG (haftungsbeschränkt)",
+  address: "Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Deutschland",
+  register: "Amtsgericht Bad Homburg, HRB 16236",
+  vat: "USt-IdNr. DE312006599",
+  ceo: "Geschäftsführer: Halil Yaprakli",
+  phone: "+49 6171 277 51 37",
+  email: "info@dgitmarkt.de"
+};
+
+// Feld-Schema: [key, typ, {de,tr} label, {de,tr} hint?, options]
+// typ: num | text | area | month | select | lines
+const L = (de, tr) => ({ de, tr });
+const S = [
+  { id:'offer', h:L('Angebot und Umsatz','Ürün ve satış'), sub:L('Daraus berechnen wir Umsatz und Wareneinsatz für 3 Jahre.','Bunlardan 3 yıllık ciro ve mal maliyetini hesaplıyorum.'), f:[
+    ['start_month','month',L('Geplanter Start (Monat)','Planlanan başlangıç ayı')],
+    ['lines','lines',L('Deine Angebote (bis zu 3)','Ürün / hizmetlerin (en fazla 3)'),L('Preis inkl. MwSt., wie der Kunde zahlt. Anteil = wie viel Prozent deiner Verkäufe darauf entfallen.','Fiyat KDV dahil, müşterinin ödediği. Pay = satışlarının yüzde kaçı bu ürün.')],
+    ['units_m1','num',L('Verkäufe im 1. Monat','1. ayda kaç satış'),L('Anzahl Verkäufe / Kunden / Aufträge','Satış, müşteri veya iş adedi'),null,true],
+    ['units_m12','num',L('Verkäufe im 12. Monat','12. ayda kaç satış'),null,null,true],
+    ['growth_y2','num',L('Wachstum im 2. Jahr (%)','2. yılda büyüme (%)')],
+    ['growth_y3','num',L('Wachstum im 3. Jahr (%)','3. yılda büyüme (%)')],
+    ['payment_days','num',L('Zahlungsziel deiner Kunden (Tage)','Müşterilerin kaç gün sonra ödüyor'),null,'b2b'],
+    ['t_offer','area',L('Dein Angebot im Detail','Ürün / hizmetini ayrıntılı anlat'),L('Was genau, in welcher Qualität, zu welchen Zeiten?','Tam olarak ne, hangi kalitede, hangi saatlerde?')],
+  ]},
+  { id:'market', h:L('Markt und Wettbewerb','Pazar ve rakipler'), sub:L('Stichpunkte reichen – wir formulieren daraus den Text.','Madde madde yazman yeterli, metni ben oluşturuyorum.'), f:[
+    ['t_target','area',L('Wer genau sind deine Kunden?','Müşterilerin tam olarak kim?'),L('Alter, Lage, Bedarf, wie viele gibt es im Einzugsgebiet','Yaş, konum, ihtiyaç, bölgede kaç kişi/firma')],
+    ['t_competitors','area',L('Wichtigste Wettbewerber','En önemli rakipler'),L('Namen, Preise, was sie gut und schlecht machen','İsim, fiyat, neyi iyi ve kötü yapıyorlar')],
+    ['t_usp','area',L('Warum kaufen Kunden bei dir und nicht dort?','Müşteri neden onlardan değil senden alsın?')],
+    ['t_location','area',L('Standort','Konum'),L('Adresse/Lage, Fläche, Laufkundschaft, Parken','Adres, metrekare, yaya trafiği, park'),'location'],
+    ['t_marketing','area',L('Wie gewinnst du Kunden?','Müşteriyi nasıl bulacaksın?'),L('Kanäle, Aktionen, Budget','Kanallar, kampanyalar, bütçe')],
+  ]},
+  { id:'inv', h:L('Investitionen (einmalig, €)','Kuruluş yatırımları (tek seferlik, €)'), sub:L('Leer lassen, was nicht anfällt.','Olmayanı boş bırak.'), grid:true, f:[
+    ['inv_equipment','num',L('Einrichtung, Ausstattung, Maschinen','Mobilya, ekipman, makine')],
+    ['inv_renovation','num',L('Umbau, Renovierung','Tadilat')],
+    ['inv_vehicle','num',L('Fahrzeug','Araç')],
+    ['inv_it','num',L('IT, Software, Website','Bilgisayar, yazılım, web sitesi')],
+    ['inv_deposit','num',L('Mietkaution','Kira depozitosu')],
+    ['inv_stock','num',L('Erstausstattung Waren / Material','İlk mal / malzeme stoğu')],
+    ['inv_founding','num',L('Gründungskosten (Notar, Anmeldung, Beratung)','Kuruluş masrafları (noter, kayıt, danışmanlık)')],
+    ['inv_launch','num',L('Werbung zum Start','Açılış reklamı')],
+  ]},
+  { id:'costs', h:L('Laufende Kosten (€ pro Monat)','Aylık giderler (€)'), subKey:'costsub', grid:true, f:[
+    ['c_rent','num',L('Miete inkl. Nebenkosten','Kira (aidat dahil)')],
+    ['c_utilities','num',L('Energie, Wasser','Elektrik, su, ısınma')],
+    ['c_insurance','num',L('Versicherungen, Beiträge','Sigortalar, oda aidatları')],
+    ['c_marketing','num',L('Marketing, Werbung','Pazarlama, reklam')],
+    ['c_vehicle','num',L('Kfz-Kosten','Araç giderleri')],
+    ['c_it_phone','num',L('Telefon, Internet, Software','Telefon, internet, yazılım')],
+    ['c_accounting','num',L('Buchhaltung, Steuerberatung','Muhasebe, Steuerberater')],
+    ['c_other','num',L('Sonstiges','Diğer')],
+    ['c_staff_count','num',L('Mitarbeitende (Anzahl)','Çalışan sayısı')],
+    ['c_staff_gross','num',L('Bruttolöhne gesamt pro Monat','Toplam aylık brüt maaş'),L('Ohne dich selbst','Kendin hariç')],
+  ], after:[['t_org','area',L('Organisation: Wer macht was? Lieferanten, Partner, Öffnungszeiten','Organizasyon: kim ne yapıyor, tedarikçiler, ortaklar, çalışma saatleri')]]},
+  { id:'fin', h:L('Finanzierung','Finansman'), grid:true, f:[
+    ['f_equity','num',L('Eigenkapital, das du einbringst (€)','Koyacağın öz sermaye (€)'),null,null,true],
+    ['f_private_loan','num',L('Darlehen von Familie/Freunden (€)','Aile/arkadaştan borç (€)')],
+    ['f_private_repay','num',L('Davon Rückzahlung pro Monat (€)','Bunun aylık geri ödemesi (€)')],
+    ['f_grants','num',L('Zuschüsse, sicher zugesagt (€)','Kesin söz verilmiş hibe (€)')],
+    ['f_bank_loan','num',L('Benötigter Bankkredit (€)','İhtiyaç duyulan banka kredisi (€)')],
+    ['f_bank_rate','num',L('Zinssatz (%)','Faiz oranı (%)'),L('Unbekannt? 7 eintragen','Bilmiyorsan 7 yaz')],
+    ['f_bank_years','num',L('Laufzeit (Jahre)','Vade (yıl)')],
+    ['f_bank_grace','num',L('Tilgungsfreie Monate','Anaparasız ay sayısı')],
+    ['gz_apply','select',L('Gründungszuschuss beantragen?','Gründungszuschuss başvurusu yapılacak mı?'),null,'alg1',false,[['',L('Bitte wählen','Seç')],['yes',L('Ja','Evet')],['no',L('Nein','Hayır')]]],
+    ['alg1_monthly','num',L('Dein ALG I pro Monat (€)','Aylık ALG I tutarın (€)'),null,'alg1'],
+  ]},
+  { id:'priv', h:L('Privater Bedarf (€ pro Monat)','Kişisel ihtiyaç (aylık €)'), sub:L('Banken prüfen, ob das Geschäft deinen Lebensunterhalt trägt.','Banka, işin seni geçindirip geçindirmediğine bakar.'), grid:true, f:[
+    ['pv_living','num',L('Lebenshaltung (Miete, Essen, Sonstiges)','Yaşam gideri (ev kirası, yemek, diğer)')],
+    ['pv_health','num',L('Kranken- und Pflegeversicherung','Sağlık ve bakım sigortası')],
+    ['pv_pension','num',L('Altersvorsorge','Emeklilik birikimi')],
+    ['pv_other_income','num',L('Andere Einkünfte im Haushalt','Hanedeki diğer gelirler'),L('z. B. Partner, Nebenjob','Örn. eş, ek iş')],
+  ]},
+  { id:'person', h:L('Du und die Risiken','Sen ve riskler'), f:[
+    ['t_cv','area',L('Dein Werdegang','Özgeçmişin'),L('Ausbildung, Stationen, Erfolge, die zum Vorhaben passen','Eğitim, iş yerleri, bu işe uygun başarılar')],
+    ['t_risks','area',L('Was kann schiefgehen, und was tust du dann?','Ne ters gidebilir, o zaman ne yaparsın?')],
+  ]},
+];
+
+const T = {
+de:{ kicker:'Gründungs-Check – Businessplan', title:'Daten für deinen Businessplan',
+  lead:'Mit diesen Angaben erstellen wir deinen Businessplan mit Kapitalbedarf, Finanzierung, Rentabilität und Liquidität für 3 Jahre. Schätzungen reichen; du kannst das Formular später erneut senden, die letzte Version zählt.',
+  costsub:'Ohne deinen eigenen Lebensunterhalt – der kommt weiter unten.', costhint:(x)=>`Im Check hattest du insgesamt ${x} € angegeben.`,
+  lineh:['Bezeichnung','Preis (€)','Wareneinsatz (€)','Anteil (%)'],
+  consent:'Ich bin einverstanden, dass diese Angaben zur Erstellung meines Businessplans verarbeitet werden (Datenschutz siehe unten).',
+  submit:'Angaben senden', sending:'Wird gesendet …',
+  doneh:'Danke – deine Angaben sind angekommen.', donep:'Wir melden uns mit deinem Businessplan per E-Mail. Du kannst diese Seite erneut öffnen und Angaben korrigieren.',
+  invh:'Dieser Link ist nicht gültig.', invp:'Bitte nutze den Link aus unserer E-Mail oder antworte auf die E-Mail.',
+  err_required:'Bitte fülle dieses Feld aus.', err_consent:'Bitte bestätige die Einwilligung.', err_send:'Das hat nicht geklappt. Bitte versuch es in ein paar Minuten noch einmal.',
+  disclaimer:'Der Businessplan ist eine Planungshilfe und keine Rechts-, Steuer- oder Finanzberatung.', dsh:'Datenschutz',
+  ds:(o)=>`<p><b>Verantwortlich:</b> ${o.company}, ${o.address}. Kontakt: ${o.email}</p><p>Wir verarbeiten diese Angaben nur zur Erstellung deines Businessplans (Art. 6 Abs. 1 lit. a DSGVO, jederzeit per E-Mail widerrufbar). Speicherung bei Vercel Inc. in Frankfurt am Main, Löschung spätestens 90 Tage nach Übergabe des Plans. Für die Erstellung nutzen wir KI-gestützte Werkzeuge ohne Namen und E-Mail-Adresse. Keine Cookies, kein Tracking. Du hast die Rechte aus Art. 15–21 DSGVO und ein Beschwerderecht bei der Aufsichtsbehörde.</p>` },
+tr:{ kicker:'İş Fikri Kontrolü – İş planı', title:'İş planın için bilgiler',
+  lead:'Bu bilgilerle 3 yıllık sermaye ihtiyacı, finansman, kârlılık ve nakit akışını içeren iş planını hazırlıyorum. Plan Almanca hazırlanır (banka ve Arbeitsagentur için), yanında Türkçe özet gelir. Tahmin yeterli; formu sonra tekrar gönderebilirsin, son gönderim geçerli olur.',
+  costsub:'Kendi yaşam giderin hariç, o aşağıda.', costhint:(x)=>`Kontrol formunda toplam ${x} € yazmıştın.`,
+  lineh:['Ad','Fiyat (€)','Mal maliyeti (€)','Pay (%)'],
+  consent:'Bu bilgilerin iş planımın hazırlanması için işlenmesine onay veriyorum (Datenschutz aşağıda).',
+  submit:'Bilgileri gönder', sending:'Gönderiliyor …',
+  doneh:'Teşekkürler, bilgilerin ulaştı.', donep:'İş planınla e-postayla döneceğim. Bu sayfayı tekrar açıp bilgileri düzeltebilirsin.',
+  invh:'Bu link geçerli değil.', invp:'Lütfen e-postadaki linki kullan veya e-postaya cevap yaz.',
+  err_required:'Lütfen bu alanı doldur.', err_consent:'Lütfen onay kutusunu işaretle.', err_send:'Gönderilemedi. Lütfen birkaç dakika sonra tekrar dene.',
+  disclaimer:'İş planı bir planlama yardımıdır; hukuki, vergisel veya finansal danışmanlık değildir.', dsh:'Datenschutz (veri koruma)',
+  ds:(o)=>`<p><b>Sorumlu:</b> ${o.company}, ${o.address}. İletişim: ${o.email}</p><p>Bu bilgileri yalnızca iş planını hazırlamak için işliyoruz (DSGVO md. 6/1-a, e-postayla her zaman geri alınabilir). Vercel Inc.'in Frankfurt sunucularında saklanır, plan teslim edildikten en geç 90 gün sonra silinir. Hazırlarken adın ve e-postan olmadan yapay zeka destekli araçlar kullanıyoruz. Çerez ve takip yok. DSGVO md. 15–21 hakların ve denetim makamına şikayet hakkın var.</p>` }
+};
+
+const lang = /\/tr(\/|$)/.test(location.pathname) ? 'tr' : 'de';
+const t = T[lang];
+document.documentElement.lang = lang;
+document.title = t.kicker;
+document.querySelectorAll('[data-t]').forEach(el => { const k = el.dataset.t; if (typeof t[k] === 'string') el.textContent = t[k]; });
+document.getElementById('dsbody').innerHTML = t.ds(OPERATOR);
+document.getElementById('impbody').innerHTML = `<p>Angaben gemäß § 5 DDG</p><p>${OPERATOR.company}<br>${OPERATOR.address}<br>${OPERATOR.ceo}<br>${OPERATOR.register}<br>${OPERATOR.vat}<br>Telefon: ${OPERATOR.phone}<br>E-Mail: <a href="mailto:${OPERATOR.email}">${OPERATOR.email}</a></p>`;
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const id = new URLSearchParams(location.search).get('id') || '';
+const REQ = [];
+
+function fieldHtml([key, type, label, hint, cond, req, opts]) {
+  if (req) REQ.push(key);
+  const lab = `<label class="q" for="${key}">${esc(label[lang])}${req ? '<span class="req">*</span>' : ''}${hint ? `<span class="hint">${esc(hint[lang])}</span>` : ''}</label>`;
+  let input;
+  if (type === 'num') input = `<input type="number" id="${key}" name="${key}" min="0" step="any" inputmode="decimal">`;
+  else if (type === 'month') input = `<input type="month" id="${key}" name="${key}" placeholder="2027-03">`;
+  else if (type === 'area') input = `<textarea id="${key}" name="${key}" maxlength="3000"></textarea>`;
+  else if (type === 'select') input = `<select id="${key}" name="${key}">${opts.map(([v,l]) => `<option value="${v}">${esc(l[lang])}</option>`).join('')}</select>`;
+  else if (type === 'lines') {
+    input = `<div class="lines"><div class="lineh">${t.lineh.map(h => `<span>${esc(h)}</span>`).join('')}</div>` +
+      [1,2,3].map(i => `<div class="line"><input type="text" id="p${i}_name" name="p${i}_name" placeholder="${esc(t.lineh[0])}" maxlength="80" aria-label="${esc(t.lineh[0])} ${i}"><input type="number" id="p${i}_price" name="p${i}_price" placeholder="${esc(t.lineh[1])}" min="0" step="any" inputmode="decimal" aria-label="${esc(t.lineh[1])} ${i}"><input type="number" id="p${i}_cost" name="p${i}_cost" placeholder="${esc(t.lineh[2])}" min="0" step="any" inputmode="decimal" aria-label="${esc(t.lineh[2])} ${i}"><input type="number" id="p${i}_share" name="p${i}_share" placeholder="${esc(t.lineh[3])}" min="0" max="100" step="any" inputmode="decimal" aria-label="${esc(t.lineh[3])} ${i}"></div>`).join('') + '</div>';
+  }
+  return `<div class="field${cond ? ' hidden' : ''}" ${cond ? `data-cond="${cond}"` : ''} id="w_${key}">${lab}${input}</div>`;
+}
+
+$('sections').innerHTML = S.map(s => {
+  const sub = s.subKey ? t[s.subKey] : (s.sub ? s.sub[lang] : '');
+  const body = s.f.map(fieldHtml).join('');
+  return `<section class="card" id="sec_${s.id}"><h2>${esc(s.h[lang])}</h2>${sub ? `<p class="sub" id="sub_${s.id}">${esc(sub)}</p>` : ''}` +
+    (s.grid ? `<div class="grid2">${body}</div>` : body) + (s.after ? `<div style="margin-top:18px">${s.after.map(fieldHtml).join('')}</div>` : '') + '</section>';
+}).join('');
+
+function applyConditions(pre) {
+  const flags = { b2b: pre.customers === 'b2b' || pre.customers === 'both', location: pre.business_type === 'location', alg1: pre.situation === 'alg1' };
+  document.querySelectorAll('[data-cond]').forEach(el => el.classList.toggle('hidden', !flags[el.dataset.cond]));
+}
+function setVal(k, v) { const el = $(k); if (el && v !== undefined && v !== null && el.value === '') el.value = v; }
+
+async function init() {
+  if (!/^[0-9a-f-]{36}$/.test(id)) { $('invalid').classList.remove('hidden'); return; }
+  try {
+    const r = await fetch('/api/plan?id=' + encodeURIComponent(id));
+    if (!r.ok) throw new Error(r.status);
+    const { prefill: pre, plan } = await r.json();
+    applyConditions(pre);
+    if (plan) { for (const [k, v] of Object.entries(plan)) setVal(k, v); }
+    else {
+      setVal('p1_price', pre.price); setVal('p1_cost', pre.unit_cost); setVal('p1_share', pre.price ? 100 : undefined);
+      setVal('c_rent', pre.rent); setVal('pv_living', pre.personal_need); setVal('inv_equipment', pre.investment);
+    }
+    if (pre.fixed_costs) $('sub_costs').textContent = t.costsub + ' ' + t.costhint(Number(pre.fixed_costs).toLocaleString('de-DE'));
+    $('f').classList.remove('hidden');
+  } catch { $('invalid').classList.remove('hidden'); }
+}
+init();
+
+function showErr(el, msg) { clearErr(el); const p = document.createElement('div'); p.className = 'error'; p.textContent = msg; p.dataset.errFor = el.id; (el.closest('.field') || el.parentElement).appendChild(p); el.setAttribute('aria-invalid', 'true'); }
+function clearErr(el) { (el.closest('.field') || el.parentElement).querySelectorAll(`.error[data-err-for="${el.id}"]`).forEach(n => n.remove()); el.removeAttribute('aria-invalid'); }
+
+$('f').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  $('formerror').classList.add('hidden');
+  let first = null;
+  for (const k of REQ) { const el = $(k); if (!el.value.trim()) { showErr(el, t.err_required); first = first || el; } else clearErr(el); }
+  const c = $('consent'); if (!c.checked) { showErr(c, t.err_consent); first = first || c; } else clearErr(c);
+  if (first) { first.focus(); return; }
+  const data = { id, consent: true };
+  for (const [k, v] of new FormData($('f')).entries()) { if (k === 'consent') continue; const s = typeof v === 'string' ? v.trim() : v; if (s !== '') data[k] = s; }
+  document.querySelectorAll('[data-cond].hidden input, [data-cond].hidden select, [data-cond].hidden textarea').forEach(el => delete data[el.name]);
+  const btn = $('submit'); btn.disabled = true; btn.textContent = t.sending;
+  try {
+    const r = await fetch('/api/plan', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify(data) });
+    if (!r.ok) throw new Error(r.status);
+    $('f').classList.add('hidden'); $('done').classList.remove('hidden'); window.scrollTo({ top: 0, behavior: 'smooth' });
+  } catch {
+    $('formerror').textContent = t.err_send; $('formerror').classList.remove('hidden'); btn.disabled = false; btn.textContent = t.submit;
+  }
+});
+</script>
+</body>
+</html>

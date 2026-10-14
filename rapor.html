@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Rapor PDF</title>
+<style>
+:root{
+  --ink:#16202c;--muted:#56616f;--faint:#8a94a1;--line:#dfe4ea;--zebra:#f6f8fb;
+  --accent:#0f2d4a;--soft:#e6eef7;--paper:#fff;--bg:#eef2f6;
+  --green:#1f7a45;--green-soft:#e2f2e8;--amber:#a86200;--amber-soft:#fdf0d8;--red:#b42318;--red-soft:#fde7e5;
+  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  --serif:var(--sans);
+}
+*{box-sizing:border-box}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.6 var(--sans)}
+.tools{max-width:900px;margin:0 auto;padding:24px 16px 8px}
+.tools h1{font-size:20px;margin:0 0 6px}
+.tools p{color:var(--muted);margin:0 0 12px}
+.tools details{margin:0 0 12px;color:var(--muted);font-size:13px}
+.tools code{font:12px ui-monospace,Menlo,Consolas,monospace;background:#fff;padding:1px 4px;border-radius:4px}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:10px}
+.row input,.row select{font:inherit;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink)}
+textarea{width:100%;min-height:200px;font:13px/1.45 ui-monospace,Menlo,Consolas,monospace;padding:10px;border:1px solid var(--line);border-radius:10px;background:#fff;color:var(--ink)}
+button{font:inherit;border:0;border-radius:10px;background:var(--accent);color:#fff;font-weight:600;padding:10px 18px;cursor:pointer}
+
+.page{max-width:900px;margin:16px auto 40px;background:var(--paper);border-radius:4px;box-shadow:0 1px 3px rgba(0,0,0,.08),0 8px 30px rgba(0,0,0,.06);padding:0 0 36px;overflow:hidden}
+.cover{background:var(--accent);color:#fff;padding:26px 48px 24px;position:relative;overflow:hidden}
+.cover::after{content:"";position:absolute;right:0;top:0;bottom:0;width:38%;background:linear-gradient(135deg,transparent 0 40%,rgba(255,255,255,.06) 40% 60%,transparent 60%),linear-gradient(135deg,transparent 0 62%,rgba(255,255,255,.05) 62% 78%,transparent 78%)}
+.cover .brand{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13.5px;opacity:.85;position:relative;z-index:1}
+.cover h1{font:700 30px/1.18 var(--sans);letter-spacing:-.02em;margin:18px 0 6px;max-width:30ch;position:relative;z-index:1}
+.cover .subtitle{font-size:13.5px;opacity:.85;margin:0;position:relative;z-index:1}
+.doc{padding:8px 48px 0}
+
+.doc h2{font:700 20px/1.25 var(--sans);color:var(--accent);margin:30px 0 12px;padding-bottom:6px;border-bottom:1px solid var(--line);break-inside:avoid}
+.doc h2 .n{font:700 12px/24px var(--sans);color:#fff;background:var(--accent);border-radius:999px;width:24px;height:24px;display:inline-block;text-align:center;vertical-align:3px;margin-right:10px}
+.doc h3{font-size:15.5px;color:var(--accent);margin:20px 0 8px}
+.doc p{margin:0 0 10px}
+.doc ul{margin:0 0 12px;padding-left:20px}
+.doc li{margin:3px 0}
+.doc ul li::marker{color:var(--accent)}
+.doc ol{list-style:none;counter-reset:o;padding:0;margin:0 0 14px}
+.doc ol>li{counter-increment:o;position:relative;padding:10px 12px 10px 46px;margin:0 0 8px;background:var(--zebra);border-radius:8px;border-left:3px solid var(--accent)}
+.doc ol>li::before{content:counter(o);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;font:700 12px/24px var(--sans);text-align:center}
+.doc strong{color:#0f1a14}
+
+.doc table{border-collapse:separate;border-spacing:0;width:100%;margin:6px 0 16px;font-size:13.5px;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.doc th{background:var(--accent);color:#fff;font-weight:600;font-size:12.5px;text-align:left;padding:8px 10px}
+.doc td{padding:8px 10px;vertical-align:top;border-top:1px solid var(--line)}
+.doc tbody tr:nth-child(even) td{background:var(--zebra)}
+.doc td.num,.doc th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.doc tr.total td{background:var(--soft)!important;font-weight:700}
+.doc blockquote{margin:0 0 14px;padding:12px 16px;background:var(--soft);border-left:4px solid var(--accent);border-radius:6px}
+.doc blockquote p:last-child{margin:0}
+.doc hr{border:0;border-top:1px solid var(--line);margin:20px 0}
+.doc code{font:12.5px ui-monospace,Menlo,Consolas,monospace;background:#eef2f6;padding:1px 4px;border-radius:4px}
+.warn{display:inline-block;background:var(--amber-soft);color:#7a4f0e;border:1px solid #efd9a8;border-radius:999px;font-size:11px;font-weight:600;padding:0 7px;line-height:18px;white-space:nowrap}
+.assume{color:var(--faint);font-size:.88em;font-style:italic;white-space:nowrap}
+
+.verdict{display:grid;grid-template-columns:150px 1fr;gap:22px;align-items:center;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin:4px 0 18px;background:linear-gradient(180deg,#fff,var(--zebra))}
+.verdict svg{display:block;width:150px;height:150px}
+.verdict .tier{display:inline-block;font-size:13px;font-weight:700;border-radius:999px;padding:3px 11px;margin-bottom:8px}
+.verdict .text{font:500 16.5px/1.5 var(--sans);margin:0}
+.verdict .label{display:none}
+.t-green .tier{background:var(--green-soft);color:var(--green)} .t-amber .tier{background:var(--amber-soft);color:var(--amber)} .t-red .tier{background:var(--red-soft);color:var(--red)}
+
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 18px}
+.kpi{border:1px solid var(--line);border-top:3px solid var(--accent);border-radius:8px;padding:10px 12px;background:#fff}
+.kpi .v{font:700 22px/1.15 var(--sans);color:var(--accent);font-variant-numeric:tabular-nums}
+.kpi .l{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.35}
+
+.bars{border:1px solid var(--line);border-radius:10px;padding:14px 16px 10px;margin:6px 0 18px}
+.bars .title{font-size:13.5px;color:var(--muted);font-weight:600;margin-bottom:10px}
+.bar{display:grid;grid-template-columns:minmax(150px,38%) 1fr 74px;gap:12px;align-items:center;margin:0 0 9px;font-size:13px}
+.bar .track{position:relative;height:14px;background:var(--zebra);border-radius:999px}
+.bar .seg{position:absolute;top:0;bottom:0;border-radius:999px;background:#9fb3cc;min-width:8px}
+.bar.hi .seg{background:var(--accent)}
+.bar.hi .lab{font-weight:700}
+.bar .val{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;white-space:nowrap}
+.bars .axis{display:grid;grid-template-columns:minmax(150px,38%) 1fr 74px;gap:12px;font-size:10.5px;color:var(--faint)}
+.bars .axis .ticks{display:flex;justify-content:space-between}
+
+.dots{display:inline-flex;gap:3px;vertical-align:middle;margin-right:6px}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.dots i.on{background:var(--accent)}
+td.score{white-space:nowrap;font-weight:700}
+
+.foot{margin:28px 48px 0;border-top:1px solid var(--line);padding-top:10px;color:var(--muted);font-size:11px;display:flex;justify-content:space-between;gap:20px}
+@media (max-width:640px){.cover,.doc{padding-left:18px;padding-right:18px}.foot{margin-left:18px;margin-right:18px}.verdict{grid-template-columns:1fr}.bar,.bars .axis{grid-template-columns:110px 1fr 60px}}
+@media print{
+  @page{size:A4;margin:12mm 13mm 14mm}
+  body{background:#fff;font-size:12px;line-height:1.5}
+  .tools{display:none}
+  .page{box-shadow:none;margin:0;max-width:none;border-radius:0;padding:0;overflow:visible}
+  .cover{border-radius:8px;padding:20px 26px 18px}
+  .cover h1{font-size:25px}
+  .doc{padding:4px 2px 0}
+  .doc h2{font-size:16.5px;margin:20px 0 9px}
+  .doc table{font-size:11px}
+  .doc th{font-size:10.5px;padding:6px 8px}
+  .doc td{padding:5px 8px}
+  .doc ol>li{padding:7px 10px 7px 40px}
+  .doc ol>li::before{top:7px;left:9px}
+  .verdict{grid-template-columns:120px 1fr;padding:12px 16px}
+  .verdict svg{width:120px;height:120px}
+  .verdict .text{font-size:14.5px}
+  .kpi .v{font-size:18px}
+  .foot{margin:22px 2px 0}
+  .doc h2,.doc h3{break-after:avoid}
+  .doc blockquote,.doc tr,.verdict,.kpis,.bars,.doc ol>li{break-inside:avoid}
+  .doc thead{display:table-header-group}
+}
+</style>
+</head>
+<body>
+<div class="tools">
+  <h1>Rapor PDF</h1>
+  <p>Claude'un yazdığı raporu (Markdown) yapıştır, önizlemeyi kontrol et, "PDF olarak kaydet" de. Hiçbir şey sunucuya gönderilmez.</p>
+  <details><summary>Görsel bloklar</summary>
+    <p><code>{{skor 76 | yeşil | Tek cümle karar}}</code> karar kartı · <code>{{kpi 7.900 € | Aylık hedef ciro}}</code> ardışık satırlar kutu sırası olur · <code>{{bar Etiket | 12-20 | gün | vurgu}}</code> ardışık satırlar aralık grafiği olur (önüne <code>{{grafik Başlık}}</code> yazılabilir) · "Puan" sütunu 1–5 ise nokta gösterge · "Toplam" veya "Açık" ile başlayan tablo satırı vurgulanır · ⚠️ ve "(varsayım)" otomatik etiket olur.</p>
+  </details>
+  <div class="row">
+    <select id="lang"><option value="de">Almanca başlık</option><option value="tr">Türkçe başlık</option></select>
+    <select id="kind"><option value="report">Rapor</option><option value="plan">İş planı</option></select>
+    <input id="who" placeholder="Kime (isteğe bağlı, ör. Elif)" maxlength="60">
+    <button id="print">PDF olarak kaydet / yazdır</button>
+  </div>
+  <textarea id="md" placeholder="# Rapor başlığı&#10;&#10;Markdown metnini buraya yapıştır…"></textarea>
+</div>
+<div class="page">
+  <div class="cover">
+    <div class="brand"><b id="brand"></b><span id="meta"></span></div>
+    <h1 id="title"></h1>
+    <p class="subtitle" id="subtitle"></p>
+  </div>
+  <div class="doc" id="doc"></div>
+  <div class="foot"><span id="foot"></span><span id="footbrand"></span></div>
+</div>
+<script>
+const L = {
+  de:{ report:'Gründungs-Check – Bericht', plan:'Gründungs-Check – Businessplan', for:'für', date:'Stand', verdict:'Einschätzung',
+       tiers:{green:'Tragfähig', amber:'Tragfähig mit Auflagen', red:'So nicht tragfähig'}, warn:'zu prüfen', brand:'foundercheck.de',
+       foot:'Dieses Dokument ist eine allgemeine Information und keine Rechts-, Steuer- oder Finanzberatung. TechNS UG (haftungsbeschränkt), Ludwig-Erhard-Str. 16A, 61440 Oberursel · info@dgitmarkt.de' },
+  tr:{ report:'İş Fikri Kontrolü – Rapor', plan:'İş Fikri Kontrolü – İş planı', for:'', date:'Tarih', verdict:'Karar',
+       tiers:{green:'Yürür', amber:'Şartlı yürür', red:'Bu haliyle yürümez'}, warn:'doğrulanmalı', brand:'foundercheck.de',
+       foot:'Bu belge genel bilgidir; hukuki, vergisel veya finansal danışmanlık değildir. TechNS UG (haftungsbeschränkt), Ludwig-Erhard-Str. 16A, 61440 Oberursel · info@dgitmarkt.de' }
+};
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+let T = L.tr;
+function inline(s) {
+  s = esc(s);
+  return s.replace(/`([^`]+)`/g, '<code>$1</code>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|[^*])\*([^*\s][^*]*)\*/g, '$1<em>$2</em>')
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/⚠️?\s*(doğrulanmalı|zu prüfen)?/g, (m, w) => `<span class="warn">⚠ ${w || T.warn}</span> `)
+    .replace(/\((varsayım|Annahme)\)/gi, '<span class="assume">($1)</span>');
+}
+const isNum = (s) => /^[\s*]*[-−+≈]?\s*[\d.,]+(\s*[–-]\s*[\d.,]+)?\s*(€|%|€\/Monat)?[\s*]*$/.test(s) && /\d/.test(s);
+const num = (s) => Number(String(s).replace(/\./g, '').replace(',', '.'));
+function tierOf(word, score) {
+  const w = (word || '').toLowerCase();
+  if (/ye[sş]il|gr[uü]n|green/.test(w)) return 'green';
+  if (/sar[iı]|gelb|yellow|amber/.test(w)) return 'amber';
+  if (/k[iı]rm[iı]z[iı]|rot|red/.test(w)) return 'red';
+  return score >= 70 ? 'green' : score >= 45 ? 'amber' : 'red';
+}
+function verdict(arg) {
+  const [s, word, ...rest] = arg.split('|').map(x => x.trim());
+  const score = Math.max(0, Math.min(100, num(s) || 0)), tier = tierOf(word, score);
+  const col = { green:'#1f7a45', amber:'#a86200', red:'#b42318' }[tier];
+  const r = 52, c = 2 * Math.PI * r, f = c * score / 100;
+  return `<div class="verdict t-${tier}"><svg viewBox="0 0 130 130" role="img" aria-label="${score}/100">
+    <circle cx="65" cy="65" r="${r}" fill="none" stroke="#e6eef7" stroke-width="12"/>
+    <circle cx="65" cy="65" r="${r}" fill="none" stroke="${col}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${f.toFixed(1)} ${c.toFixed(1)}" transform="rotate(-90 65 65)"/>
+    <text x="65" y="70" text-anchor="middle" font-family="Segoe UI,system-ui,Arial,sans-serif" font-size="36" font-weight="700" fill="${col}">${score}</text>
+    <text x="65" y="90" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#56616f">/ 100</text></svg>
+    <div><div class="label">${esc(T.verdict)}</div><span class="tier">${esc(T.tiers[tier])}</span><p class="text">${inline(rest.join(' | '))}</p></div></div>`;
+}
+function kpis(items) {
+  return '<div class="kpis">' + items.map(a => { const [v, l] = a.split('|').map(x => x.trim()); return `<div class="kpi"><div class="v">${inline(v || '')}</div><div class="l">${inline(l || '')}</div></div>`; }).join('') + '</div>';
+}
+function bars(items, title) {
+  const rows = items.map(a => { const [lab, rng, unit, hi] = a.split('|').map(x => x.trim());
+    const m = (rng || '').split(/\s*[–-]\s*/).map(num); const lo = m[0] || 0, up = m.length > 1 ? m[1] : lo;
+    return { lab: lab || '', lo, up, unit: unit || '', hi: !!hi, txt: lo === up ? `${lo}` : `${lo}–${up}` }; });
+  const max = Math.max(...rows.map(r => r.up)) || 1, step = max <= 10 ? 2 : max <= 25 ? 5 : max <= 60 ? 10 : Math.ceil(max / 50) * 10;
+  const top = Math.ceil(max / step) * step, ticks = []; for (let v = 0; v <= top; v += step) ticks.push(`<span>${v}</span>`);
+  return `<div class="bars">${title ? `<div class="title">${inline(title)}</div>` : ''}` + rows.map(r =>
+    `<div class="bar${r.hi ? ' hi' : ''}"><span class="lab">${inline(r.lab)}</span><span class="track"><span class="seg" style="left:${(r.lo / top * 100).toFixed(1)}%;width:${Math.max((r.up - r.lo) / top * 100, 1.5).toFixed(1)}%"></span></span><span class="val">${esc(r.txt)} ${esc(r.unit)}</span></div>`).join('') +
+    `<div class="axis"><span></span><span class="ticks">${ticks.join('')}</span><span></span></div></div>`;
+}
+function md(src) {
+  const lines = src.replace(/\r/g, '').split('\n'), out = [];
+  let i = 0;
+  const cells = (l) => l.trim().replace(/^\||\|$/g, '').split('|').map(c => c.trim());
+  const DIR = /^\s*\{\{\s*(\w+)\s*(.*?)\s*\}\}\s*$/;
+  while (i < lines.length) {
+    const l = lines[i];
+    if (!l.trim()) { i++; continue; }
+    let m;
+    if ((m = l.match(DIR))) {
+      const kind = m[1].toLowerCase();
+      if (kind === 'skor' || kind === 'score') { out.push(verdict(m[2])); i++; continue; }
+      if (kind === 'kpi') { const it = []; while (i < lines.length && (m = lines[i].match(DIR)) && m[1].toLowerCase() === 'kpi') { it.push(m[2]); i++; } out.push(kpis(it)); continue; }
+      if (kind === 'grafik' || kind === 'chart' || kind === 'bar') {
+        let title = ''; if (kind !== 'bar') { title = m[2]; i++; }
+        const it = []; while (i < lines.length && (m = lines[i].match(DIR)) && m[1].toLowerCase() === 'bar') { it.push(m[2]); i++; }
+        if (it.length) out.push(bars(it, title)); continue;
+      }
+      i++; continue;
+    }
+    if ((m = l.match(/^(#{1,4})\s+(.*)$/))) {
+      const n = Math.min(m[1].length, 3);
+      if (n === 2) { const k = m[2].match(/^(\d+)\.\s+(.*)$/); out.push(k ? `<h2><span class="n">${k[1]}</span><span>${inline(k[2])}</span></h2>` : `<h2>${inline(m[2])}</h2>`); }
+      else out.push(`<h${n}>${inline(m[2])}</h${n}>`);
+      i++; continue;
+    }
+    if (/^\s*(-{3,}|\*{3,}|_{3,})\s*$/.test(l)) { out.push('<hr>'); i++; continue; }
+    if (/^\s*\|/.test(l) && i + 1 < lines.length && /^\s*\|?\s*:?-{3,}/.test(lines[i + 1])) {
+      const head = cells(l); i += 2; const rows = [];
+      while (i < lines.length && /^\s*\|/.test(lines[i])) { rows.push(cells(lines[i])); i++; }
+      const numCol = head.map((_, c) => rows.length > 0 && rows.every(r => !r[c] || isNum(r[c])));
+      const dotCol = head.map((h, c) => /^(puan|punkte|score)$/i.test(h) && rows.length > 0 && rows.every(r => /^[1-5]$/.test(r[c] || '')));
+      dotCol.forEach((d, c) => { if (d) numCol[c] = false; });
+      const cell = (r, c) => {
+        const v = r[c] || '';
+        if (dotCol[c]) { const n = +v; return `<td class="score"><span class="dots">${[1,2,3,4,5].map(k => `<i class="${k <= n ? 'on' : ''}"></i>`).join('')}</span>${n}</td>`; }
+        return `<td${numCol[c] ? ' class="num"' : ''}>${inline(v)}</td>`;
+      };
+      out.push('<table><thead><tr>' + head.map((h, c) => `<th${numCol[c] ? ' class="num"' : ''}>${inline(h)}</th>`).join('') + '</tr></thead><tbody>' +
+        rows.map(r => `<tr${/^\**\s*(toplam|gesamt|summe|açık|lücke)/i.test(r[0] || '') ? ' class="total"' : ''}>` + head.map((_, c) => cell(r, c)).join('') + '</tr>').join('') + '</tbody></table>');
+      continue;
+    }
+    if (/^\s*>/.test(l)) { const q = []; while (i < lines.length && /^\s*>/.test(lines[i])) { q.push(lines[i].replace(/^\s*>\s?/, '')); i++; } out.push(`<blockquote>${md(q.join('\n'))}</blockquote>`); continue; }
+    if (/^\s*([-*+]|\d+[.)])\s+/.test(l)) {
+      const ordered = /^\s*\d/.test(l), items = [];
+      while (i < lines.length && /^\s*([-*+]|\d+[.)])\s+/.test(lines[i])) {
+        let item = lines[i].replace(/^\s*([-*+]|\d+[.)])\s+/, ''); i++;
+        while (i < lines.length && /^\s{2,}\S/.test(lines[i]) && !/^\s*([-*+]|\d+[.)])\s+/.test(lines[i])) { item += ' ' + lines[i].trim(); i++; }
+        items.push(`<li>${inline(item.replace(/^\[( |x)\]\s*/i, (m0, x) => x.trim() ? '☑ ' : '☐ '))}</li>`);
+      }
+      out.push(ordered ? `<ol>${items.join('')}</ol>` : `<ul>${items.join('')}</ul>`); continue;
+    }
+    const p = [l.trim()]; i++;
+    while (i < lines.length && lines[i].trim() && !/^(#{1,4}\s|\s*\||\s*>|\s*([-*+]|\d+[.)])\s+|\s*-{3,}\s*$|\s*\{\{)/.test(lines[i])) { p.push(lines[i].trim()); i++; }
+    out.push(`<p>${inline(p.join(' '))}</p>`);
+  }
+  return out.join('\n');
+}
+function render() {
+  T = L[$('lang').value]; const kind = $('kind').value, who = $('who').value.trim();
+  const today = new Date().toLocaleDateString($('lang').value === 'tr' ? 'tr-TR' : 'de-DE');
+  $('brand').textContent = T[kind];
+  $('meta').textContent = (who ? (T.for ? `${T.for} ${who} · ` : `${who} · `) : '') + `${T.date} ${today}`;
+  // İlk "# başlık" ve hemen altındaki düz paragraf kapağa taşınır.
+  let src = $('md').value.replace(/\r/g, ''), title = '', sub = '';
+  const m = src.match(/^\s*#\s+([^\n]+)\n*/);
+  if (m) {
+    title = m[1].trim(); src = src.slice(m[0].length);
+    const p = src.match(/^([^\n#|>{\s-][^\n]*(?:\n[^\n#|>{\s-][^\n]*)*)\n*/);
+    if (p && !/^\d+[.)]\s/.test(p[1])) { sub = p[1].replace(/\n/g, ' ').trim(); src = src.slice(p[0].length); }
+  }
+  $('title').textContent = title || T[kind];
+  $('subtitle').innerHTML = sub ? inline(sub) : '';
+  $('doc').innerHTML = md(src);
+  $('foot').textContent = T.foot;
+  $('footbrand').textContent = T.brand;
+  document.title = (title || T[kind]).slice(0, 80);
+}
+['lang', 'kind', 'who', 'md'].forEach(id => $(id).addEventListener('input', render));
+$('print').onclick = () => { render(); window.print(); };
+try { const s = sessionStorage.getItem('rapor_md'); if (s) $('md').value = s; const g = sessionStorage.getItem('rapor_lang'); if (g) $('lang').value = g; } catch {}
+$('md').addEventListener('input', () => { try { sessionStorage.setItem('rapor_md', $('md').value); } catch {} });
+$('lang').addEventListener('input', () => { try { sessionStorage.setItem('rapor_lang', $('lang').value); } catch {} });
+render();
+</script>
+</body>
+</html>
