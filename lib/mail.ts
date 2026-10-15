@@ -32,7 +32,12 @@ async function send(msg: { from: string; to: string; replyTo?: string; subject: 
   if (!t) { console.warn("mail: SMTP not configured"); return { skipped: true }; }
   try {
     const info = await t.sendMail(msg);
-    if (process.env.MAIL_DRY === "1") dryOutbox.push({ to: msg.to, subject: msg.subject, text: msg.text });
+    if (process.env.MAIL_DRY === "1") {
+      const m = { to: msg.to, subject: msg.subject, text: msg.text };
+      dryOutbox.push(m);
+      // Uçtan uca tarayıcı testi (e2e/) sunucu dışından okur. Sadece deneme modunda ve açıkça istenirse.
+      if (process.env.MAIL_OUTBOX) (await import("node:fs")).appendFileSync(process.env.MAIL_OUTBOX, JSON.stringify(m) + "\n");
+    }
     return { ok: true, id: info.messageId };
   } catch (err) {
     const error = err instanceof Error ? err.message : String(err);

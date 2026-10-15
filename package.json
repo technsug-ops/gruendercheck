@@ -14,7 +14,8 @@
     "db:seed": "tsx --tsconfig tsconfig.json scripts/seed-dev.ts",
     "visual:legacy": "tsx scripts/visual/legacy-server.ts",
     "visual:compare": "tsx scripts/visual/compare.ts",
-    "kb": "tsx scripts/build-kb.ts"
+    "kb": "tsx scripts/build-kb.ts",
+    "e2e": "node e2e/prepare.mjs && playwright test"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",
