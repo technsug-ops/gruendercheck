@@ -26,3 +26,10 @@ export async function getPlanForm(id: string): Promise<PlanForm | null> {
   const plan = row.plan ? Object.fromEntries(Object.entries(row.plan).filter(([k]) => k !== "id" && k !== "submitted_at")) : null;
   return { prefill, plan };
 }
+
+/** Plan formunu yazar; tekrar gönderilirse öncekinin yerine geçer, ilk gönderim zamanı korunur. */
+export async function savePlan(submissionId: string, data: Record<string, unknown>): Promise<void> {
+  const now = new Date();
+  await (await db()).insert(schema.plans).values({ submissionId, data, createdAt: now, updatedAt: now })
+    .onConflictDoUpdate({ target: schema.plans.submissionId, set: { data, updatedAt: now } });
+}

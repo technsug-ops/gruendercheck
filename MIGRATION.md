@@ -86,11 +86,15 @@ Not: `confirm_token` düz değil hash'lenmiş saklansın.
 2. ✅ (Neon bağlantısı hariç – migration üretildi, DB'ye uygulanmadı) **İskelet:** `create-next-app` (TypeScript, App Router, ESLint), next-intl, Drizzle, Neon bağlantısı, ilk migration.
 3. ✅ **Saf mantık:** `calc`, `plan`, `brief`, `quality`, `render` dosyalarını TS'ye çevir; Vitest ile v1 çıktılarıyla aynı sonucu verdiğini test et. → `lib/domain/*.ts`, `lib/report/render.ts`; `test/*.test.ts` aynı girdiyi `legacy/` ve TS sürümüne verip birebir karşılaştırır (örnekler + tohumlu rastgele girdiler, tanıtım sayfasındaki örnek raporlar). Bilinçli farklar: `render` dili parametre alır (v1'de modül düzeyinde `setLang`, sunucuda eş zamanlı isteklerde karışırdı); tablo aramaları `Object.hasOwn` ile ("toString" gibi değerler artık eşleşmez); `briefText` gönderim tarihini ayrı parametre alır (DB'de `created_at`).
 4. ✅ (herkese açık sayfalar; admin adım 6'da) **Sayfalar:** landing → form → onay → rapor → geri bildirim → plan. Görünüm v1 ile birebir (ekran görüntüsü karşılaştırması). → `npm run visual:compare`: 5 sayfa, 2 dil, 2 genişlik, 160 vaka; 158 piksel aynı, 2 bilinen fark (v1 hatası). Form gönderimleri v1 ile byte byte aynı. Sonra: şirket/Impressum bilgisi 5 dosyada tekrar ediyor, ortak `lib/operator.ts`'e alınmalı.
-5. **API'ler:** submit, confirm, draft (arka plan), report, feedback, plan, stats, submissions (admin).
+5. ✅ (herkese açık API'ler + taslak akışı + silme işi; admin API'leri adım 6 ile) **API'ler:** submit, confirm, draft (arka plan), report, feedback, plan, stats, submissions (admin).
 6. **Admin:** mevcut panelin tüm işlevleri + İstatistik.
 7. **Veri taşıma:** `scripts/import-blob.ts` – Vercel Blob'daki `submissions/`, `drafts/`, `reports/`, `plans/`, `feedback` verisini Postgres'e aktarır (birden çok kez çalıştırılabilir olsun).
 8. **Uçtan uca test:** Playwright ile: kötü giriş reddedilir → iyi giriş → onay e-postası (MAIL_DRY) → onay → taslak → admin onayı → rapor sayfası → geri bildirim.
 9. **Geçiş:** Yeni Vercel projesinde önizleme ile test → veri taşıma → `foundercheck.de` ve `gruenderchek.de` alan adlarını yeni projeye taşı → eski projeyi 2 hafta yedek olarak tut. Eski adresler (`/de`, `/tr`, `/de/r?id=`, `/tr/feedback?id=` …) yönlendirmeyle çalışmaya devam etmeli; e-postalardaki linkler kırılmasın.
+
+## Canlıya almadan önce (açık işler)
+- **Datenschutz metni:** veriler artık Vercel Blob'da değil, Neon (Postgres, Frankfurt) veritabanında. Formdaki, plan ve geri bildirim sayfalarındaki Datenschutz metni yeni hizmet sağlayıcıyı adıyla anmalı (CLAUDE.md kuralı). Neon bağlanınca metin iki dilde güncellenecek.
+- Kural tabanı 2026-10-15 formda olmayan alanlar istiyor (diploma ülkesi, ALG I başlangıç/bitiş tarihi, sertifikalar). Form değişikliği ayrı karar.
 
 ## 8. Sonra (karar kapısı geçilince)
 Stripe ile iş planı satışı, kullanıcı hesabı / "raporlarım" sayfası, `noindex`'in kaldırılması ve SEO, gerçek müşteri yorumları.

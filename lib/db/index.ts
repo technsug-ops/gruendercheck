@@ -19,7 +19,8 @@ async function create(): Promise<DB> {
   const { drizzle: drizzlePglite } = await import("drizzle-orm/pglite");
   const { migrate } = await import("drizzle-orm/pglite/migrator");
   const dir = process.env.PGLITE_DIR ?? ".data/pglite";
-  (await import("node:fs")).mkdirSync(dir, { recursive: true });
+  // "memory://": testlerde her çalıştırma için boş, bellek içi veritabanı.
+  if (!dir.startsWith("memory://")) (await import("node:fs")).mkdirSync(dir, { recursive: true });
   const client = new PGlite(dir);
   const db = drizzlePglite(client, { schema });
   await migrate(db, { migrationsFolder: "drizzle" });

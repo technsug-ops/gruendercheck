@@ -70,7 +70,7 @@ export async function callClaude(text: string): Promise<ClaudeResult> {
   for (let i = 0; i <= MAX_CONTINUATIONS; i++) {
     const stream = client.beta.messages.stream({
       model: m,
-      max_tokens: 12000,
+      max_tokens: 32000, // v1: 12000; düşünme de bu sınırdan yer, uzun raporlar kesiliyordu
       system: [
         { type: "text", text: RAPOR_TALIMATI },
         { type: "text", text: "ALMANYA-KURAL-TABANI (hukuki ve vergisel kurallar için tek kaynak)\n\n" + KURAL_TABANI, cache_control: { type: "ephemeral" } },

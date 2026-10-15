@@ -16,3 +16,12 @@ export async function getFeedbackState(id: string): Promise<FeedbackState | null
     .limit(1);
   return rows[0] ? { done: rows[0].fb !== null } : null;
 }
+
+export interface FeedbackInput { useful: string; next: string; wtp: string; best: string | null; missing: string | null }
+
+/** Geri bildirimi yazar; tekrar gönderilirse öncekinin yerine geçer (v1 ile aynı). */
+export async function saveFeedback(submissionId: string, fb: FeedbackInput): Promise<void> {
+  const row = { ...fb, createdAt: new Date() };
+  await (await db()).insert(schema.feedback).values({ submissionId, ...row })
+    .onConflictDoUpdate({ target: schema.feedback.submissionId, set: row });
+}
