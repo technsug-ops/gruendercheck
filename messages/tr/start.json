@@ -1,1 +1,201 @@
-{}
+{
+  "title": "İş Fikri Kontrolü – Fikrin Almanya’da yürür mü?",
+  "description": "Ehrlicher Bericht zu deiner Geschäftsidee in Deutschland: Meister, Erlaubnis, Aufenthalt, Rechtsform, Break-even und die ersten 30 Tage. Kostenlos in der Testphase.",
+  "brand": "İş Fikri Kontrolü",
+  "nav": [
+    {
+      "href": "#so-gehts",
+      "label": "Nasıl çalışır"
+    },
+    {
+      "href": "#beispiel",
+      "label": "Örnek rapor"
+    },
+    {
+      "href": "#ueber-uns",
+      "label": "Biz kimiz"
+    },
+    {
+      "href": "#faq",
+      "label": "SSS"
+    }
+  ],
+  "navcta": "Ücretsiz kontrol",
+  "other": {
+    "lang": "de",
+    "label": "Deutsch"
+  },
+  "h1": "İş fikrin yürür mü – para harcamadan önce öğren.",
+  "lead": "16 soruya cevap veriyorsun. Fikrini Almanya’nın kurallarına göre kontrol edip hesabını çıkarıyoruz: Meister, izin, oturum, şirket türü, başabaş noktası, sermaye ihtiyacı ve ilk 30 gün. Dürüst, somut, rakamlarla.",
+  "cta": "Fikrimi kontrol et",
+  "cta2": "Örnek raporu gör",
+  "facts": [
+    "Test aşamasında ücretsiz",
+    "Rapor yaklaşık 30 dakikada",
+    "Üyelik gerekmez"
+  ],
+  "cardTitle": "Örnek: elektrik test hizmeti, Westerwald",
+  "phHero": "Dükkânında çalışan bir girişimci",
+  "phDesk": "Evrak ve hesaplar",
+  "trustLabel": "Neden önceden kontrol",
+  "trust": [
+    {
+      "title": "Kaynaklı kurallar",
+      "text": "IHK, Handwerksordnung, oturum kanunu, Arbeitsagentur – her kural kontrol tarihiyle."
+    },
+    {
+      "title": "Hesap modeli",
+      "text": "Başabaş, sermaye açığı ve duyarlılığı kod hesaplar, tahmin değil."
+    },
+    {
+      "title": "İnsan kontrolünde",
+      "text": "Yapay zeka taslak yazar, göndermeden önce bir insan okuyup düzeltir."
+    },
+    {
+      "title": "Veriler Frankfurt’ta",
+      "text": "Çerez ve reklam takibi yok. Adın ve e-postan yapay zekaya gitmez."
+    }
+  ],
+  "painH": "En pahalı hatalar kuruluştan önce yapılır",
+  "painP": "Çoğu kişi eksik olan şeyi kira sözleşmesini imzaladıktan ya da Gewerbe açtıktan sonra fark ediyor.",
+  "pains": [
+    {
+      "title": "„Meister gerekiyor mu?“",
+      "text": "Kuaför, fırın, elektrik: 50’den fazla zanaat Meister şartına bağlı. Sadece test yapan firmalar bile bu kapsamda."
+    },
+    {
+      "title": "„Oturumumla iş kurabilir miyim?“",
+      "text": "Öğrenci, Blaue Karte, iş arama oturumu: her oturum izni serbest çalışmaya onaysız izin vermiyor."
+    },
+    {
+      "title": "„Kaç müşteriyle kâra geçerim?“",
+      "text": "Başabaş noktasını bilmeden kiranın, malzemenin ve kendi geçiminin karşılanıp karşılanmayacağını bilemezsin."
+    }
+  ],
+  "getH": "Karar vermeni kolaylaştıran bir rapor",
+  "getP": "En fazla üç sayfa. Sadece ilk sayfayı okusan bile ne yapacağını bilirsin.",
+  "gets": [
+    {
+      "title": "Karar kartı",
+      "text": "0–100 arası skor, trafik ışığı, tek cümle sonuç ve en kritik üç risk."
+    },
+    {
+      "title": "Engeller ve hukuki yol",
+      "text": "Oturum, Meister şartı, izinler, Freiberuf mu Gewerbe mi – yolu, süresi ve maliyetiyle."
+    },
+    {
+      "title": "Şirket türü ve vergi",
+      "text": "Einzelunternehmen, UG veya GbR – gerekçeli bir öneri ve bir alternatif."
+    },
+    {
+      "title": "Altı boyut",
+      "text": "Talep, pazarlama, operasyon, finans, kurucu ve yer – her birinde en zayıf nokta."
+    },
+    {
+      "title": "Senin rakamların",
+      "text": "Başabaş, sermaye ihtiyacı, nakit dip noktası, Gründungszuschuss gibi destekler – dilek değil, aralık olarak."
+    },
+    {
+      "title": "İlk 30 gün",
+      "text": "Yatırım yapmadan önce en önemli varsayımını sınayan 4–6 ucuz deneme."
+    }
+  ],
+  "howH": "Üç adımda raporun hazır",
+  "steps": [
+    {
+      "time": "8 dakika",
+      "title": "Formu doldur",
+      "text": "Fikir, müşteri, yer, oturum, deneyim ve kaba rakamlar. Tahmin yeterli."
+    },
+    {
+      "time": "Yaklaşık 30 dakika",
+      "title": "Kontrol ve hesap",
+      "text": "Kural tabanımız ve hesap modelimiz bir taslak çıkarır, bir insan okuyup düzeltir."
+    },
+    {
+      "time": "E-postayla",
+      "title": "Raporu oku ve kaydet",
+      "text": "Sana özel bir link gelir, raporu PDF olarak da kaydedebilirsin."
+    }
+  ],
+  "smpH": "Raporun böyle görünür",
+  "smpP": "Gerçek bir rapordan alıntı (isimsiz): Westerwald’da bir elektrik test hizmeti.",
+  "smpList": [
+    "Skor ve trafik ışığı tek bakışta",
+    "Somut engeller ve yetkili makam",
+    "Gerçek piyasa fiyatlarıyla hesap",
+    "Genel tavsiye yerine net sonraki adımlar"
+  ],
+  "pvtitle": "DGUV V3 test hizmeti, Westerwald",
+  "sample": "{{skor 76 | yeşil | Fikir taşıyor: talep yasal zorunluluktan geliyor, piyasa bugün para ödüyor, deneyim var. Asıl iş müşteri bulmak.}}\n\n{{kpi 7.900 € | gereken aylık ciro (varsayım)}}\n{{kpi ≈ 285 € | makine başına piyasa fiyatı}}\n{{kpi 16.872 € | Gründungszuschuss, 6 ay}}\n\n| Boyut | Puan | En zayıf nokta |\n|---|---|---|\n| Talep | 4 | Sadece bir görüşme |\n| Pazarlama | 3 | Kanal denenmedi |\n| Kurucu | 5 | – |\n\n{{grafik Ayda gereken test günü}}\n{{bar Ofis ve küçük cihazlar | 12-20 | gün}}\n{{bar Sanayi makineleri, taşeron | 5-9 | gün}}\n{{bar Sanayi makineleri, kendi müşterin | 3-5 | gün | vurgu}}",
+  "aboutH": "İş Fikri Kontrolü’nün arkasında kim var",
+  "aboutBig": "Süslemeden, dürüstçe.",
+  "aboutBadge": "Fikrin bu haliyle yürümüyorsa bunu da söyleriz – ve yürümesi için neyi değiştirmen gerektiğini.",
+  "aboutP": [
+    "İş Fikri Kontrolü, Frankfurt yakınlarında Oberursel’de kurulu TechNS UG (haftungsbeschränkt) şirketinin bir hizmetidir. Kurucusu ve yöneticisi Halil Yaprakli; yüksek lisanslı bir iktisatçı, yıllardır Türkiye’den Almanya’ya gelen girişimcilere, öğrencilere ve uzmanlara yol gösteriyor, iş süreçlerini dijital sistemlere dönüştürüyor.",
+    "Fark ettiğimiz şu: IHK’da, Handwerkskammer’de, Arbeitsagentur’da iyi bilgi bol. Eksik olan, bu bilgiyi para harcamadan önce <i>senin</i> fikrine uygulayan biri. Kontrol tam olarak bunu yapıyor – Almanca ve Türkçe."
+  ],
+  "howWeH": "Nasıl çalışıyoruz",
+  "howWe": "Her raporun arkasında kaynakları ve kontrol tarihleri belli bir kural tabanı ve rakamlar için bir hesap modeli var. Metni yapay zeka taslak olarak yazar; göndermeden önce bir insan okur ve düzeltir.",
+  "limits": "<b>Rapor ne değildir:</b> hukuki, vergisel veya finansal danışmanlık değildir, resmi makam değildir. Önemli noktalarda bağlayıcı kararı kimin verdiğini söyleriz: Handwerkskammer, Ausländerbehörde, Steuerberater veya Arbeitsagentur.",
+  "aboutFacts": [
+    {
+      "label": "Şirket",
+      "value": "TechNS UG (haftungsbeschränkt)"
+    },
+    {
+      "label": "Merkez",
+      "value": "Oberursel (Taunus), Frankfurt yakını"
+    },
+    {
+      "label": "Sicil",
+      "value": "Amtsgericht Bad Homburg, HRB 16236"
+    },
+    {
+      "label": "Yönetici",
+      "value": "Halil Yaprakli"
+    }
+  ],
+  "faqH": "Sık sorulan sorular",
+  "faqP": "Sorun burada yok mu? info@dgitmarkt.de adresine yaz.",
+  "faq": [
+    {
+      "q": "Kontrol ne kadar?",
+      "a": "Test aşamasında ilk 20 kişi için ücretsiz. Raporun gerçekten işe yarayıp yaramadığını öğrenmek istiyoruz; bu yüzden rapordan sonra iki dakikalık geri bildirim rica ediyoruz."
+    },
+    {
+      "q": "Rapor ne zaman gelir?",
+      "a": "Genelde yaklaşık 30 dakika içinde. Belirleyici bir bilgi eksikse kısaca e-postayla soruyoruz."
+    },
+    {
+      "q": "Raporu kim yazıyor?",
+      "a": "Taslağı, kural tabanımız ve hesap modelimiz üzerinden bir yapay zeka modeli yazar. Göndermeden önce bir insan kontrol edip düzeltir."
+    },
+    {
+      "q": "Verilerime ne oluyor?",
+      "a": "Bilgiler Frankfurt’taki sunucularda saklanır, rapordan en geç 90 gün sonra silinir. Yapay zekaya cevaplarını adın ve e-postan olmadan aktarıyoruz. Çerez ve reklam takibi yok."
+    },
+    {
+      "q": "Rapor Steuerberater’in veya bir resmi makamın yerini tutar mı?",
+      "a": "Hayır. Sağlam bir ön kontroldür; kime hangi soruyu soracağını gösterir ve danışmanlıkta sana zaman ve para kazandırır."
+    },
+    {
+      "q": "İş planı da alabilir miyim?",
+      "a": "İstersen kontrolün üzerine finans planlı bir iş planı hazırlıyoruz, örneğin Gründungszuschuss veya banka için. Bunu rapordan sonra teklif ediyoruz."
+    },
+    {
+      "q": "Almanca da var mı?",
+      "a": "Evet. Form ve rapor Almanca ve Türkçe olarak var."
+    }
+  ],
+  "finH": "İmza atmadan önce fikrini kontrol et.",
+  "finP": "Şimdi ayıracağın sekiz dakika, sana pahalı bir kira sözleşmesinden, bir cezadan veya gelirsiz aylardan kurtarabilir.",
+  "pages": "Sayfalar",
+  "legal": "Yasal",
+  "imp": "Impressum",
+  "dsLink": "Datenschutz (formda)",
+  "dsLine": "Bu sayfa çerez kullanmaz. Ziyaretleri Vercel Web Analytics ile anonim olarak sayıyoruz. Veri koruma bilgileri formun içinde.",
+  "impTitle": "Angaben gemäß § 5 DDG",
+  "phone": "Telefon",
+  "email": "E-Mail"
+}

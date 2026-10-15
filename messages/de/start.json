@@ -1,1 +1,201 @@
-{}
+{
+  "title": "Gründungs-Check – Trägt deine Geschäftsidee?",
+  "description": "Ehrlicher Bericht zu deiner Geschäftsidee in Deutschland: Meister, Erlaubnis, Aufenthalt, Rechtsform, Break-even und die ersten 30 Tage. Kostenlos in der Testphase.",
+  "brand": "Gründungs-Check",
+  "nav": [
+    {
+      "href": "#so-gehts",
+      "label": "So funktioniert’s"
+    },
+    {
+      "href": "#beispiel",
+      "label": "Beispielbericht"
+    },
+    {
+      "href": "#ueber-uns",
+      "label": "Über uns"
+    },
+    {
+      "href": "#faq",
+      "label": "FAQ"
+    }
+  ],
+  "navcta": "Kostenlos prüfen",
+  "other": {
+    "lang": "tr",
+    "label": "Türkçe"
+  },
+  "h1": "Trägt deine Geschäftsidee – bevor du Geld ausgibst?",
+  "lead": "Du beantwortest 16 Fragen. Wir prüfen deine Idee gegen deutsche Regeln und rechnen sie durch: Meister, Erlaubnis, Aufenthaltsstatus, Rechtsform, Break-even, Kapitalbedarf und die ersten 30 Tage. Ehrlich, konkret, mit Zahlen.",
+  "cta": "Idee jetzt prüfen",
+  "cta2": "Beispielbericht ansehen",
+  "facts": [
+    "Kostenlos in der Testphase",
+    "Bericht in etwa 30 Minuten",
+    "Ohne Registrierung"
+  ],
+  "cardTitle": "Beispiel: Elektro-Prüfservice, Westerwald",
+  "phHero": "Gründerin in ihrem Laden",
+  "phDesk": "Unterlagen und Zahlen",
+  "trustLabel": "Warum vorher prüfen",
+  "trust": [
+    {
+      "title": "Regeln mit Quelle",
+      "text": "IHK, Handwerksordnung, Aufenthaltsgesetz, Arbeitsagentur – jede Regel mit Prüfdatum."
+    },
+    {
+      "title": "Zahlen per Rechenmodell",
+      "text": "Break-even, Kapitallücke und Sensitivität rechnet Code, nicht Bauchgefühl."
+    },
+    {
+      "title": "Von Menschen geprüft",
+      "text": "Ein KI-Entwurf, den ein Mensch vor dem Versand liest und korrigiert."
+    },
+    {
+      "title": "Daten in Frankfurt",
+      "text": "Keine Cookies, keine Werbe-Tracker. Name und E-Mail gehen nicht an die KI."
+    }
+  ],
+  "painH": "Die teuersten Fehler passieren vor der Gründung",
+  "painP": "Viele merken erst nach dem Mietvertrag oder dem Gewerbeschein, dass ihnen etwas Entscheidendes fehlt.",
+  "pains": [
+    {
+      "title": "„Brauche ich einen Meister?“",
+      "text": "Friseur, Bäcker, Elektro: über 50 Handwerke sind meisterpflichtig. Selbst reine Prüfdienstleister fallen darunter."
+    },
+    {
+      "title": "„Darf ich mit meinem Aufenthaltstitel gründen?“",
+      "text": "Studium, Blaue Karte, Arbeitsplatzsuche: nicht jeder Titel erlaubt Selbstständigkeit ohne Zustimmung."
+    },
+    {
+      "title": "„Ab wie vielen Kunden lohnt es sich?“",
+      "text": "Ohne Break-even weißt du nicht, ob Miete, Material und dein Lebensunterhalt je gedeckt sind."
+    }
+  ],
+  "getH": "Ein Bericht, der Entscheidungen leichter macht",
+  "getP": "Höchstens drei Seiten. Wer nur die erste liest, weiß trotzdem, was zu tun ist.",
+  "gets": [
+    {
+      "title": "Entscheidungskarte",
+      "text": "Score von 0 bis 100, Ampel, ein Satz Fazit und die drei kritischsten Risiken."
+    },
+    {
+      "title": "Hürden & Rechtsweg",
+      "text": "Aufenthalt, Meisterpflicht, Erlaubnisse, Freiberuf oder Gewerbe – mit Weg, Dauer und Kosten."
+    },
+    {
+      "title": "Rechtsform & Steuern",
+      "text": "Einzelunternehmen, UG oder GbR – eine Empfehlung mit Alternative und Begründung."
+    },
+    {
+      "title": "Sechs Dimensionen",
+      "text": "Nachfrage, Vertrieb, Betrieb, Finanzen, Gründerprofil und Standort, jeweils mit Schwachpunkt."
+    },
+    {
+      "title": "Deine Zahlen",
+      "text": "Break-even, Kapitalbedarf, Liquiditätstief, Förderung wie Gründungszuschuss – als Spanne, nicht als Wunschzahl."
+    },
+    {
+      "title": "Die ersten 30 Tage",
+      "text": "4–6 günstige Tests, mit denen du deine wichtigste Annahme prüfst, bevor du investierst."
+    }
+  ],
+  "howH": "In drei Schritten zu deinem Bericht",
+  "steps": [
+    {
+      "time": "8 Minuten",
+      "title": "Fragebogen ausfüllen",
+      "text": "Idee, Kunden, Ort, Aufenthaltsstatus, Erfahrung und grobe Zahlen. Schätzungen reichen."
+    },
+    {
+      "time": "Ca. 30 Minuten",
+      "title": "Prüfung und Berechnung",
+      "text": "Unser Regelwerk und Rechenmodell erstellen einen Entwurf. Ein Mensch liest ihn und korrigiert ihn."
+    },
+    {
+      "time": "Per E-Mail",
+      "title": "Bericht lesen und speichern",
+      "text": "Du bekommst einen persönlichen Link und kannst den Bericht als PDF speichern."
+    }
+  ],
+  "smpH": "So sieht dein Bericht aus",
+  "smpP": "Auszug aus einem echten Bericht (anonymisiert): ein Elektro-Prüfservice im Westerwald.",
+  "smpList": [
+    "Score und Ampel auf einen Blick",
+    "Konkrete Hürden mit zuständiger Stelle",
+    "Zahlen aus echten Marktpreisen",
+    "Klare nächste Schritte statt allgemeiner Tipps"
+  ],
+  "pvtitle": "DGUV-V3-Prüfservice, Westerwald",
+  "sample": "{{skor 76 | grün | Trägt: Die Nachfrage kommt aus einer gesetzlichen Pflicht, der Markt zahlt heute schon, die Erfahrung ist da. Die eigentliche Aufgabe ist Kundengewinnung.}}\n\n{{kpi 7.900 € | nötiger Monatsumsatz (Annahme)}}\n{{kpi ≈ 285 € | Marktpreis je Maschine}}\n{{kpi 16.872 € | Gründungszuschuss, 6 Monate}}\n\n| Dimension | Punkte | Schwachstelle |\n|---|---|---|\n| Nachfrage | 4 | Erst ein Kundengespräch |\n| Vertrieb | 3 | Kanal noch ungetestet |\n| Gründerprofil | 5 | – |\n\n{{grafik Nötige Prüftage pro Monat}}\n{{bar Büro- und Kleingeräte | 12-20 | Tage}}\n{{bar Industriemaschinen, Subunternehmer | 5-9 | Tage}}\n{{bar Industriemaschinen, eigene Kunden | 3-5 | Tage | vurgu}}",
+  "aboutH": "Wer hinter dem Gründungs-Check steht",
+  "aboutBig": "Ehrlich statt schöngerechnet.",
+  "aboutBadge": "Wir sagen dir auch, wenn deine Idee so nicht trägt – und was du ändern müsstest, damit sie trägt.",
+  "aboutP": [
+    "Gründungs-Check ist ein Angebot der TechNS UG (haftungsbeschränkt) aus Oberursel bei Frankfurt. Gegründet und geführt von Halil Yaprakli, Ökonom mit Masterabschluss, der seit Jahren Gründer:innen, Studierende und Fachkräfte auf ihrem Weg nach und in Deutschland begleitet und Geschäftsprozesse in digitale Systeme übersetzt.",
+    "Uns ist aufgefallen: Gute Informationen gibt es genug, bei IHK, Handwerkskammer und Arbeitsagentur. Was fehlt, ist jemand, der sie auf <i>deine</i> Idee anwendet, bevor du Geld ausgibst. Genau das macht der Check – auf Deutsch und auf Türkisch."
+  ],
+  "howWeH": "Wie wir arbeiten",
+  "howWe": "Hinter jedem Bericht stehen ein dokumentiertes Regelwerk mit Quellen und Prüfdatum und ein Rechenmodell für die Zahlen. Den Text entwirft eine KI; vor dem Versand liest ihn ein Mensch und korrigiert ihn.",
+  "limits": "<b>Was der Bericht nicht ist:</b> keine Rechts-, Steuer- oder Finanzberatung und kein Amt. Wo es darauf ankommt, sagen wir dir, wer verbindlich entscheidet – Handwerkskammer, Ausländerbehörde, Steuerberater oder Arbeitsagentur.",
+  "aboutFacts": [
+    {
+      "label": "Unternehmen",
+      "value": "TechNS UG (haftungsbeschränkt)"
+    },
+    {
+      "label": "Sitz",
+      "value": "Oberursel (Taunus) bei Frankfurt"
+    },
+    {
+      "label": "Register",
+      "value": "Amtsgericht Bad Homburg, HRB 16236"
+    },
+    {
+      "label": "Geschäftsführer",
+      "value": "Halil Yaprakli"
+    }
+  ],
+  "faqH": "Häufige Fragen",
+  "faqP": "Deine Frage ist nicht dabei? Schreib uns an info@dgitmarkt.de.",
+  "faq": [
+    {
+      "q": "Was kostet der Check?",
+      "a": "In der Testphase ist der Bericht für die ersten 20 Personen kostenlos. Wir möchten wissen, ob er dir wirklich hilft – deshalb bitten wir nach dem Bericht um zwei Minuten Rückmeldung."
+    },
+    {
+      "q": "Wie schnell bekomme ich den Bericht?",
+      "a": "In der Regel in etwa 30 Minuten. Fehlt eine entscheidende Angabe, fragen wir kurz per E-Mail nach."
+    },
+    {
+      "q": "Wer schreibt den Bericht?",
+      "a": "Ein KI-Modell erstellt den Entwurf auf Grundlage unseres Regelwerks und Rechenmodells. Ein Mensch prüft und korrigiert ihn vor dem Versand."
+    },
+    {
+      "q": "Was passiert mit meinen Daten?",
+      "a": "Die Angaben liegen auf Servern in Frankfurt und werden spätestens 90 Tage nach dem Bericht gelöscht. An das KI-Modell geben wir deine Antworten ohne Namen und E-Mail weiter. Keine Cookies, keine Werbe-Tracker."
+    },
+    {
+      "q": "Ersetzt der Bericht einen Steuerberater oder eine Behörde?",
+      "a": "Nein. Er ist eine fundierte Vorprüfung. Er zeigt dir, welche Fragen du wem stellen musst – und spart dir so Zeit und Geld bei der Beratung."
+    },
+    {
+      "q": "Bekomme ich auch einen Businessplan?",
+      "a": "Auf Wunsch erstellen wir auf Basis des Checks einen Businessplan mit Finanzplan, z. B. für den Gründungszuschuss oder die Bank. Das bieten wir nach dem Bericht an."
+    },
+    {
+      "q": "Geht das auch auf Türkisch?",
+      "a": "Ja. Der Fragebogen und der Bericht sind auf Deutsch und Türkisch verfügbar."
+    }
+  ],
+  "finH": "Prüf deine Idee, bevor du unterschreibst.",
+  "finP": "Acht Minuten jetzt können dir einen teuren Mietvertrag, eine Abmahnung oder Monate ohne Einkommen ersparen.",
+  "pages": "Seiten",
+  "legal": "Rechtliches",
+  "imp": "Impressum",
+  "dsLink": "Datenschutz (im Fragebogen)",
+  "dsLine": "Diese Seite setzt keine Cookies. Besuche zählen wir anonym mit Vercel Web Analytics. Datenschutzhinweise findest du im Fragebogen.",
+  "impTitle": "Angaben gemäß § 5 DDG",
+  "phone": "Telefon",
+  "email": "E-Mail"
+}
