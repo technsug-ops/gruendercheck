@@ -1,1 +1,36 @@
-{}
+{
+  "kicker": "İş Fikri Kontrolü – Geri bildirim",
+  "title": "Raporun ne kadar işine yaradı?",
+  "lead": "İki dakika, beş soru. Dürüst cevabın bu kontrolü geliştirmemize yardım ediyor.",
+  "q_useful": "Rapor kararın için ne kadar faydalı oldu?",
+  "s_low": "hiç",
+  "s_high": "çok",
+  "q_best": "En faydalı olan neydi?",
+  "q_missing": "Eksik veya yanlış olan neydi?",
+  "q_next": "Senin için sıradaki adım ne olurdu?",
+  "next": {
+    "o0": "Banka veya Arbeitsagentur için iş planı",
+    "o1": "Raporum üzerine 30 dakikalık görüşme",
+    "o2": "Şimdilik bir şey istemiyorum"
+  },
+  "q_wtp": "Bu rapora dayanan, bankaya sunulabilir bir iş planı senin için ne kadar eder?",
+  "wtp": {
+    "o0": "Hiç – sadece ücretsizse",
+    "o1": "50 €'dan az",
+    "o2": "50–150 €",
+    "o3": "150–300 €",
+    "o4": "300 €'dan fazla"
+  },
+  "submit": "Gönder",
+  "sending": "Gönderiliyor …",
+  "err": "Lütfen işaretli soruları cevapla.",
+  "err_send": "Gönderilemedi. Lütfen biraz sonra tekrar dene.",
+  "doneh": "Geri bildirimin için teşekkürler!",
+  "donep": "Bir sonraki adım seçtiysen e-postayla dönüyorum.",
+  "invh": "Bu link geçerli değil.",
+  "invp": "Lütfen e-postadaki linki kullan.",
+  "imp_summary": "Impressum",
+  "imp_lead": "Angaben gemäß § 5 DDG",
+  "imp_phone": "Telefon:",
+  "imp_email": "E-Mail:"
+}
