@@ -14,6 +14,6 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // admin, api ve dosyalar dil yönlendirmesinin dışında.
-  matcher: ["/((?!api|admin|_next|_vercel|.*\..*).*)"],
+  // admin, rapor (yönetici önizlemesi), api ve dosyalar dil yönlendirmesinin dışında.
+  matcher: ["/((?!api|admin|rapor|_next|_vercel|.*\\..*).*)"],
 };
