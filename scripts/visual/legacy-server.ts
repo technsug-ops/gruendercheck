@@ -11,6 +11,7 @@ const REWRITES: Record<string, string> = {
   "/de/plan": "/plan", "/tr/plan": "/plan", "/de/feedback": "/feedback", "/tr/feedback": "/feedback", "/de/r": "/bericht", "/tr/r": "/bericht",
 };
 const TYPES: Record<string, string> = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".webmanifest": "application/manifest+json" };
+const PREFILL = ["lang", "business_type", "customers", "situation", "founders", "price", "unit_cost", "fixed_costs", "rent", "investment", "personal_need", "price_is_net"];
 const known = (id: string | null) => id === DEV_IDS.de || id === DEV_IDS.tr;
 const langOf = (id: string | null) => (id === DEV_IDS.tr ? "tr" : "de") as "de" | "tr";
 
@@ -20,7 +21,12 @@ function api(path: string, q: URLSearchParams, method: string) {
   if (!known(id)) return null;
   if (path === "/api/report") return { ok: true, lang, md: devReportMd(lang), sent_at: DEV_SENT_AT };
   if (path === "/api/feedback") return { ok: true, done: false };
-  if (path === "/api/plan") { const { idea: _i, current_solution: _c, city: _ci, residence: _r, capital: _ca, ...prefill } = devAnswers(lang); return { ok: true, prefill, plan: null }; }
+  if (path === "/api/plan") {
+    // v1 api/plan.js PREFILL: sadece sayılar ve türler, isim/e-posta yok.
+    const a: Record<string, string> = devAnswers(lang);
+    const prefill = Object.fromEntries(PREFILL.filter((k) => a[k] !== undefined).map((k) => [k, a[k]]));
+    return { ok: true, prefill, plan: null };
+  }
   return { ok: false };
 }
 

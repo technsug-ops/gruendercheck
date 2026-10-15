@@ -45,3 +45,6 @@ next-env.d.ts
 
 # yerel geliştirme veritabanı (PGlite)
 /.data/
+
+# Claude Code çalışma ağaçları
+/.claude/worktrees/
