@@ -30,9 +30,37 @@ function api(path: string, q: URLSearchParams, method: string) {
   return { ok: false };
 }
 
+// Yönetici paneli (admin.html): v1 Bearer şifreyle sorar; liste yeni sunucudan aynen alınır (iki sürüm aynı kayıtları gösterir).
+// Yeni sunucuya bir kez çerezle giriş yapılır. NEW_URL (varsayılan http://localhost:3200), ADMIN_PASSWORD.
+const NEW_URL = process.env.NEW_URL || "http://localhost:3200";
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "";
+let adminCookie: Promise<string> | null = null;
+async function newServerCookie(): Promise<string> {
+  const r = await fetch(`${NEW_URL}/api/admin/session`, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ password: ADMIN_PASSWORD }) });
+  if (!r.ok) throw new Error(`yeni sunucuya giriş olmadı: ${r.status}`);
+  return (r.headers.get("set-cookie") || "").split(";")[0];
+}
+async function adminApi(path: string, method: string, auth: string): Promise<{ status: number; body: unknown }> {
+  if (!ADMIN_PASSWORD || auth !== `Bearer ${ADMIN_PASSWORD}`) return { status: 401, body: { error: "unauthorized" } };
+  if (method !== "GET") return { status: 200, body: { ok: true } };
+  // Yeni sunucu VERCEL_API_TOKEN olmadan aynısını döner.
+  if (path === "/api/stats") return { status: 200, body: { error: "no_token" } };
+  adminCookie ??= newServerCookie();
+  const cookie = await adminCookie.catch((e) => { adminCookie = null; throw e; });
+  const r = await fetch(`${NEW_URL}/api/submissions`, { headers: { cookie } });
+  return { status: r.status, body: await r.json() };
+}
+const isAdminApi = (path: string, method: string) =>
+  ["/api/submissions", "/api/stats", "/api/draft"].includes(path) || (path === "/api/report" && method !== "GET");
+
 const port = Number(process.argv[2] || 3201);
-createServer((req, res) => {
+createServer(async (req, res) => {
   const u = new URL(req.url || "/", "http://x");
+  if (isAdminApi(u.pathname, req.method || "GET")) {
+    const r = await adminApi(u.pathname, req.method || "GET", req.headers.authorization || "").catch((e) => ({ status: 500, body: { error: String(e) } }));
+    res.writeHead(r.status, { "content-type": "application/json" });
+    return res.end(JSON.stringify(r.body));
+  }
   if (u.pathname.startsWith("/api/")) {
     const body = api(u.pathname, u.searchParams, req.method || "GET");
     res.writeHead(body ? 200 : 404, { "content-type": "application/json" });
