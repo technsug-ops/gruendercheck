@@ -1,1 +1,219 @@
-{}
+{
+  "kicker": "Gründungs-Check – Businessplan",
+  "title": "Daten für deinen Businessplan",
+  "lead": "Mit diesen Angaben erstellen wir deinen Businessplan mit Kapitalbedarf, Finanzierung, Rentabilität und Liquidität für 3 Jahre. Schätzungen reichen; du kannst das Formular später erneut senden, die letzte Version zählt.",
+  "costsub": "Ohne deinen eigenen Lebensunterhalt – der kommt weiter unten.",
+  "costhint": "Im Check hattest du insgesamt {x} € angegeben.",
+  "lineh": {
+    "name": "Bezeichnung",
+    "price": "Preis (€)",
+    "cost": "Wareneinsatz (€)",
+    "share": "Anteil (%)"
+  },
+  "consent": "Ich bin einverstanden, dass diese Angaben zur Erstellung meines Businessplans verarbeitet werden (Datenschutz siehe unten).",
+  "submit": "Angaben senden",
+  "sending": "Wird gesendet …",
+  "doneh": "Danke – deine Angaben sind angekommen.",
+  "donep": "Wir melden uns mit deinem Businessplan per E-Mail. Du kannst diese Seite erneut öffnen und Angaben korrigieren.",
+  "invh": "Dieser Link ist nicht gültig.",
+  "invp": "Bitte nutze den Link aus unserer E-Mail oder antworte auf die E-Mail.",
+  "err_required": "Bitte fülle dieses Feld aus.",
+  "err_consent": "Bitte bestätige die Einwilligung.",
+  "err_send": "Das hat nicht geklappt. Bitte versuch es in ein paar Minuten noch einmal.",
+  "disclaimer": "Der Businessplan ist eine Planungshilfe und keine Rechts-, Steuer- oder Finanzberatung.",
+  "dsh": "Datenschutz",
+  "ds1": "<b>Verantwortlich:</b> {company}, {address}. Kontakt: {email}",
+  "ds2": "Wir verarbeiten diese Angaben nur zur Erstellung deines Businessplans (Art. 6 Abs. 1 lit. a DSGVO, jederzeit per E-Mail widerrufbar). Speicherung bei Vercel Inc. in Frankfurt am Main, Löschung spätestens 90 Tage nach Übergabe des Plans. Für die Erstellung nutzen wir KI-gestützte Werkzeuge ohne Namen und E-Mail-Adresse. Keine Cookies, kein Tracking. Du hast die Rechte aus Art. 15–21 DSGVO und ein Beschwerderecht bei der Aufsichtsbehörde.",
+  "imp": "Impressum",
+  "imp1": "Angaben gemäß § 5 DDG",
+  "imp2": "{company}<br></br>{address}<br></br>{ceo}<br></br>{register}<br></br>{vat}<br></br>Telefon: {phone}<br></br>E-Mail: <mail>{email}</mail>",
+  "sections": {
+    "offer": {
+      "h": "Angebot und Umsatz",
+      "sub": "Daraus berechnen wir Umsatz und Wareneinsatz für 3 Jahre."
+    },
+    "market": {
+      "h": "Markt und Wettbewerb",
+      "sub": "Stichpunkte reichen – wir formulieren daraus den Text."
+    },
+    "inv": {
+      "h": "Investitionen (einmalig, €)",
+      "sub": "Leer lassen, was nicht anfällt."
+    },
+    "costs": {
+      "h": "Laufende Kosten (€ pro Monat)"
+    },
+    "fin": {
+      "h": "Finanzierung"
+    },
+    "priv": {
+      "h": "Privater Bedarf (€ pro Monat)",
+      "sub": "Banken prüfen, ob das Geschäft deinen Lebensunterhalt trägt."
+    },
+    "person": {
+      "h": "Du und die Risiken"
+    }
+  },
+  "fields": {
+    "start_month": {
+      "label": "Geplanter Start (Monat)"
+    },
+    "lines": {
+      "label": "Deine Angebote (bis zu 3)",
+      "hint": "Preis inkl. MwSt., wie der Kunde zahlt. Anteil = wie viel Prozent deiner Verkäufe darauf entfallen."
+    },
+    "units_m1": {
+      "label": "Verkäufe im 1. Monat",
+      "hint": "Anzahl Verkäufe / Kunden / Aufträge"
+    },
+    "units_m12": {
+      "label": "Verkäufe im 12. Monat"
+    },
+    "growth_y2": {
+      "label": "Wachstum im 2. Jahr (%)"
+    },
+    "growth_y3": {
+      "label": "Wachstum im 3. Jahr (%)"
+    },
+    "payment_days": {
+      "label": "Zahlungsziel deiner Kunden (Tage)"
+    },
+    "t_offer": {
+      "label": "Dein Angebot im Detail",
+      "hint": "Was genau, in welcher Qualität, zu welchen Zeiten?"
+    },
+    "t_target": {
+      "label": "Wer genau sind deine Kunden?",
+      "hint": "Alter, Lage, Bedarf, wie viele gibt es im Einzugsgebiet"
+    },
+    "t_competitors": {
+      "label": "Wichtigste Wettbewerber",
+      "hint": "Namen, Preise, was sie gut und schlecht machen"
+    },
+    "t_usp": {
+      "label": "Warum kaufen Kunden bei dir und nicht dort?"
+    },
+    "t_location": {
+      "label": "Standort",
+      "hint": "Adresse/Lage, Fläche, Laufkundschaft, Parken"
+    },
+    "t_marketing": {
+      "label": "Wie gewinnst du Kunden?",
+      "hint": "Kanäle, Aktionen, Budget"
+    },
+    "inv_equipment": {
+      "label": "Einrichtung, Ausstattung, Maschinen"
+    },
+    "inv_renovation": {
+      "label": "Umbau, Renovierung"
+    },
+    "inv_vehicle": {
+      "label": "Fahrzeug"
+    },
+    "inv_it": {
+      "label": "IT, Software, Website"
+    },
+    "inv_deposit": {
+      "label": "Mietkaution"
+    },
+    "inv_stock": {
+      "label": "Erstausstattung Waren / Material"
+    },
+    "inv_founding": {
+      "label": "Gründungskosten (Notar, Anmeldung, Beratung)"
+    },
+    "inv_launch": {
+      "label": "Werbung zum Start"
+    },
+    "c_rent": {
+      "label": "Miete inkl. Nebenkosten"
+    },
+    "c_utilities": {
+      "label": "Energie, Wasser"
+    },
+    "c_insurance": {
+      "label": "Versicherungen, Beiträge"
+    },
+    "c_marketing": {
+      "label": "Marketing, Werbung"
+    },
+    "c_vehicle": {
+      "label": "Kfz-Kosten"
+    },
+    "c_it_phone": {
+      "label": "Telefon, Internet, Software"
+    },
+    "c_accounting": {
+      "label": "Buchhaltung, Steuerberatung"
+    },
+    "c_other": {
+      "label": "Sonstiges"
+    },
+    "c_staff_count": {
+      "label": "Mitarbeitende (Anzahl)"
+    },
+    "c_staff_gross": {
+      "label": "Bruttolöhne gesamt pro Monat",
+      "hint": "Ohne dich selbst"
+    },
+    "t_org": {
+      "label": "Organisation: Wer macht was? Lieferanten, Partner, Öffnungszeiten"
+    },
+    "f_equity": {
+      "label": "Eigenkapital, das du einbringst (€)"
+    },
+    "f_private_loan": {
+      "label": "Darlehen von Familie/Freunden (€)"
+    },
+    "f_private_repay": {
+      "label": "Davon Rückzahlung pro Monat (€)"
+    },
+    "f_grants": {
+      "label": "Zuschüsse, sicher zugesagt (€)"
+    },
+    "f_bank_loan": {
+      "label": "Benötigter Bankkredit (€)"
+    },
+    "f_bank_rate": {
+      "label": "Zinssatz (%)",
+      "hint": "Unbekannt? 7 eintragen"
+    },
+    "f_bank_years": {
+      "label": "Laufzeit (Jahre)"
+    },
+    "f_bank_grace": {
+      "label": "Tilgungsfreie Monate"
+    },
+    "gz_apply": {
+      "label": "Gründungszuschuss beantragen?",
+      "options": {
+        "none": "Bitte wählen",
+        "yes": "Ja",
+        "no": "Nein"
+      }
+    },
+    "alg1_monthly": {
+      "label": "Dein ALG I pro Monat (€)"
+    },
+    "pv_living": {
+      "label": "Lebenshaltung (Miete, Essen, Sonstiges)"
+    },
+    "pv_health": {
+      "label": "Kranken- und Pflegeversicherung"
+    },
+    "pv_pension": {
+      "label": "Altersvorsorge"
+    },
+    "pv_other_income": {
+      "label": "Andere Einkünfte im Haushalt",
+      "hint": "z. B. Partner, Nebenjob"
+    },
+    "t_cv": {
+      "label": "Dein Werdegang",
+      "hint": "Ausbildung, Stationen, Erfolge, die zum Vorhaben passen"
+    },
+    "t_risks": {
+      "label": "Was kann schiefgehen, und was tust du dann?"
+    }
+  }
+}

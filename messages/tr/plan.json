@@ -1,1 +1,219 @@
-{}
+{
+  "kicker": "İş Fikri Kontrolü – İş planı",
+  "title": "İş planın için bilgiler",
+  "lead": "Bu bilgilerle 3 yıllık sermaye ihtiyacı, finansman, kârlılık ve nakit akışını içeren iş planını hazırlıyorum. Plan Almanca hazırlanır (banka ve Arbeitsagentur için), yanında Türkçe özet gelir. Tahmin yeterli; formu sonra tekrar gönderebilirsin, son gönderim geçerli olur.",
+  "costsub": "Kendi yaşam giderin hariç, o aşağıda.",
+  "costhint": "Kontrol formunda toplam {x} € yazmıştın.",
+  "lineh": {
+    "name": "Ad",
+    "price": "Fiyat (€)",
+    "cost": "Mal maliyeti (€)",
+    "share": "Pay (%)"
+  },
+  "consent": "Bu bilgilerin iş planımın hazırlanması için işlenmesine onay veriyorum (Datenschutz aşağıda).",
+  "submit": "Bilgileri gönder",
+  "sending": "Gönderiliyor …",
+  "doneh": "Teşekkürler, bilgilerin ulaştı.",
+  "donep": "İş planınla e-postayla döneceğim. Bu sayfayı tekrar açıp bilgileri düzeltebilirsin.",
+  "invh": "Bu link geçerli değil.",
+  "invp": "Lütfen e-postadaki linki kullan veya e-postaya cevap yaz.",
+  "err_required": "Lütfen bu alanı doldur.",
+  "err_consent": "Lütfen onay kutusunu işaretle.",
+  "err_send": "Gönderilemedi. Lütfen birkaç dakika sonra tekrar dene.",
+  "disclaimer": "İş planı bir planlama yardımıdır; hukuki, vergisel veya finansal danışmanlık değildir.",
+  "dsh": "Datenschutz (veri koruma)",
+  "ds1": "<b>Sorumlu:</b> {company}, {address}. İletişim: {email}",
+  "ds2": "Bu bilgileri yalnızca iş planını hazırlamak için işliyoruz (DSGVO md. 6/1-a, e-postayla her zaman geri alınabilir). Vercel Inc.'in Frankfurt sunucularında saklanır, plan teslim edildikten en geç 90 gün sonra silinir. Hazırlarken adın ve e-postan olmadan yapay zeka destekli araçlar kullanıyoruz. Çerez ve takip yok. DSGVO md. 15–21 hakların ve denetim makamına şikayet hakkın var.",
+  "imp": "Impressum",
+  "imp1": "Angaben gemäß § 5 DDG",
+  "imp2": "{company}<br></br>{address}<br></br>{ceo}<br></br>{register}<br></br>{vat}<br></br>Telefon: {phone}<br></br>E-Mail: <mail>{email}</mail>",
+  "sections": {
+    "offer": {
+      "h": "Ürün ve satış",
+      "sub": "Bunlardan 3 yıllık ciro ve mal maliyetini hesaplıyorum."
+    },
+    "market": {
+      "h": "Pazar ve rakipler",
+      "sub": "Madde madde yazman yeterli, metni ben oluşturuyorum."
+    },
+    "inv": {
+      "h": "Kuruluş yatırımları (tek seferlik, €)",
+      "sub": "Olmayanı boş bırak."
+    },
+    "costs": {
+      "h": "Aylık giderler (€)"
+    },
+    "fin": {
+      "h": "Finansman"
+    },
+    "priv": {
+      "h": "Kişisel ihtiyaç (aylık €)",
+      "sub": "Banka, işin seni geçindirip geçindirmediğine bakar."
+    },
+    "person": {
+      "h": "Sen ve riskler"
+    }
+  },
+  "fields": {
+    "start_month": {
+      "label": "Planlanan başlangıç ayı"
+    },
+    "lines": {
+      "label": "Ürün / hizmetlerin (en fazla 3)",
+      "hint": "Fiyat KDV dahil, müşterinin ödediği. Pay = satışlarının yüzde kaçı bu ürün."
+    },
+    "units_m1": {
+      "label": "1. ayda kaç satış",
+      "hint": "Satış, müşteri veya iş adedi"
+    },
+    "units_m12": {
+      "label": "12. ayda kaç satış"
+    },
+    "growth_y2": {
+      "label": "2. yılda büyüme (%)"
+    },
+    "growth_y3": {
+      "label": "3. yılda büyüme (%)"
+    },
+    "payment_days": {
+      "label": "Müşterilerin kaç gün sonra ödüyor"
+    },
+    "t_offer": {
+      "label": "Ürün / hizmetini ayrıntılı anlat",
+      "hint": "Tam olarak ne, hangi kalitede, hangi saatlerde?"
+    },
+    "t_target": {
+      "label": "Müşterilerin tam olarak kim?",
+      "hint": "Yaş, konum, ihtiyaç, bölgede kaç kişi/firma"
+    },
+    "t_competitors": {
+      "label": "En önemli rakipler",
+      "hint": "İsim, fiyat, neyi iyi ve kötü yapıyorlar"
+    },
+    "t_usp": {
+      "label": "Müşteri neden onlardan değil senden alsın?"
+    },
+    "t_location": {
+      "label": "Konum",
+      "hint": "Adres, metrekare, yaya trafiği, park"
+    },
+    "t_marketing": {
+      "label": "Müşteriyi nasıl bulacaksın?",
+      "hint": "Kanallar, kampanyalar, bütçe"
+    },
+    "inv_equipment": {
+      "label": "Mobilya, ekipman, makine"
+    },
+    "inv_renovation": {
+      "label": "Tadilat"
+    },
+    "inv_vehicle": {
+      "label": "Araç"
+    },
+    "inv_it": {
+      "label": "Bilgisayar, yazılım, web sitesi"
+    },
+    "inv_deposit": {
+      "label": "Kira depozitosu"
+    },
+    "inv_stock": {
+      "label": "İlk mal / malzeme stoğu"
+    },
+    "inv_founding": {
+      "label": "Kuruluş masrafları (noter, kayıt, danışmanlık)"
+    },
+    "inv_launch": {
+      "label": "Açılış reklamı"
+    },
+    "c_rent": {
+      "label": "Kira (aidat dahil)"
+    },
+    "c_utilities": {
+      "label": "Elektrik, su, ısınma"
+    },
+    "c_insurance": {
+      "label": "Sigortalar, oda aidatları"
+    },
+    "c_marketing": {
+      "label": "Pazarlama, reklam"
+    },
+    "c_vehicle": {
+      "label": "Araç giderleri"
+    },
+    "c_it_phone": {
+      "label": "Telefon, internet, yazılım"
+    },
+    "c_accounting": {
+      "label": "Muhasebe, Steuerberater"
+    },
+    "c_other": {
+      "label": "Diğer"
+    },
+    "c_staff_count": {
+      "label": "Çalışan sayısı"
+    },
+    "c_staff_gross": {
+      "label": "Toplam aylık brüt maaş",
+      "hint": "Kendin hariç"
+    },
+    "t_org": {
+      "label": "Organizasyon: kim ne yapıyor, tedarikçiler, ortaklar, çalışma saatleri"
+    },
+    "f_equity": {
+      "label": "Koyacağın öz sermaye (€)"
+    },
+    "f_private_loan": {
+      "label": "Aile/arkadaştan borç (€)"
+    },
+    "f_private_repay": {
+      "label": "Bunun aylık geri ödemesi (€)"
+    },
+    "f_grants": {
+      "label": "Kesin söz verilmiş hibe (€)"
+    },
+    "f_bank_loan": {
+      "label": "İhtiyaç duyulan banka kredisi (€)"
+    },
+    "f_bank_rate": {
+      "label": "Faiz oranı (%)",
+      "hint": "Bilmiyorsan 7 yaz"
+    },
+    "f_bank_years": {
+      "label": "Vade (yıl)"
+    },
+    "f_bank_grace": {
+      "label": "Anaparasız ay sayısı"
+    },
+    "gz_apply": {
+      "label": "Gründungszuschuss başvurusu yapılacak mı?",
+      "options": {
+        "none": "Seç",
+        "yes": "Evet",
+        "no": "Hayır"
+      }
+    },
+    "alg1_monthly": {
+      "label": "Aylık ALG I tutarın (€)"
+    },
+    "pv_living": {
+      "label": "Yaşam gideri (ev kirası, yemek, diğer)"
+    },
+    "pv_health": {
+      "label": "Sağlık ve bakım sigortası"
+    },
+    "pv_pension": {
+      "label": "Emeklilik birikimi"
+    },
+    "pv_other_income": {
+      "label": "Hanedeki diğer gelirler",
+      "hint": "Örn. eş, ek iş"
+    },
+    "t_cv": {
+      "label": "Özgeçmişin",
+      "hint": "Eğitim, iş yerleri, bu işe uygun başarılar"
+    },
+    "t_risks": {
+      "label": "Ne ters gidebilir, o zaman ne yaparsın?"
+    }
+  }
+}
