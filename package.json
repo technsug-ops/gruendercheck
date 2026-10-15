@@ -13,7 +13,8 @@
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx --tsconfig tsconfig.json scripts/seed-dev.ts",
     "visual:legacy": "tsx scripts/visual/legacy-server.ts",
-    "visual:compare": "tsx scripts/visual/compare.ts"
+    "visual:compare": "tsx scripts/visual/compare.ts",
+    "kb": "tsx scripts/build-kb.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.134.0",
