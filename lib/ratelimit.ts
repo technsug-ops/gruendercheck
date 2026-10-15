@@ -15,5 +15,7 @@ export async function allow(key: string, max: number, windowMs: number): Promise
   return true;
 }
 
+// Vercel x-forwarded-for başlığını kendisi yazar (istemcinin gönderdiği değer sahtelemeye karşı ezilir).
+// Vercel dışında (ör. kendi sunucuda next start) bu başlığa güvenilmez; orada önüne bir proxy konmalı.
 export const clientIp = (request: Request) =>
   (request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "").split(",")[0].trim();
