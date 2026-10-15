@@ -8,6 +8,7 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { chromium, type Page } from "@playwright/test";
 import pixelmatch from "pixelmatch";
 import { PNG } from "pngjs";
+import { pages as admin } from "./pages/admin";
 import { pages as check } from "./pages/check";
 import { pages as feedback } from "./pages/feedback";
 import { pages as plan } from "./pages/plan";
@@ -16,7 +17,7 @@ import { pages as start } from "./pages/start";
 import type { VisualPage } from "./types";
 
 const OLD = `http://localhost:${process.env.OLD_PORT ?? 3201}`, NEW = `http://localhost:${process.env.NEW_PORT ?? 3200}`;
-const ALL: VisualPage[] = [...start, ...check, ...report, ...feedback, ...plan];
+const ALL: VisualPage[] = [...start, ...check, ...report, ...feedback, ...plan, ...admin];
 const WIDTHS = [1280, 390];
 const OUT = ".data/visual";
 
