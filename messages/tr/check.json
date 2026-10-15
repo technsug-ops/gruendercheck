@@ -1,1 +1,326 @@
-{}
+{
+  "brand": "İş Fikri Kontrolü",
+  "chip1": "≈ 8 dakika",
+  "chip2": "Rapor ≈ 30 dakikada",
+  "chip3": "Veriler Frankfurt'ta, çerez yok",
+  "badge": "İlk 20 kişi için ücretsiz",
+  "title": "İş fikrin Almanya'da yürür mü?",
+  "lead": "Formu doldur (≈ 8 dakika). Yaklaşık 30 dakika içinde fikrine özel bir rapor gönderiyorum: dürüst, somut ve rakamlarla.",
+  "progress": "Zorunlu alanlar",
+  "stepof": "Adım {n} / 4",
+  "s1": "Fikrin",
+  "s2": "Sen",
+  "s3": "Rakamlar",
+  "s4": "Son olarak",
+  "gets": "Raporunda neler var",
+  "points": [
+    "Oturum iznin bu işe izin veriyor mu? Meister veya özel izin gerekiyor mu?",
+    "Hangi şirket türü uygun: Gewerbe, UG veya başka bir şey?",
+    "Kaç müşteriyle başa baş noktasına gelirsin, ne kadar sermaye lazım?",
+    "Para harcamadan önce ilk 30 günde neyi test etmelisin?"
+  ],
+  "trust": [
+    "Frankfurt'taki sunucularda saklanır",
+    "Çerez yok, reklam takibi yok",
+    "İstediğin an silinir"
+  ],
+  "s1sub": "Bir arkadaşına anlatır gibi yaz.",
+  "q1": "İş fikrini 3–5 cümleyle anlat.",
+  "q1h": "Ne satıyorsun, kime?",
+  "q2": "Müşterilerin bu ihtiyacı bugün nasıl karşılıyor?",
+  "q2h": "Bugün kimden alıyorlar, buna yaklaşık ne ödüyorlar?",
+  "q3": "Bu fikir hakkında kaç potansiyel müşteriyle konuştun?",
+  "q3b": "Biri sana ödeme yaptı veya kesin söz verdi mi?",
+  "q4": "İşin türü",
+  "q4b": "Müşterilerin kim?",
+  "q5": "Şehir ve semt (veya posta kodu)",
+  "s2sub": "Bu bilgiler hangi kuralların sana uygulanacağını belirliyor.",
+  "q6": "Oturum durumun",
+  "q6h": "Önemli, çünkü her oturum izni serbest çalışmaya izin vermiyor.",
+  "q7": "Şu anki durumun",
+  "q8": "Haftada kaç saat ayırabilirsin?",
+  "q9": "Kaç kurucu olacaksınız?",
+  "q10": "Bu işle ilgili eğitimin ve deneyimin",
+  "q10h": "Örn. Geselle/Meister belgesi, üniversite, kaç yıl deneyim",
+  "s3sub": "Tahmin yeterli. Boş bıraktıklarını sektör ortalamasıyla doldurup raporda belirtiyorum.",
+  "q11": "Başlangıç için ne kadar paran var?",
+  "q12m": "Nasıl para kazanacaksın?",
+  "q12a": "Bir satışın ortalama fiyatı (€)",
+  "q12a_sub": "Müşteri başına aylık ücret (€)",
+  "q12a_com": "Aracılık başına ortalama komisyon (€)",
+  "q12ah": "Müşterinin ödediği, KDV dahil",
+  "q12u": "Fiyatımı henüz bilmiyorum",
+  "q12cp": "Rakipler yaklaşık ne kadar alıyor? (€, isteğe bağlı)",
+  "q12c": "Bir satışın malzeme/mal maliyeti (€)",
+  "q12ch": "Yoksa boş bırak",
+  "q12b": "Aylık sabit gider (€)",
+  "q12bh": "Kira, sigorta, yazılım vb.",
+  "q12r": "Bunun ne kadarı kira? (€/ay)",
+  "q12rh": "Mekanın sıcak kirası",
+  "q12d": "Kuruluş yatırımı (€)",
+  "q12dh": "Bir kerelik: cihaz, araç, tefrişat, mal",
+  "q15": "Ayda kişisel olarak ne kadara ihtiyacın var? (€)",
+  "q15h": "Kira ve sağlık sigortası dahil",
+  "q12net": "Fiyatlarım net (KDV hariç) – müşterilerim şirketler.",
+  "q16": "Ürünü müşteriye kaç günde ulaştırabilirsin? (siparişten teslime)",
+  "s4sub": "Raporunu nereye gönderelim?",
+  "q13": "Seni en çok ne endişelendiriyor?",
+  "qname": "Adın (isteğe bağlı)",
+  "q14": "Raporun gönderileceği e-posta adresi",
+  "consent": "Bilgilerimin raporumun hazırlanması için işlenmesine onay veriyorum. Ayrıntılar aşağıdaki Datenschutz bölümünde.",
+  "submit": "Raporu iste",
+  "sending": "Gönderiliyor …",
+  "after": "Birazdan onay linki içeren bir e-posta alacaksın.",
+  "doneh": "Neredeyse tamam – lütfen e-postanı onayla.",
+  "donep": "Sana onay linki içeren bir e-posta gönderdik. Onayladıktan sonra raporun yaklaşık 30 dakika içinde gelir. E-posta gelmediyse spam klasörüne bak.",
+  "next": [
+    "Sana gönderdiğimiz e-postayı aç",
+    "„E-postamı onayla“ düğmesine tıkla",
+    "Raporun yaklaşık 30 dakikada gelir"
+  ],
+  "back": "Ana sayfaya dön",
+  "err_required": "Lütfen bu alanı doldur.",
+  "err_email": "Lütfen geçerli bir e-posta adresi gir.",
+  "err_consent": "Lütfen onay kutusunu işaretle.",
+  "err_price": "Lütfen bir fiyat yaz ya da „Fiyatımı henüz bilmiyorum“ kutusunu işaretle.",
+  "err_idea": "Lütfen fikrini en az 2–3 tam cümleyle anlat: ne sunuyorsun, kime ve nasıl.",
+  "err_sol": "Lütfen müşterilerin bugün bu ihtiyacı nasıl karşıladığını ve ne ödediğini kısaca yaz.",
+  "err_rate": "Bugün zaten birkaç başvuru gönderdin. Lütfen yarın tekrar dene ya da e-postamıza cevap yaz.",
+  "err_send": "Gönderilemedi. Lütfen birkaç dakika sonra tekrar dene.",
+  "disclaimer": "Rapor genel bilgidir, hukuki veya vergisel danışmanlık değildir.",
+  "dsh": "Datenschutz (veri koruma)",
+  "opt": {
+    "talked": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "0",
+        "Kimseyle"
+      ],
+      [
+        "1-5",
+        "1–5"
+      ],
+      [
+        "6-20",
+        "6–20"
+      ],
+      [
+        "20+",
+        "20'den fazla"
+      ]
+    ],
+    "paid": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "no",
+        "Hayır"
+      ],
+      [
+        "yes",
+        "Evet"
+      ]
+    ],
+    "business_type": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "location",
+        "Mekan (dükkan, kafe, salon)"
+      ],
+      [
+        "onsite_service",
+        "Müşteriye giderek hizmet"
+      ],
+      [
+        "online_service",
+        "Online hizmet"
+      ],
+      [
+        "online_products",
+        "Online ürün satışı"
+      ],
+      [
+        "production",
+        "Üretim"
+      ],
+      [
+        "other",
+        "Diğer"
+      ]
+    ],
+    "customers": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "b2c",
+        "Bireyler"
+      ],
+      [
+        "b2b",
+        "Şirketler"
+      ],
+      [
+        "both",
+        "İkisi de"
+      ]
+    ],
+    "rev_model": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "one_time",
+        "Müşteri/iş başına tek seferlik satış"
+      ],
+      [
+        "subscription",
+        "Aylık abonelik / bakım sözleşmesi"
+      ],
+      [
+        "project",
+        "Büyüklüğü değişen projeler"
+      ],
+      [
+        "commission",
+        "Komisyon / aracılık"
+      ]
+    ],
+    "residence": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "de_eu",
+        "Alman veya AB/EEA/İsviçre vatandaşı"
+      ],
+      [
+        "settlement",
+        "Niederlassungserlaubnis / Daueraufenthalt-EU"
+      ],
+      [
+        "student",
+        "Öğrenci oturumu"
+      ],
+      [
+        "job_search",
+        "Mezuniyet sonrası iş arama oturumu"
+      ],
+      [
+        "blue_card",
+        "Blaue Karte / Fachkraft"
+      ],
+      [
+        "family",
+        "Aile birleşimi"
+      ],
+      [
+        "other",
+        "Diğer"
+      ],
+      [
+        "abroad",
+        "Henüz Almanya'da değilim"
+      ]
+    ],
+    "situation": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "employed_full",
+        "Tam zamanlı çalışan"
+      ],
+      [
+        "employed_part",
+        "Yarı zamanlı çalışan"
+      ],
+      [
+        "alg1",
+        "İşsiz (ALG I)"
+      ],
+      [
+        "buergergeld",
+        "Bürgergeld"
+      ],
+      [
+        "student",
+        "Öğrenci"
+      ],
+      [
+        "self_employed",
+        "Zaten serbest çalışıyorum"
+      ]
+    ],
+    "founders": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "1",
+        "Tek başıma"
+      ],
+      [
+        "2",
+        "İki kişi"
+      ],
+      [
+        "3+",
+        "Üç veya daha fazla"
+      ]
+    ],
+    "capital": [
+      [
+        "",
+        "Seç"
+      ],
+      [
+        "0-5k",
+        "0–5.000 €"
+      ],
+      [
+        "5-15k",
+        "5.000–15.000 €"
+      ],
+      [
+        "15-50k",
+        "15.000–50.000 €"
+      ],
+      [
+        "50k+",
+        "50.000 €'dan fazla"
+      ]
+    ]
+  },
+  "ds": {
+    "p1": "<b>Sorumlu:</b> {company}, {address}. İletişim: {email}",
+    "p2": "<b>Amaç:</b> Bilgilerini yalnızca sana özel raporu hazırlamak, e-postayla göndermek ve raporla ilgili soruların için kullanıyoruz. Hukuki dayanak açık rızandır (DSGVO md. 6/1-a); istediğin zaman e-postayla geri alabilirsin.",
+    "p3": "<b>Saklama:</b> Bilgiler barındırma hizmeti Vercel Inc.'in Frankfurt'taki sunucularında saklanır. Rapor gönderildikten en geç 90 gün sonra, istersen hemen silinir.",
+    "p4": "<b>Raporun hazırlanması:</b> İlk taslağı Anthropic PBC'nin (ABD) yapay zeka modeli, programlama arayüzü üzerinden yazar; aktarım AB Standart Sözleşme Maddelerine dayanır ve Anthropic bu verileri model eğitiminde kullanmaz. Cevaplarını adın ve e-posta adresin <i>olmadan</i> aktarıyoruz. Lütfen serbest metin alanlarına seni doğrudan tanıtan bilgiler yazma.",
+    "p5": "<b>E-posta gönderimi:</b> Onay e-postasını ve raporu e-posta sağlayıcımız ALL-INKL.COM (Almanya) üzerinden gönderiyoruz. Raporu yalnızca senin bildiğin kişisel bir linkten açarsın.",
+    "p6": "<b>Çerezsiz ziyaret ölçümü:</b> Sayfayı kaç kişinin ziyaret ettiğini ve nereden geldiğini görmek için Vercel Web Analytics (Vercel Inc.) kullanıyoruz. Çerez kullanılmaz, IP adresi saklanmaz; ziyaretler yalnızca anonim ve toplu olarak değerlendirilir (DSGVO md. 6/1-f). Reklam takibi yapmıyoruz, dış yazı tipi veya betik yüklemiyoruz.",
+    "p7": "<b>Uygulama özelliği:</b> Sayfayı uygulama olarak yüklersen veya tekrar ziyaret edersen tarayıcın sayfa dosyalarını (bilgilerini değil) saklar; böylece daha hızlı ve internetsiz de açılır. Tarayıcı ayarlarından istediğin zaman silebilirsin.",
+    "p8": "<b>Hakların:</b> Bilgi alma, düzeltme, silme, kısıtlama, veri taşınabilirliği ve rızayı geri alma (DSGVO md. 15–21) ile bir veri koruma denetim makamına, örneğin Hessen veri koruma yetkilisine şikayet hakkı."
+  },
+  "imp": {
+    "title": "Impressum",
+    "head": "Angaben gemäß § 5 DDG",
+    "phone": "Telefon:",
+    "email": "E-Mail:"
+  },
+  "copy": "© 2026 TechNS UG (haftungsbeschränkt)",
+  "langswitch": "Deutsch"
+}
