@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { OPERATOR_SHORT_ADDRESS } from "@/lib/operator";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { esc, md } from "@/lib/report/render";
@@ -12,8 +13,7 @@ import "./start.css";
 type Props = PageProps<"/[locale]/start">;
 type Item = { title: string; text: string };
 
-const OP = { company: "TechNS UG (haftungsbeschränkt)", address: "Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus)", register: "Amtsgericht Bad Homburg, HRB 16236",
-  vat: "USt-IdNr. DE312006599", ceo: "Geschäftsführer: Halil Yaprakli", phone: "+49 6171 277 51 37", email: "info@dgitmarkt.de" };
+const OP = OPERATOR_SHORT_ADDRESS;
 const TRUST_ICONS: IconName[] = ["book", "calc", "person", "lock"];
 const GET_ICONS: IconName[] = ["gauge", "shield", "scale", "grid", "chart", "flag"];
 

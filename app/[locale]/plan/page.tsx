@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OPERATOR } from "@/lib/operator";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPlanForm } from "@/lib/data/plans";
 import { condFlags, initialValues } from "./fields";
@@ -8,16 +9,6 @@ import "./plan.css";
 // İş planı ek formu: /de/plan?id=… (v1 adresi). Dil, v1'deki gibi adresten gelir (kayıttan değil).
 type Props = PageProps<"/[locale]/plan">;
 
-// v1: legacy/plan.html OPERATOR (Datenschutz ve Impressum).
-const OPERATOR = {
-  company: "TechNS UG (haftungsbeschränkt)",
-  address: "Ludwig-Erhard-Str. 16A, 61440 Oberursel (Taunus), Deutschland",
-  register: "Amtsgericht Bad Homburg, HRB 16236",
-  vat: "USt-IdNr. DE312006599",
-  ceo: "Geschäftsführer: Halil Yaprakli",
-  phone: "+49 6171 277 51 37",
-  email: "info@dgitmarkt.de",
-};
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;

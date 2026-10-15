@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import CheckForm from "./_check/CheckForm";
-import { OPERATOR } from "./_check/operator";
+import { OPERATOR } from "@/lib/operator";
 import "./_check/check.css";
 
 // Form (v1: app.html): /de, /tr. Dil adresten gelir.
