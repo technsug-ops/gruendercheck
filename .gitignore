@@ -42,3 +42,6 @@ next-env.d.ts
 
 # drizzle local
 !.env.example
+
+# yerel geliştirme veritabanı (PGlite)
+/.data/

@@ -1,0 +1,17 @@
+{
+  "name": "Gründungs-Check",
+  "short_name": "Gründungs-Check",
+  "description": "Ehrlicher Bericht zu deiner Geschäftsidee in Deutschland.",
+  "lang": "de",
+  "id": "/",
+  "start_url": "/?source=app",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0f2d4a",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

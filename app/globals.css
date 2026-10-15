@@ -1,15 +1,2 @@
-/* v1 token'ları (legacy/app.html). Kurumsal, beyaz zemin, lacivert, sistem yazı tipi. */
-:root{
-  --ink:#16202c;--muted:#56616f;--faint:#8a94a1;--line:#dfe4ea;--line-2:#c5cfda;--zebra:#f6f8fb;
-  --accent:#0f2d4a;--accent-2:#1b4673;--soft:#e6eef7;--paper:#fff;--bg:#f3f6f9;--sand:#f3f6f9;
-  --err:#b42318;--err-soft:#fdeceb;
-  --sans:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
-}
+/* Ortak taban. Renkler ve sayfa düzeni her sayfanın kendi CSS dosyasında (v1'den birebir). */
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:88px}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-a{color:var(--accent)}
-h1,h2,h3{font-family:var(--sans);font-weight:700;letter-spacing:-.015em;margin:0;color:var(--accent)}
-.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
-.hidden{display:none!important}
-.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
