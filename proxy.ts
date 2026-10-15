@@ -7,7 +7,8 @@ const intl = createMiddleware(routing);
 export default function proxy(request: NextRequest) {
   // v1: kök adres Almanca tanıtım sayfasıdır (adres çubuğunda "/" kalır).
   if (request.nextUrl.pathname === "/") {
-    return NextResponse.rewrite(new URL("/de/start", request.url));
+    // Sorgu korunur: ?k=<kanal> form linklerine taşınır.
+    return NextResponse.rewrite(new URL(`/de/start${request.nextUrl.search}`, request.url));
   }
   return intl(request);
 }
