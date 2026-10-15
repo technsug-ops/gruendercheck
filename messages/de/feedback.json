@@ -1,1 +1,36 @@
-{}
+{
+  "kicker": "Gründungs-Check – Feedback",
+  "title": "Wie hilfreich war dein Bericht?",
+  "lead": "Zwei Minuten, fünf Fragen. Deine ehrliche Antwort hilft uns, den Check besser zu machen.",
+  "q_useful": "Wie hilfreich war der Bericht für deine Entscheidung?",
+  "s_low": "gar nicht",
+  "s_high": "sehr",
+  "q_best": "Was war am nützlichsten?",
+  "q_missing": "Was hat gefehlt oder war falsch?",
+  "q_next": "Was wäre der nächste Schritt für dich?",
+  "next": {
+    "o0": "Ein Businessplan für Bank oder Arbeitsagentur",
+    "o1": "Ein 30-minütiges Gespräch zu meinem Bericht",
+    "o2": "Im Moment nichts"
+  },
+  "q_wtp": "Wie viel wäre dir ein einreichungsfähiger Businessplan auf Basis dieses Berichts wert?",
+  "wtp": {
+    "o0": "Nichts – nur kostenlos",
+    "o1": "Unter 50 €",
+    "o2": "50–150 €",
+    "o3": "150–300 €",
+    "o4": "Mehr als 300 €"
+  },
+  "submit": "Feedback senden",
+  "sending": "Wird gesendet …",
+  "err": "Bitte beantworte die markierten Fragen.",
+  "err_send": "Das hat nicht geklappt. Bitte versuch es später noch einmal.",
+  "doneh": "Danke für dein Feedback!",
+  "donep": "Wenn du einen nächsten Schritt gewählt hast, melden wir uns per E-Mail.",
+  "invh": "Dieser Link ist nicht gültig.",
+  "invp": "Bitte nutze den Link aus unserer E-Mail.",
+  "imp_summary": "Impressum",
+  "imp_lead": "Angaben gemäß § 5 DDG",
+  "imp_phone": "Telefon:",
+  "imp_email": "E-Mail:"
+}

@@ -1,0 +1,32 @@
+/* v1: legacy/feedback.html – birebir. Sadece bu sayfada yüklenir. */
+:root{--bg:#f3f6f9;--card:#fff;--ink:#16202c;--muted:#56616f;--line:#dfe4ea;--accent:#0f2d4a;--accent-ink:#fff;--accent-soft:#e6eef7;--err:#b42318;--focus:#1d5fa8}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif}
+.wrap{max-width:640px;margin:0 auto;padding:40px 16px 64px}
+.kicker{font-size:15px;color:var(--accent);font-weight:700}
+h1{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:8px 0 12px;color:var(--accent)}
+.lead{color:var(--muted);margin:0 0 24px}
+section.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 20px;margin-bottom:16px}
+fieldset{border:0;margin:0 0 22px;padding:0}
+legend,label.q{display:block;font-weight:600;margin-bottom:8px;padding:0}
+.opts{display:grid;gap:8px}
+.opts.row{grid-template-columns:repeat(5,1fr)}
+.opt{display:flex;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;background:var(--bg)}
+.opts.row .opt{justify-content:center;flex-direction:column;gap:4px;padding:10px 4px;text-align:center}
+.opt input{accent-color:var(--accent);width:18px;height:18px;margin:0}
+.opt:has(input:checked){border-color:var(--accent);background:var(--accent-soft)}
+.scale{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-top:6px}
+textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;min-height:84px;resize:vertical}
+input:focus-visible,textarea:focus{outline:2px solid var(--focus);outline-offset:1px}
+.field{margin-bottom:20px}
+.hidden{display:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button.primary{appearance:none;border:0;border-radius:12px;background:var(--accent);color:var(--accent-ink);font:inherit;font-weight:600;padding:14px 22px;cursor:pointer;width:100%}
+button.primary:disabled{opacity:.6;cursor:wait}
+.error{color:var(--err);font-size:14px;margin-top:6px}
+.notice{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:28px 20px;text-align:center}
+.notice h2{margin:0 0 8px}
+footer{margin-top:32px;color:var(--muted);font-size:14px}
+footer details{margin-top:10px;border-top:1px solid var(--line);padding-top:10px}
+footer summary{cursor:pointer;font-weight:600;color:var(--ink)}
