@@ -3,6 +3,7 @@
 // v1: legacy/brief.js
 import { type Answers, calculate, suggestVat, toText } from "./calc";
 import { LOCALE_NAME_TR, toLocale } from "@/lib/i18n";
+import { checksText, runChecks } from "@/lib/rules/checks";
 
 export const Q: Record<string, string> = {
   idea: "1. İş fikri", current_solution: "2. Müşteriler bugün nasıl çözüyor", talked: "3. Konuşulan potansiyel müşteri sayısı",
@@ -40,5 +41,8 @@ export function briefText(it: Answers, submittedAt: string, vatKey?: string): st
     lines.push(`${label}: ${val(k, it[k])}`);
   }
   lines.push("", calcText(it, vatKey));
+  // Kural tabanının kodla uygulanan kısmı (oturum, Meister, izin, Rechtsform, vergi, teşvik). v1'de yoktu.
+  const checks = checksText(runChecks(it));
+  if (checks) lines.push("", checks);
   return lines.join("\n");
 }

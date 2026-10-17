@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import * as v1 from "../legacy/brief.js";
 import { briefText } from "@/lib/domain/brief";
+import { checksText, runChecks } from "@/lib/rules/checks";
 import { randomAnswers, SAMPLES } from "./fixtures";
 
 describe("brief = v1", () => {
@@ -11,7 +12,9 @@ describe("brief = v1", () => {
       const at = new Date(Date.UTC(2026, 9, 1 + (i % 28))).toISOString();
       const withPii = { ...s, first_name: "Ayşe", email: "a@example.org" };
       const text = briefText(withPii, at);
-      expect(text).toBe(v1.briefText({ ...withPii, submitted_at: at }));
+      // v1 metni aynen + altına KONTROLLER bloğu (v1'de yoktu).
+      const checks = checksText(runChecks(withPii));
+      expect(text).toBe(v1.briefText({ ...withPii, submitted_at: at }) + (checks ? "\n\n" + checks : ""));
       expect(text).not.toMatch(/Ayşe|example\.org/); // isim ve e-posta modele gitmez
     }
   });

@@ -13,6 +13,7 @@ const OUTPUT_RULES = `ÇIKTI KURALLARI (otomatik akış)
 - Sadece rapor Markdown'ını yaz. Önüne veya arkasına açıklama, selamlama, kod bloğu koyma.
 - Ön kontrol bloğu gerekiyorsa en başa tek başına "===HALİL===" satırı, altına soruları, sonra tek başına "===RAPOR===" satırı koy. Gerekmiyorsa bu satırları hiç yazma.
 - Rapor "# " ile başlayan başlıkla başlasın; talimattaki "Görsel bloklar" kurallarına uy.
+- KONTROLLER bloğundaki "engel" maddeleri (fikir metniyle doğruladıkların) raporun ilk sayfasında, Engeller bölümünde çözüm yolu, süresi ve maliyetiyle yer alır. KONTROLLER'in önerdiği Rechtsform'dan ayrılırsan nedenini yaz.
 - Rapor doğrudan başvurana gidiyor: ona "sen" (Almanca "du") diye hitap et.
 - Raporda iç kaynaklara atıf yapma: "kural tabanı", "bölüm 4", "karar kuralı 2", "HESAPLAR", "talimat" veya "Halil" kelimelerini rapora yazma. Bir konu kural tabanında yoksa "bunu [ilgili makam] ile netleştir" yaz.
 - Kaynaklar bölümünde resmi kaynakları adlarıyla yaz (IHK, Handwerkskammer, Arbeitsagentur, kanun maddesi), "Almanya kural tabanı" yazma.
