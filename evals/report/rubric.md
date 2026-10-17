@@ -1,8 +1,8 @@
 # Rapor değerlendirme ölçütleri (Halil onayı 2026-10-17)
 
-Kaynak: Halil'in dört şikâyeti (yüzeysel / hukuki hata / sayılar zayıf / dil, 2026-10-17) ve "iyi rapor" örneği olarak verdiği Lezzeti Antep strateji raporu. Her ölçüt kontrol edilebilir bir iddia; mümkün olan her yerde kodla (programatik), geri kalanı ayrı bir değerlendirici modelle (judge) puanlanır.
+Kaynak: Halil'in dört şikâyeti (yüzeysel / hukuki hata / sayılar zayıf / dil, 2026-10-17) ve "iyi rapor" örneği olarak verdiği gerçek bir danışmanlık strateji raporu. Her ölçüt kontrol edilebilir bir iddia; mümkün olan her yerde kodla (programatik), geri kalanı ayrı bir değerlendirici modelle (judge) puanlanır.
 
-## A. Kişiye özel ve derin (Lezzeti Antep çıtası)
+## A. Kişiye özel ve derin (danışmanlık raporu çıtası)
 1. Kişinin kendi verisine dayanıyor: şehri/eyaleti, sektörü, verdiği rakamlar ve endişesi rapor metninde somut olarak geçiyor; başka bir başvuruya kopyalanabilecek genel cümleler raporun çoğunluğunu oluşturmuyor. *(judge)*
 2. Ürüne/sektöre özgü kısıtları söylüyor (ör. raf ömrü, soğuk zincir, sezon, kapasite, iade). *(judge)*
 3. Pazar ve rakip bilgisi ya kaynaklı (gerçek ad, fiyat, kaynak) ya da açıkça "(varsayım)" — uydurma rakip/rakam yok. *(judge + programatik: kaynaksız rakip adı)*
