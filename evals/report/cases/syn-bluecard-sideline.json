@@ -1,0 +1,31 @@
+{
+  "id": "syn-bluecard-sideline",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "de",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "de",
+    "idea": "Neben meinem Job als Ingenieur möchte ich am Wochenende kleine Unternehmen bei der Einführung von Cloud-Software beraten, vor allem türkischsprachige Handwerksbetriebe.",
+    "current_solution": "Die Betriebe machen das heute selbst oder beauftragen IT-Systemhäuser für 90–140 € pro Stunde.",
+    "talked": "1-5",
+    "paid": "yes",
+    "business_type": "online_service",
+    "customers": "b2b",
+    "city": "Stuttgart",
+    "residence": "blue_card",
+    "situation": "employed_full",
+    "hours": "8",
+    "founders": "1",
+    "experience": "Master in Informatik, seit 4 Jahren Cloud-Ingenieur in einem Konzern, Blaue Karte seit 2 Jahren.",
+    "capital": "0-5k",
+    "rev_model": "project",
+    "price": "800",
+    "unit_cost": "0",
+    "fixed_costs": "80",
+    "investment": "300",
+    "price_is_net": true,
+    "personal_need": "0",
+    "worry": "Darf ich mit der Blauen Karte überhaupt nebenbei selbstständig sein?"
+  },
+  "notes": "Blaue Karte: yan serbest faaliyet için §21 Abs. 6 izni ⚠️ → engel (izin gerekli), çözüm yolu; danışmanlık genelde Gewerbe; Kleinunternehmer; işveren bildirimi/rekabet yasağı kural tabanında yok; Baden-Württemberg."
+}

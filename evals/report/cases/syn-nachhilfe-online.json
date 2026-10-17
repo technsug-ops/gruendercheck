@@ -1,0 +1,30 @@
+{
+  "id": "syn-nachhilfe-online",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "Almanya'daki Türk ailelerin çocuklarına online Türkçe ve matematik özel dersi vermek istiyorum. Haftada birkaç akşam, birebir ve küçük gruplarla.",
+    "current_solution": "Aileler bugün tanıdık öğretmenlere ya da büyük özel ders platformlarına saat başı 20–35 € ödüyor.",
+    "talked": "6-20",
+    "paid": "yes",
+    "business_type": "online_service",
+    "customers": "b2c",
+    "city": "Mannheim",
+    "residence": "de_eu",
+    "situation": "employed_full",
+    "hours": "8",
+    "founders": "1",
+    "experience": "Türkiye'de 6 yıl sınıf öğretmenliği yaptım, Almanya'da bir okulda öğretmen yardımcısıyım.",
+    "capital": "0-5k",
+    "rev_model": "one_time",
+    "price": "28",
+    "unit_cost": "0",
+    "fixed_costs": "60",
+    "investment": "500",
+    "personal_need": "0",
+    "worry": "Ana işimin yanında bunu yapmak için işverenime söylemem gerekiyor mu, vergi nasıl oluyor?"
+  },
+  "notes": "Freiberuf (öğretim), Kleinunternehmer, yan iş (işveren bildirimi kural tabanında yok → uydurma yok); kişisel ihtiyaç 0 (ana işten geçiniyor); Baden-Württemberg; özel derste KDV muafiyeti 🔴."
+}

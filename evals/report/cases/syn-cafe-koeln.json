@@ -1,0 +1,31 @@
+{
+  "id": "syn-cafe-koeln",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "de",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "de",
+    "idea": "Ein kleines Café in Köln-Ehrenfeld mit Frühstück, Kaffee und selbstgebackenen Kuchen und Torten, die wir auch auf Bestellung für Geburtstage verkaufen wollen.",
+    "current_solution": "Im Viertel gibt es mehrere Cafés und Bäckereien; ein Stück Kuchen kostet dort 3,50–4,50 €, Bestelltorten 35–60 €.",
+    "talked": "1-5",
+    "paid": "no",
+    "business_type": "location",
+    "customers": "b2c",
+    "city": "Köln",
+    "residence": "family",
+    "situation": "employed_part",
+    "hours": "40",
+    "founders": "2",
+    "experience": "Ich backe seit Jahren privat und habe 3 Jahre im Service eines Cafés gearbeitet. Meine Partnerin hat Erfahrung im Einzelhandel.",
+    "capital": "15-50k",
+    "rev_model": "one_time",
+    "price": "6,5",
+    "unit_cost": "1,8",
+    "fixed_costs": "3800",
+    "rent": "2200",
+    "investment": "45000",
+    "personal_need": "2400",
+    "worry": "Reicht der Umsatz für die hohe Miete, und dürfen wir die Torten ohne Meister verkaufen?"
+  },
+  "notes": "Gastronomi + üretim: ağırlık noktası (sipariş pasta → Konditor Anlage A riski); NRW (Hessen dışı); kira/ciro oranı ve kapasite; gastronomi KDV karışımı; iki kurucu, yüksek risk → UG; aile birleşimi oturumu serbest."
+}

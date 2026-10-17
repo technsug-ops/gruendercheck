@@ -1,0 +1,31 @@
+{
+  "id": "syn-cocktailbar",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "de",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "de",
+    "idea": "Eine kleine Cocktailbar in Offenbach mit Snacks, DJ-Abenden am Wochenende und Shisha im Außenbereich.",
+    "current_solution": "Die Leute fahren heute nach Frankfurt in die Bars, Cocktails kosten dort 11–14 €.",
+    "talked": "20+",
+    "paid": "no",
+    "business_type": "location",
+    "customers": "b2c",
+    "city": "Offenbach am Main",
+    "residence": "settlement",
+    "situation": "employed_full",
+    "hours": "50",
+    "founders": "2",
+    "experience": "Ich arbeite seit 6 Jahren als Barkeeper, mein Partner führt seit 4 Jahren ein Restaurant als Schichtleiter.",
+    "capital": "15-50k",
+    "rev_model": "one_time",
+    "price": "12",
+    "unit_cost": "2,8",
+    "fixed_costs": "6500",
+    "rent": "2800",
+    "investment": "60000",
+    "personal_need": "2500",
+    "worry": "Welche Genehmigungen brauchen wir und wie lange dauert das, bis wir öffnen dürfen?"
+  },
+  "notes": "Alkollü servis: Hessen'de izin yok, açılıştan 6 hafta önce bildirim + hijyen + Bauamt (Nutzungsänderung) → gelirsiz bekleme; nargile (Jugendschutz/Nichtraucherschutz kural tabanında yok); yüksek yatırım vs sermaye; iki kurucu, yüksek risk → UG/GmbH."
+}

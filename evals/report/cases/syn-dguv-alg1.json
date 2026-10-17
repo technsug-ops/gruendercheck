@@ -1,0 +1,30 @@
+{
+  "id": "syn-dguv-alg1",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "Frankfurt ve çevresindeki küçük işletmelere taşınabilir elektrikli cihazların DGUV V3 testini yapmak istiyorum. İleride elektrikli araç şarj istasyonu (Wallbox) kurulumu da eklemek istiyorum.",
+    "current_solution": "İşletmeler bugün büyük test firmalarını çağırıyor; cihaz başına 4–8 € ve yol ücreti ödüyorlar, randevu haftalar sürüyor.",
+    "talked": "6-20",
+    "paid": "no",
+    "business_type": "onsite_service",
+    "customers": "b2b",
+    "city": "Frankfurt am Main",
+    "residence": "settlement",
+    "situation": "alg1",
+    "hours": "40",
+    "founders": "1",
+    "experience": "Türkiye'de elektrik mühendisliği okudum, 10 yıl fabrikada bakım mühendisi olarak çalıştım. Almanya'da 3 yıl elektrik firmasında teknisyen olarak çalıştım. Diplomamın denkliği yok.",
+    "capital": "5-15k",
+    "rev_model": "project",
+    "price": "450",
+    "unit_cost": "40",
+    "fixed_costs": "900",
+    "investment": "7000",
+    "personal_need": "2200",
+    "worry": "İşsizlik parası alıyorum. Gründungszuschuss alabilir miyim ve son ne zamana kadar başvurmam gerekiyor?"
+  },
+  "notes": "Elektrotechniker Anlage A (sadece test bile; VG Halle ⚠️), AB dışı mühendis diploması §7 Abs. 2 kapsamında değil → denklik/§8; Gründungszuschuss: 150 gün, Bescheid tarihi yok → kesin tarih yazılmamalı, ön kontrol sorusu; AVGS sırası; Wallbox Installateurverzeichnis."
+}

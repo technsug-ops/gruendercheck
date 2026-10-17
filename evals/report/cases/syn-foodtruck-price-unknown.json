@@ -1,0 +1,31 @@
+{
+  "id": "syn-foodtruck-price-unknown",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "Bir döner food truck'ı ile hafta içi sanayi bölgelerinde, hafta sonu pazarlarda ve festivallerde satış yapmak istiyorum.",
+    "current_solution": "İnsanlar öğlen sanayi bölgesinde ya fırından ya da kantinden yiyor. Şehirdeki dönerciler 7,50–9 € alıyor.",
+    "talked": "6-20",
+    "paid": "no",
+    "business_type": "other",
+    "customers": "b2c",
+    "city": "Hannover",
+    "residence": "settlement",
+    "situation": "employed_full",
+    "hours": "45",
+    "founders": "1",
+    "experience": "10 yıl bir döner dükkânında usta olarak çalıştım.",
+    "capital": "15-50k",
+    "rev_model": "one_time",
+    "price_unknown": true,
+    "competitor_price": "8,5",
+    "unit_cost": "3,2",
+    "fixed_costs": "1400",
+    "investment": "38000",
+    "personal_need": "2300",
+    "worry": "Food truck için hangi izinler gerekiyor ve her şehirde ayrı izin mi lazım?"
+  },
+  "notes": "Fiyatı bilmiyor → rakip fiyatı; seyyar satış (§55 Reisegewerbekarte) + pazar/festival izinleri + gıda hijyeni; döner hazır şiş mi kendi üretim mi (Fleischer sınırı, ön kontrol sorusu); Niedersachsen; yüksek yatırım."
+}

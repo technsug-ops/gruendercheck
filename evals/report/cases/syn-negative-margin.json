@@ -1,0 +1,30 @@
+{
+  "id": "syn-negative-margin",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "de",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "de",
+    "idea": "Ein Online-Shop für hochwertige Yogamatten und Zubehör aus Kork, Versand in ganz Deutschland.",
+    "current_solution": "Kunden kaufen bei großen Sportversendern oder Marken-Shops, Korkmatten kosten dort 60–90 €.",
+    "talked": "0",
+    "paid": "no",
+    "business_type": "online_products",
+    "customers": "b2c",
+    "city": "Leipzig",
+    "residence": "de_eu",
+    "situation": "employed_part",
+    "hours": "15",
+    "founders": "1",
+    "experience": "Ich bin Yogalehrerin und habe keinen Hintergrund im Online-Handel.",
+    "capital": "5-15k",
+    "rev_model": "one_time",
+    "price": "25",
+    "unit_cost": "27",
+    "fixed_costs": "450",
+    "investment": "6000",
+    "personal_need": "0",
+    "worry": "Wie bekomme ich die ersten Kunden ohne großes Werbebudget?"
+  },
+  "notes": "Zararına satış: fiyat 25 € < maliyet 27 € (KDV sonrası daha da kötü) → HESAPLAR katkı payı negatif uyarısı; rapor bunu ilk sayfada söylemeli, pazarlama tavsiyesine geçmeden; kimseyle konuşulmamış (talep boyutu ≤ 3); iade oranı/CAC; Sachsen."
+}

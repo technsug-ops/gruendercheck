@@ -19,7 +19,9 @@ export interface Check {
   kb: string;
 }
 
-const textOf = (a: Answers) => [a.idea, a.current_solution, a.experience].map((x) => String(x ?? "")).join(" \n ");
+// İşin ne olduğu sadece fikir metninden okunur: "bugünkü çözüm" rakipleri (ör. "fırından alıyorlar"), "deneyim" geçmiş
+// işleri anlatır; ikisi de kişinin kuracağı işi yanlış sınıflandırır (değerlendirme vakası syn-foodtruck).
+const textOf = (a: Answers) => String(a.idea ?? "");
 const matches = (rules: KeywordRule[], text: string) => rules.filter((r) => r.re.test(text));
 
 export function runChecks(a: Answers): Check[] {

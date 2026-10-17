@@ -90,3 +90,22 @@ describe("KONTROLLER", () => {
     expect(checksText([])).toBe("");
   });
 });
+
+describe("değerlendirme vakalarından çıkan düzeltmeler", () => {
+  it("baklava üretimi Konditor olarak işaretlenir", () => {
+    const cs = run({ idea: "Kendi baklava ve tatlı imalathanemiz var; baklavayı online kargoyla satmak istiyoruz.", business_type: "online_products" });
+    expect(has(cs, "meister", /Konditor/)).toBe(true);
+  });
+  it("rakipleri anlatan 'bugünkü çözüm' ve geçmiş işi anlatan 'deneyim' işi sınıflandırmaz", () => {
+    const cs = run({
+      idea: "Döner food truck ile sanayi bölgelerinde satış.",
+      current_solution: "İnsanlar öğlen ya fırından ya da kantinden yiyor.",
+      experience: "Eskiden bir Bäckerei'de ve bir berberde çalıştım.",
+      business_type: "other",
+    });
+    expect(areaOf(cs, "meister").filter((c) => /Bäcker|Friseur/.test(c.text))).toEqual([]);
+  });
+  it("mobilya imalathanesi Konditor sayılmaz", () => {
+    expect(has(run({ idea: "Küçük bir mobilya imalathanesi kurmak istiyorum.", business_type: "production" }), "meister", /Konditor/)).toBe(false);
+  });
+});

@@ -1,0 +1,31 @@
+{
+  "id": "syn-abroad-saas",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "İstanbul'da yaşıyorum, Almanya'ya gelip Berlin'de küçük restoranlar için rezervasyon ve sipariş yönetimi yapan bir yazılım (aylık abonelik) satmak istiyorum.",
+    "current_solution": "Restoranlar bugün kâğıt defter ya da pahalı uluslararası sistemler kullanıyor; ayda 80–200 € ödüyorlar.",
+    "talked": "1-5",
+    "paid": "no",
+    "business_type": "online_service",
+    "customers": "b2b",
+    "city": "Berlin",
+    "residence": "abroad",
+    "situation": "self_employed",
+    "hours": "50",
+    "founders": "1",
+    "experience": "Bilgisayar mühendisiyim, 8 yıldır yazılım geliştiriyorum, Türkiye'de kendi yazılım şirketim var.",
+    "capital": "15-50k",
+    "rev_model": "subscription",
+    "price": "79",
+    "unit_cost": "6",
+    "fixed_costs": "900",
+    "investment": "8000",
+    "price_is_net": true,
+    "personal_need": "2800",
+    "worry": "Hangi vizeyle gelmeliyim ve şirketi nasıl kurmalıyım?"
+  },
+  "notes": "Yurt dışından: §21 oturumu (Abs. 1 koşulları, 45 yaş üstü emeklilik) — 'yapabilirsin' denmemeli; Türk vatandaşı → ARB 1/80 🔴; yazılım Freiberuf vaka bazlı; abonelik CAC tavanı; net fiyat (B2B); Berlin (Hessen dışı)."
+}

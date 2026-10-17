@@ -24,7 +24,7 @@ export interface KeywordRule { id: string; re: RegExp; text: string; status: Sta
 export const MEISTER_A: KeywordRule[] = [
   { id: "friseur", re: /fris(eu|ö)r|barbi?er|berber|kuaf(ö|o)r|haarschnitt|saç kes/i, text: "Friseur (Anlage A Nr. 38)", status: "✅", kb: "4" },
   { id: "baecker", re: /bäcker|backwaren|brötchen|\bfırın|ekmek|simit|börek|poğaça/i, text: "Bäcker (Anlage A Nr. 30) — kafede servis gastronomi, fırın gibi satış el sanatı", status: "✅", kb: "4" },
-  { id: "konditor", re: /konditor|torte|pastane|yaş pasta|baklava üret|tatlı üret/i, text: "Konditor (Anlage A Nr. 31) — ağırlık pasta/tatlı satışındaysa", status: "✅", kb: "4" },
+  { id: "konditor", re: /konditor|torte|pastane|yaş pasta|baklava|künefe üret|tatlı (üret|imalat)|patisserie/i, text: "Konditor (Anlage A Nr. 31) — ağırlık pasta/tatlı satışındaysa", status: "✅", kb: "4" },
   { id: "fleischer", re: /fleischer|metzger|kasap|sucuk|wurst|döner ?(şiş|spieß)|dönerspieß/i, text: "Fleischer (Anlage A Nr. 32) — et porsiyonlama, açık sucuk; döner şişi üretimi vaka bazlı 🔴", status: "✅", kb: "4" },
   { id: "kfz", re: /\bkfz|autowerkstatt|auto-?reparatur|oto (tamir|servis|bakım)|araba tamir|reifenservice|reifenwechsel|lastikçi|lastik değiş/i, text: "Kfz-Techniker (Anlage A Nr. 20)", status: "✅", kb: "4" },
   { id: "elektro", re: /elektriker|elektroinstallation|elektrotechni|elektrik (tesisat|işleri|ustası|montaj|arıza)|dguv|\bvde\b|e-check|wallbox|ladestation|şarj istasyonu (kurulum|montaj)|photovoltaik|solaranlage|güneş paneli (kurulum|montaj)/i, text: "Elektrotechniker (Anlage A Nr. 25) — sadece test yapan firma da dahil (VG Halle 2022 ⚠️); Wallbox için ayrıca Netzbetreiber Installateurverzeichnis", status: "⚠️", kb: "4" },

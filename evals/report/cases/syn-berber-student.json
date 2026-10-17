@@ -1,0 +1,31 @@
+{
+  "id": "syn-berber-student",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "Offenbach'ta küçük bir erkek berberi açmak istiyorum: saç kesimi, sakal tıraşı ve cilt bakımı. Türk ve Arap müşterilerin çok olduğu bir semtte, uygun fiyatlı ve randevusuz çalışan bir dükkân düşünüyorum.",
+    "current_solution": "Semtte zaten birkaç berber var; insanlar 15–25 € ödüyor ama cumartesi saatlerce bekliyorlar.",
+    "talked": "20+",
+    "paid": "no",
+    "business_type": "location",
+    "customers": "b2c",
+    "city": "Offenbach am Main",
+    "residence": "student",
+    "situation": "student",
+    "hours": "20",
+    "founders": "1",
+    "experience": "Türkiye'de 5 yıl berber olarak çalıştım, ustalık belgem var. Almanya'da 2 yıldır öğrenciyim ve hafta sonları bir berberde yardım ediyorum.",
+    "capital": "0-5k",
+    "rev_model": "one_time",
+    "price": "20",
+    "unit_cost": "2",
+    "fixed_costs": "1800",
+    "rent": "1100",
+    "investment": "9000",
+    "personal_need": "1200",
+    "worry": "Öğrenci vizesiyle dükkân açabilir miyim, Almanya'da berberlik için hangi belge gerekiyor?"
+  },
+  "notes": "İki engel üst üste: öğrenci oturumu (Ausländerbehörde onayı) ve Friseur Anlage A (Türk ustalık belgesi → denklik/§8, §7b şartları sağlanmıyor). Sermaye yatırımın çok altında."
+}

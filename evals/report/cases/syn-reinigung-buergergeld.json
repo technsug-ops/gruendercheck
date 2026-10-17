@@ -1,0 +1,30 @@
+{
+  "id": "syn-reinigung-buergergeld",
+  "source": "Sentetik: kural tabanı ve hedef kitlenin tipik zor durumlarından türetildi (gerçek kişi yok). Halil onayı bekliyor.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "Dortmund'da ofislere ve apartman merdivenlerine temizlik hizmeti vermek istiyorum. Başta kendim çalışacağım, işler artınca 1–2 yardımcı almayı düşünüyorum.",
+    "current_solution": "Ofisler büyük temizlik firmalarıyla çalışıyor ya da kayıt dışı temizlikçi buluyor; saat başı 22–30 € ödeniyor.",
+    "talked": "1-5",
+    "paid": "no",
+    "business_type": "onsite_service",
+    "customers": "b2b",
+    "city": "Dortmund",
+    "residence": "settlement",
+    "situation": "buergergeld",
+    "hours": "40",
+    "founders": "1",
+    "experience": "4 yıl bir temizlik firmasında çalıştım, ekip başıydım.",
+    "capital": "0-5k",
+    "rev_model": "subscription",
+    "price": "480",
+    "unit_cost": "60",
+    "fixed_costs": "350",
+    "investment": "2500",
+    "personal_need": "1500",
+    "worry": "Bürgergeld alıyorum. İş kurarsam Jobcenter yardımı hemen keser mi, destek alabilir miyim?"
+  },
+  "notes": "Bürgergeld → Einstiegsgeld (takdire bağlı ⚠️); Gebäudereiniger Anlage B1 (kural tabanında örnek olarak yok → model 'HWK'ya bildirim, doğrula' demeli, Meister dememeli); abonelik modeli (aylık sözleşme = abone); NRW; çalışan almak (kural tabanında personel kuralı yok)."
+}
