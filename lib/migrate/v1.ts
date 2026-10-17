@@ -1,6 +1,7 @@
 // v1 (Vercel Blob JSON) kayıtlarını yeni tablolara çevirir. Saf fonksiyonlar: kaynak (Blob/dosya) ve yazma ayrı.
 // Kayıt biçimleri: legacy/api/submit.js, legacy/lib/draft.js, legacy/lib/report.js, legacy/api/plan.js, legacy/api/feedback.js.
 import { createHash } from "node:crypto";
+import { toLocale } from "@/lib/i18n";
 import type { schema } from "@/lib/db";
 import { STATUSES, type Status } from "@/lib/db/schema";
 import { isId } from "@/lib/ids";
@@ -42,7 +43,7 @@ export function convertSubmission(rec: V1): Converted | { error: string } {
   // v1'de "confirmed" alanı onay özelliğinden önceki kayıtlarda yoktu; onlar onaylı sayılırdı (confirmed !== false).
   const confirmed = rec.confirmed !== false;
   const submission: Insert<typeof schema.submissions> = {
-    id: rec.id, createdAt: created, lang: rec.lang === "tr" ? "tr" : "de", status, statusChangedAt: date(rec.status_changed_at),
+    id: rec.id, createdAt: created, lang: toLocale(rec.lang), status, statusChangedAt: date(rec.status_changed_at),
     confirmed, confirmTokenHash: token ? createHash("sha256").update(token).digest("hex") : null, confirmedAt: date(rec.confirmed_at),
     src: str(rec.src), email, firstName: str(rec.first_name), answers,
     consentAt: created, // v1 onayı gönderimle aynı anda alıyordu (consent: true zorunlu)

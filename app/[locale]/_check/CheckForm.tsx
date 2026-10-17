@@ -9,10 +9,17 @@ import { CK } from "./icons";
 // Form (v1: legacy/app.html). Gönderim sözleşmesi v1 ile aynı: POST /api/submit, aynı alanlar, aynı hata işleme.
 type Lang = "de" | "tr";
 type Sec = "s1" | "s2" | "s3" | "s4";
-type Opt = [string, string][];
 const SECS: Sec[] = ["s1", "s2", "s3", "s4"];
 const REQ: Record<Sec, string[]> = { s1: ["idea", "current_solution", "business_type", "city"], s2: ["residence", "situation"], s3: ["capital", "rev_model", "price"], s4: ["email", "consent"] };
 const REQUIRED = ["idea", "current_solution", "business_type", "city", "residence", "situation", "capital", "rev_model", "email"];
+// Seçenek kodları (veri, gönderilen değer) burada; etiketler messages/<dil>/check.json → opt.<alan>.<kod> ("_" = "Bitte wählen").
+const OPTIONS = {
+  talked: ["0", "1-5", "6-20", "20+"], paid: ["no", "yes"],
+  business_type: ["location", "onsite_service", "online_service", "online_products", "production", "other"],
+  customers: ["b2c", "b2b", "both"], residence: ["de_eu", "settlement", "student", "job_search", "blue_card", "family", "other", "abroad"],
+  situation: ["employed_full", "employed_part", "alg1", "buergergeld", "student", "self_employed"], founders: ["1", "2", "3+"],
+  capital: ["0-5k", "5-15k", "15-50k", "50k+"], rev_model: ["one_time", "subscription", "project", "commission"],
+} as const;
 const SELECTS = ["talked", "paid", "business_type", "customers", "residence", "situation", "founders", "capital", "rev_model"] as const;
 type SelectName = (typeof SELECTS)[number];
 
@@ -68,10 +75,11 @@ export default function CheckForm({ lang, home }: { lang: Lang; home: string }) 
   }, []);
   useEffect(() => () => document.body.classList.remove("sent"), []);
 
-  const opts = t.raw("opt") as Record<SelectName, Opt>;
+  const opts = t.raw("opt") as Record<SelectName, Record<string, string>>;
   const sel = (name: SelectName, required = false) => (
     <select id={name} name={name} required={required} className={v.empty[name] ? "empty" : undefined} aria-invalid={errs[name] ? "true" : undefined}>
-      {opts[name].map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+      <option value="">{opts[name]._}</option>
+      {OPTIONS[name].map((value) => <option key={value} value={value}>{opts[name][value]}</option>)}
     </select>
   );
   const inv = (id: string) => (errs[id] ? "true" : undefined) as "true" | undefined;

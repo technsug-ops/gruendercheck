@@ -1,30 +1,14 @@
 {
   "title": "İş Fikri Kontrolü – Fikrin Almanya’da yürür mü?",
-  "description": "Ehrlicher Bericht zu deiner Geschäftsidee in Deutschland: Meister, Erlaubnis, Aufenthalt, Rechtsform, Break-even und die ersten 30 Tage. Kostenlos in der Testphase.",
+  "description": "Almanya’daki iş fikrin için dürüst bir rapor: Meister, izinler, oturum, şirket türü, başabaş noktası ve ilk 30 gün. Deneme döneminde ücretsiz.",
   "brand": "İş Fikri Kontrolü",
-  "nav": [
-    {
-      "href": "#so-gehts",
-      "label": "Nasıl çalışır"
-    },
-    {
-      "href": "#beispiel",
-      "label": "Örnek rapor"
-    },
-    {
-      "href": "#ueber-uns",
-      "label": "Biz kimiz"
-    },
-    {
-      "href": "#faq",
-      "label": "SSS"
-    }
-  ],
-  "navcta": "Ücretsiz kontrol",
-  "other": {
-    "lang": "de",
-    "label": "Deutsch"
+  "nav": {
+    "so-gehts": "Nasıl çalışır",
+    "beispiel": "Örnek rapor",
+    "ueber-uns": "Biz kimiz",
+    "faq": "SSS"
   },
+  "navcta": "Ücretsiz kontrol",
   "h1": "İş fikrin yürür mü – para harcamadan önce öğren.",
   "lead": "16 soruya cevap veriyorsun. Fikrini Almanya’nın kurallarına göre kontrol edip hesabını çıkarıyoruz: Meister, izin, oturum, şirket türü, başabaş noktası, sermaye ihtiyacı ve ilk 30 gün. Dürüst, somut, rakamlarla.",
   "cta": "Fikrimi kontrol et",
@@ -141,7 +125,7 @@
   "aboutFacts": [
     {
       "label": "Şirket",
-      "value": "TechNS UG (haftungsbeschränkt)"
+      "value": "{company}"
     },
     {
       "label": "Merkez",
@@ -149,11 +133,11 @@
     },
     {
       "label": "Sicil",
-      "value": "Amtsgericht Bad Homburg, HRB 16236"
+      "value": "{register}"
     },
     {
       "label": "Yönetici",
-      "value": "Halil Yaprakli"
+      "value": "{ceoName}"
     }
   ],
   "faqH": "Sık sorulan sorular",
@@ -173,7 +157,7 @@
     },
     {
       "q": "Verilerime ne oluyor?",
-      "a": "Bilgiler Frankfurt’taki sunucularda saklanır, rapordan en geç 90 gün sonra silinir. Yapay zekaya cevaplarını adın ve e-postan olmadan aktarıyoruz. Çerez ve reklam takibi yok."
+      "a": "Bilgilerin Frankfurt'taki sunucularda duruyor ve rapordan en geç 90 gün sonra siliniyor. Yapay zekaya cevaplarını adın ve e-posta adresin olmadan veriyoruz. Çerez ve reklam takibi yok."
     },
     {
       "q": "Rapor Steuerberater’in veya bir resmi makamın yerini tutar mı?",
@@ -192,10 +176,6 @@
   "finP": "Şimdi ayıracağın sekiz dakika, sana pahalı bir kira sözleşmesinden, bir cezadan veya gelirsiz aylardan kurtarabilir.",
   "pages": "Sayfalar",
   "legal": "Yasal",
-  "imp": "Impressum",
-  "dsLink": "Datenschutz (formda)",
-  "dsLine": "Bu sayfa çerez kullanmaz. Ziyaretleri Vercel Web Analytics ile anonim olarak sayıyoruz. Veri koruma bilgileri formun içinde.",
-  "impTitle": "Angaben gemäß § 5 DDG",
-  "phone": "Telefon",
-  "email": "E-Mail"
+  "dsLink": "Veri koruma (formda)",
+  "dsLine": "Bu sayfa çerez kullanmıyor. Ziyaretçileri Vercel Web Analytics ile isimsiz olarak sayıyoruz. Veri korumayla ilgili bilgilerin tamamı formun altında."
 }

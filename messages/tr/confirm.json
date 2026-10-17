@@ -1,0 +1,12 @@
+{
+  "title": "E-postanı onayla",
+  "ask": "Raporunu hazırlayabilmemiz için lütfen e-posta adresini onayla.",
+  "btn": "E-postamı onayla",
+  "ok": "Teşekkürler, e-postan onaylandı.",
+  "okp": "Raporunu şimdi hazırlıyoruz. Yaklaşık 30 dakika içinde e-postayla gelecek.",
+  "again": "E-postan zaten onaylanmış.",
+  "againp": "Raporun hazırlanıyor ya da yolda. Spam klasörüne de bak.",
+  "bad": "Bu link geçersiz veya süresi dolmuş.",
+  "badp": "Lütfen formu yeniden doldur.",
+  "back": "Ana sayfa"
+}

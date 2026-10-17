@@ -1,6 +1,7 @@
 // Başvuru formu (/de, /tr) → kayıt + onay e-postası. v1: legacy/api/submit.js (aynı alanlar, aynı hata kodları).
 // Rapor ancak e-posta onaylanınca yazılır (api/confirm): gerçek kişi, gerçek adres, boşa API maliyeti yok.
 import { createSubmission } from "@/lib/data/submissions";
+import { toLocale } from "@/lib/i18n";
 import { qualityIssues } from "@/lib/domain/quality";
 import { json, readJson } from "@/lib/http";
 import { SITE } from "@/lib/ids";
@@ -41,7 +42,7 @@ export async function POST(request: Request) {
   if (record.consent !== true) return json({ ok: false, error: "consent" }, 400);
   const email = String(record.email);
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return json({ ok: false, error: "email" }, 400);
-  const lang = record.lang === "tr" ? "tr" : "de";
+  const lang = toLocale(record.lang);
   if (record.src && !/^[a-z0-9_-]{1,30}$/.test(String(record.src))) delete record.src;
   if (record.rev_model && !REV_MODELS.includes(String(record.rev_model))) delete record.rev_model;
 

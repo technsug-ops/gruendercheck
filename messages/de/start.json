@@ -2,29 +2,13 @@
   "title": "Gründungs-Check – Trägt deine Geschäftsidee?",
   "description": "Ehrlicher Bericht zu deiner Geschäftsidee in Deutschland: Meister, Erlaubnis, Aufenthalt, Rechtsform, Break-even und die ersten 30 Tage. Kostenlos in der Testphase.",
   "brand": "Gründungs-Check",
-  "nav": [
-    {
-      "href": "#so-gehts",
-      "label": "So funktioniert’s"
-    },
-    {
-      "href": "#beispiel",
-      "label": "Beispielbericht"
-    },
-    {
-      "href": "#ueber-uns",
-      "label": "Über uns"
-    },
-    {
-      "href": "#faq",
-      "label": "FAQ"
-    }
-  ],
-  "navcta": "Kostenlos prüfen",
-  "other": {
-    "lang": "tr",
-    "label": "Türkçe"
+  "nav": {
+    "so-gehts": "So funktioniert’s",
+    "beispiel": "Beispielbericht",
+    "ueber-uns": "Über uns",
+    "faq": "FAQ"
   },
+  "navcta": "Kostenlos prüfen",
   "h1": "Trägt deine Geschäftsidee – bevor du Geld ausgibst?",
   "lead": "Du beantwortest 16 Fragen. Wir prüfen deine Idee gegen deutsche Regeln und rechnen sie durch: Meister, Erlaubnis, Aufenthaltsstatus, Rechtsform, Break-even, Kapitalbedarf und die ersten 30 Tage. Ehrlich, konkret, mit Zahlen.",
   "cta": "Idee jetzt prüfen",
@@ -141,7 +125,7 @@
   "aboutFacts": [
     {
       "label": "Unternehmen",
-      "value": "TechNS UG (haftungsbeschränkt)"
+      "value": "{company}"
     },
     {
       "label": "Sitz",
@@ -149,11 +133,11 @@
     },
     {
       "label": "Register",
-      "value": "Amtsgericht Bad Homburg, HRB 16236"
+      "value": "{register}"
     },
     {
       "label": "Geschäftsführer",
-      "value": "Halil Yaprakli"
+      "value": "{ceoName}"
     }
   ],
   "faqH": "Häufige Fragen",
@@ -192,10 +176,6 @@
   "finP": "Acht Minuten jetzt können dir einen teuren Mietvertrag, eine Abmahnung oder Monate ohne Einkommen ersparen.",
   "pages": "Seiten",
   "legal": "Rechtliches",
-  "imp": "Impressum",
   "dsLink": "Datenschutz (im Fragebogen)",
-  "dsLine": "Diese Seite setzt keine Cookies. Besuche zählen wir anonym mit Vercel Web Analytics. Datenschutzhinweise findest du im Fragebogen.",
-  "impTitle": "Angaben gemäß § 5 DDG",
-  "phone": "Telefon",
-  "email": "E-Mail"
+  "dsLine": "Diese Seite setzt keine Cookies. Besuche zählen wir anonym mit Vercel Web Analytics. Datenschutzhinweise findest du im Fragebogen."
 }

@@ -1,0 +1,12 @@
+{
+  "title": "E-Mail bestätigen",
+  "ask": "Bitte bestätige deine E-Mail-Adresse, damit wir deinen Bericht erstellen.",
+  "btn": "E-Mail bestätigen",
+  "ok": "Danke, deine E-Mail ist bestätigt.",
+  "okp": "Wir erstellen jetzt deinen Bericht. Du bekommst ihn in etwa 30 Minuten per E-Mail.",
+  "again": "Deine E-Mail ist bereits bestätigt.",
+  "againp": "Dein Bericht ist in Arbeit oder schon unterwegs. Schau auch im Spam-Ordner nach.",
+  "bad": "Dieser Link ist ungültig oder abgelaufen.",
+  "badp": "Bitte fülle den Fragebogen erneut aus.",
+  "back": "Zur Startseite"
+}

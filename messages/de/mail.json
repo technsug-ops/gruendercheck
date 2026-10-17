@@ -1,0 +1,12 @@
+{
+  "confirm": {
+    "from": "Gründungs-Check",
+    "subject": "Bitte bestätige deine E-Mail – Gründungs-Check",
+    "text": "Hallo{name},\n\ndanke für deine Angaben zum Gründungs-Check. Bitte bestätige kurz deine E-Mail-Adresse, damit wir deinen Bericht erstellen können:\n{url}\n\nNach der Bestätigung bekommst du deinen Bericht in etwa 30 Minuten.\n\nDu hast den Gründungs-Check nicht angefordert? Dann ignoriere diese E-Mail. Unbestätigte Angaben löschen wir nach 7 Tagen.\n\nViele Grüße\nGründungs-Check\n\n—\n{company} · {street} · {zipTown}\nDer Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung."
+  },
+  "report": {
+    "from": "Gründungs-Check",
+    "subject": "Dein Bericht ist fertig – Gründungs-Check",
+    "text": "Hallo{name},\n\ndein persönlicher Bericht zu deiner Geschäftsidee ist fertig:\n{url}\n\nAuf der Seite kannst du ihn auch als PDF speichern.\n\nWar der Bericht hilfreich? Zwei Minuten Rückmeldung helfen uns sehr:\n{feedbackUrl}\n\nFragen beantworten wir gern – antworte einfach auf diese E-Mail.\n\nViele Grüße\nGründungs-Check\n\n—\n{company} · {street} · {zipTown}\nDer Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung."
+  }
+}

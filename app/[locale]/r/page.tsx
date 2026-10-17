@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { INTL_LOCALE, toLocale } from "@/lib/i18n";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 import PrintButton from "@/components/PrintButton";
@@ -20,7 +21,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 }
 
 export default async function ReportPage({ params, searchParams }: Props) {
-  const { locale } = await params;
+  const locale = toLocale((await params).locale);
   setRequestLocale(locale);
   const id = await idOf(searchParams);
   const rep = await getReport(id);
@@ -33,7 +34,7 @@ export default async function ReportPage({ params, searchParams }: Props) {
   const t = await getTranslations("report");
   const T = L[rep.lang];
   const c = splitCover(rep.md);
-  const date = rep.sentAt.toLocaleDateString(rep.lang === "tr" ? "tr-TR" : "de-DE", { timeZone: "Europe/Berlin" });
+  const date = rep.sentAt.toLocaleDateString(INTL_LOCALE[rep.lang], { timeZone: "Europe/Berlin" });
   return (
     <>
       <div className="actions"><span className="hint">{t("hint")}</span><PrintButton label={t("pdf")} /></div>

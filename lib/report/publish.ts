@@ -1,12 +1,13 @@
 // Onaylanan raporu saklar, başvurana link gönderir, başvurunun durumunu günceller. v1: legacy/lib/report.js
 import { eq } from "drizzle-orm";
+import { toLocale } from "@/lib/i18n";
 import { db, schema } from "@/lib/db";
 import type { Submission } from "@/lib/data/submissions";
 import { SITE } from "@/lib/ids";
 import { sendReport } from "@/lib/mail";
 
-export const reportUrl = (s: Pick<Submission, "id" | "lang">) => `${SITE}/${s.lang === "tr" ? "tr" : "de"}/r?id=${s.id}`;
-export const feedbackUrl = (s: Pick<Submission, "id" | "lang">) => `${SITE}/${s.lang === "tr" ? "tr" : "de"}/feedback?id=${s.id}`;
+export const reportUrl = (s: Pick<Submission, "id" | "lang">) => `${SITE}/${toLocale(s.lang)}/r?id=${s.id}`;
+export const feedbackUrl = (s: Pick<Submission, "id" | "lang">) => `${SITE}/${toLocale(s.lang)}/feedback?id=${s.id}`;
 
 export type PublishResult =
   | { ok: true; url: string; mail_skipped: boolean }

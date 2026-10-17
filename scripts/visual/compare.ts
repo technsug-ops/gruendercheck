@@ -18,6 +18,13 @@ import type { VisualPage } from "./types";
 
 const OLD = `http://localhost:${process.env.OLD_PORT ?? 3201}`, NEW = `http://localhost:${process.env.NEW_PORT ?? 3200}`;
 const ALL: VisualPage[] = [...start, ...check, ...report, ...feedback, ...plan, ...admin];
+// v1'den bilerek ayrılan metinler (2026-10-17). Türkçe sayfaların referansı artık v1 değil; onları test/i18n.test.ts
+// ve e2e/i18n.spec.ts korur. Almanca sayfalar v1 ile aynı kalmalı (tek istisna: güncel Datenschutz metni).
+const DELIBERATE: [RegExp, string][] = [
+  [/-tr(-|$)/, "Türkçe metinler düzeltildi (Datenschutz, künye, onay metni; Almanca sızıntılar giderildi)"],
+  [/^(check|plan)-footer-de$/, "Datenschutz metni güncellendi (Neon eklendi, sadeleştirildi)"],
+];
+const knownOf = (p: VisualPage) => p.known ?? DELIBERATE.find(([re]) => re.test(p.name))?.[1];
 const WIDTHS = [1280, 390];
 const OUT = ".data/visual";
 
@@ -50,9 +57,10 @@ async function main() {
       writeFileSync(`${OUT}/${tag}-new.png`, PNG.sync.write(b));
       writeFileSync(`${OUT}/${tag}-diff.png`, PNG.sync.write(diff));
       const size = a.height === b.height ? `${a.height}px` : `yükseklik ${a.height}→${b.height}px`;
-      const state = n === 0 ? "AYNI   " : p.known ? "BİLİNEN" : "FARK   ";
-      if (n > 0 && !p.known) failed++;
-      console.log(`${state} ${tag.padEnd(30)} ${((n / (w * h)) * 100).toFixed(3)}% piksel, ${size}${n > 0 && p.known ? ` — ${p.known}` : ""}`);
+      const known = knownOf(p);
+      const state = n === 0 ? "AYNI   " : known ? "BİLİNEN" : "FARK   ";
+      if (n > 0 && !known) failed++;
+      console.log(`${state} ${tag.padEnd(30)} ${((n / (w * h)) * 100).toFixed(3)}% piksel, ${size}${n > 0 && known ? ` — ${known}` : ""}`);
     }
   }
   await browser.close();

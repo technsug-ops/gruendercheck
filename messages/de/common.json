@@ -1,3 +1,13 @@
 {
-  "brand": "Gründungs-Check"
+  "brand": "Gründungs-Check",
+  "langName": "Deutsch",
+  "legal": {
+    "privacy": "Datenschutz",
+    "imprint": "Impressum",
+    "imprintHead": "Angaben gemäß § 5 DDG",
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "ceo": "Geschäftsführer",
+    "vat": "USt-IdNr."
+  }
 }

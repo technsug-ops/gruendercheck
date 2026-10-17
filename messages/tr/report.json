@@ -2,5 +2,20 @@
   "pdf": "PDF olarak kaydet",
   "hint": "İpucu: Yazdırma penceresinde „PDF olarak kaydet“ seç, „Üstbilgi ve altbilgi“ kutusunu kapat.",
   "missing": "Bu rapor bulunamadı. Lütfen e-postadaki linki kontrol et.",
-  "cta": "Rapor işine yaradı mı? <link>İki dakikalık geri bildirim ver</link>, bize çok yardımcı olur."
+  "cta": "Rapor işine yaradı mı? <link>İki dakikalık geri bildirim ver</link>, bize çok yardımcı olur.",
+  "doc": {
+    "report": "İş Fikri Kontrolü – Rapor",
+    "plan": "İş Fikri Kontrolü – İş planı",
+    "forName": "{name}",
+    "date": "Tarih",
+    "verdict": "Karar",
+    "tiers": {
+      "green": "Yürür",
+      "amber": "Şartlı yürür",
+      "red": "Bu haliyle yürümez"
+    },
+    "warn": "doğrulanmalı",
+    "brand": "foundercheck.de",
+    "foot": "Bu belge genel bilgidir; hukuki, vergisel veya finansal danışmanlık değildir. {company}, {street}, {zipTown} · {email}"
+  }
 }

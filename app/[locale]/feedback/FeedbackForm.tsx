@@ -6,8 +6,8 @@ import { useState, type FormEvent } from "react";
 // v1: legacy/feedback.html – form, doğrulama ve gönderim birebir. POST sözleşmesi aynı: /api/feedback, { id, ...dolu alanlar }.
 type Field = "useful" | "next" | "wtp";
 const REQUIRED: Field[] = ["useful", "next", "wtp"];
-const NEXT = ["plan", "talk", "none"];
-const WTP = ["0", "lt50", "50-150", "150-300", "300+"];
+const NEXT = ["plan", "talk", "none"] as const;
+const WTP = ["0", "lt50", "50-150", "150-300", "300+"] as const;
 
 export default function FeedbackForm({ id, valid }: { id: string; valid: boolean }) {
   const t = useTranslations("feedback");
@@ -55,8 +55,8 @@ export default function FeedbackForm({ id, valid }: { id: string; valid: boolean
             <div className="scale"><span>{t("s_low")}</span><span>{t("s_high")}</span></div></fieldset>
           <div className="field"><label className="q" htmlFor="best">{t("q_best")}</label><textarea id="best" name="best" maxLength={1500}></textarea></div>
           <div className="field"><label className="q" htmlFor="missing">{t("q_missing")}</label><textarea id="missing" name="missing" maxLength={1500}></textarea></div>
-          <fieldset id="fs_next" onChange={unmark("next")}><legend style={legend("next")}>{t("q_next")}</legend><div className="opts" id="o_next">{radios("next", NEXT.map((v, i) => [v, t(`next.o${i}`)]))}</div></fieldset>
-          <fieldset id="fs_wtp" onChange={unmark("wtp")}><legend style={legend("wtp")}>{t("q_wtp")}</legend><div className="opts" id="o_wtp">{radios("wtp", WTP.map((v, i) => [v, t(`wtp.o${i}`)]))}</div></fieldset>
+          <fieldset id="fs_next" onChange={unmark("next")}><legend style={legend("next")}>{t("q_next")}</legend><div className="opts" id="o_next">{radios("next", NEXT.map((v) => [v, t(`next.${v}`)]))}</div></fieldset>
+          <fieldset id="fs_wtp" onChange={unmark("wtp")}><legend style={legend("wtp")}>{t("q_wtp")}</legend><div className="opts" id="o_wtp">{radios("wtp", WTP.map((v) => [v, t(`wtp.${v}`)]))}</div></fieldset>
           <button className="primary" type="submit" id="submit" disabled={sending}>{sending ? t("sending") : t("submit")}</button>
           <p className={error ? "error" : "error hidden"} id="formerror" role="alert">{error}</p>
         </section>

@@ -47,10 +47,11 @@ export async function importAll(read: (prefix: string) => Promise<V1[]> | V1[], 
     if ("error" in c) { stats.skipped.push(`submission ${String(rec.id).slice(0, 8)}: ${c.error}`); continue; }
     known.add(c.submission.id!);
     if (!opts.dry) {
-      const { id: _id, ...set } = c.submission;
+      // Güncellemede birincil anahtar hariç tüm alanlar yazılır.
+      const set = Object.fromEntries(Object.entries(c.submission).filter(([k]) => k !== "id"));
       await d.insert(schema.submissions).values(c.submission).onConflictDoUpdate({ target: schema.submissions.id, set });
       if (c.feedback) {
-        const { submissionId: _s, ...fset } = c.feedback;
+        const fset = Object.fromEntries(Object.entries(c.feedback).filter(([k]) => k !== "submissionId"));
         await d.insert(schema.feedback).values(c.feedback).onConflictDoUpdate({ target: schema.feedback.submissionId, set: fset });
       }
     }
@@ -65,7 +66,7 @@ export async function importAll(read: (prefix: string) => Promise<V1[]> | V1[], 
       if (!known.has(row.submissionId)) { stats.skipped.push(`${name} ${row.submissionId.slice(0, 8)}: başvurusu yok`); continue; }
       if (!opts.dry) {
         const table = schema[name];
-        const { submissionId: _s, ...set } = row;
+        const set = Object.fromEntries(Object.entries(row).filter(([k]) => k !== "submissionId"));
         await d.insert(table).values(row).onConflictDoUpdate({ target: table.submissionId, set });
       }
       stats[name]++;

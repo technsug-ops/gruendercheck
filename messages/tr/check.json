@@ -67,7 +67,7 @@
   "q13": "Seni en çok ne endişelendiriyor?",
   "qname": "Adın (isteğe bağlı)",
   "q14": "Raporun gönderileceği e-posta adresi",
-  "consent": "Bilgilerimin raporumun hazırlanması için işlenmesine onay veriyorum. Ayrıntılar aşağıdaki Datenschutz bölümünde.",
+  "consent": "Raporumun hazırlanması için bilgilerimin kullanılmasını kabul ediyorum. Ayrıntılar aşağıda, „Veri koruma“ bölümünde.",
   "submit": "Raporu iste",
   "sending": "Gönderiliyor …",
   "after": "Birazdan onay linki içeren bir e-posta alacaksın.",
@@ -88,239 +88,83 @@
   "err_rate": "Bugün zaten birkaç başvuru gönderdin. Lütfen yarın tekrar dene ya da e-postamıza cevap yaz.",
   "err_send": "Gönderilemedi. Lütfen birkaç dakika sonra tekrar dene.",
   "disclaimer": "Rapor genel bilgidir, hukuki veya vergisel danışmanlık değildir.",
-  "dsh": "Datenschutz (veri koruma)",
   "opt": {
-    "talked": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "0",
-        "Kimseyle"
-      ],
-      [
-        "1-5",
-        "1–5"
-      ],
-      [
-        "6-20",
-        "6–20"
-      ],
-      [
-        "20+",
-        "20'den fazla"
-      ]
-    ],
-    "paid": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "no",
-        "Hayır"
-      ],
-      [
-        "yes",
-        "Evet"
-      ]
-    ],
-    "business_type": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "location",
-        "Mekan (dükkan, kafe, salon)"
-      ],
-      [
-        "onsite_service",
-        "Müşteriye giderek hizmet"
-      ],
-      [
-        "online_service",
-        "Online hizmet"
-      ],
-      [
-        "online_products",
-        "Online ürün satışı"
-      ],
-      [
-        "production",
-        "Üretim"
-      ],
-      [
-        "other",
-        "Diğer"
-      ]
-    ],
-    "customers": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "b2c",
-        "Bireyler"
-      ],
-      [
-        "b2b",
-        "Şirketler"
-      ],
-      [
-        "both",
-        "İkisi de"
-      ]
-    ],
-    "rev_model": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "one_time",
-        "Müşteri/iş başına tek seferlik satış"
-      ],
-      [
-        "subscription",
-        "Aylık abonelik / bakım sözleşmesi"
-      ],
-      [
-        "project",
-        "Büyüklüğü değişen projeler"
-      ],
-      [
-        "commission",
-        "Komisyon / aracılık"
-      ]
-    ],
-    "residence": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "de_eu",
-        "Alman veya AB/EEA/İsviçre vatandaşı"
-      ],
-      [
-        "settlement",
-        "Niederlassungserlaubnis / Daueraufenthalt-EU"
-      ],
-      [
-        "student",
-        "Öğrenci oturumu"
-      ],
-      [
-        "job_search",
-        "Mezuniyet sonrası iş arama oturumu"
-      ],
-      [
-        "blue_card",
-        "Blaue Karte / Fachkraft"
-      ],
-      [
-        "family",
-        "Aile birleşimi"
-      ],
-      [
-        "other",
-        "Diğer"
-      ],
-      [
-        "abroad",
-        "Henüz Almanya'da değilim"
-      ]
-    ],
-    "situation": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "employed_full",
-        "Tam zamanlı çalışan"
-      ],
-      [
-        "employed_part",
-        "Yarı zamanlı çalışan"
-      ],
-      [
-        "alg1",
-        "İşsiz (ALG I)"
-      ],
-      [
-        "buergergeld",
-        "Bürgergeld"
-      ],
-      [
-        "student",
-        "Öğrenci"
-      ],
-      [
-        "self_employed",
-        "Zaten serbest çalışıyorum"
-      ]
-    ],
-    "founders": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "1",
-        "Tek başıma"
-      ],
-      [
-        "2",
-        "İki kişi"
-      ],
-      [
-        "3+",
-        "Üç veya daha fazla"
-      ]
-    ],
-    "capital": [
-      [
-        "",
-        "Seç"
-      ],
-      [
-        "0-5k",
-        "0–5.000 €"
-      ],
-      [
-        "5-15k",
-        "5.000–15.000 €"
-      ],
-      [
-        "15-50k",
-        "15.000–50.000 €"
-      ],
-      [
-        "50k+",
-        "50.000 €'dan fazla"
-      ]
-    ]
+    "talked": {
+      "_": "Seç",
+      "0": "Kimseyle",
+      "1-5": "1–5",
+      "6-20": "6–20",
+      "20+": "20'den fazla"
+    },
+    "paid": {
+      "_": "Seç",
+      "no": "Hayır",
+      "yes": "Evet"
+    },
+    "business_type": {
+      "_": "Seç",
+      "location": "Mekan (dükkan, kafe, salon)",
+      "onsite_service": "Müşteriye giderek hizmet",
+      "online_service": "Online hizmet",
+      "online_products": "Online ürün satışı",
+      "production": "Üretim",
+      "other": "Diğer"
+    },
+    "customers": {
+      "_": "Seç",
+      "b2c": "Bireyler",
+      "b2b": "Şirketler",
+      "both": "İkisi de"
+    },
+    "rev_model": {
+      "_": "Seç",
+      "one_time": "Müşteri/iş başına tek seferlik satış",
+      "subscription": "Aylık abonelik / bakım sözleşmesi",
+      "project": "Büyüklüğü değişen projeler",
+      "commission": "Komisyon / aracılık"
+    },
+    "residence": {
+      "_": "Seç",
+      "de_eu": "Alman veya AB/EEA/İsviçre vatandaşı",
+      "settlement": "Niederlassungserlaubnis / Daueraufenthalt-EU",
+      "student": "Öğrenci oturumu",
+      "job_search": "Mezuniyet sonrası iş arama oturumu",
+      "blue_card": "Blaue Karte / Fachkraft",
+      "family": "Aile birleşimi",
+      "other": "Diğer",
+      "abroad": "Henüz Almanya'da değilim"
+    },
+    "situation": {
+      "_": "Seç",
+      "employed_full": "Tam zamanlı çalışan",
+      "employed_part": "Yarı zamanlı çalışan",
+      "alg1": "İşsiz (ALG I)",
+      "buergergeld": "Bürgergeld",
+      "student": "Öğrenci",
+      "self_employed": "Zaten serbest çalışıyorum"
+    },
+    "founders": {
+      "_": "Seç",
+      "1": "Tek başıma",
+      "2": "İki kişi",
+      "3+": "Üç veya daha fazla"
+    },
+    "capital": {
+      "_": "Seç",
+      "0-5k": "0–5.000 €",
+      "5-15k": "5.000–15.000 €",
+      "15-50k": "15.000–50.000 €",
+      "50k+": "50.000 €'dan fazla"
+    }
   },
   "ds": {
     "p1": "<b>Sorumlu:</b> {company}, {address}. İletişim: {email}",
-    "p2": "<b>Amaç:</b> Bilgilerini yalnızca sana özel raporu hazırlamak, e-postayla göndermek ve raporla ilgili soruların için kullanıyoruz. Hukuki dayanak açık rızandır (DSGVO md. 6/1-a); istediğin zaman e-postayla geri alabilirsin.",
-    "p3": "<b>Saklama:</b> Bilgiler barındırma hizmeti Vercel Inc.'in Frankfurt'taki sunucularında saklanır. Rapor gönderildikten en geç 90 gün sonra, istersen hemen silinir.",
-    "p4": "<b>Raporun hazırlanması:</b> İlk taslağı Anthropic PBC'nin (ABD) yapay zeka modeli, programlama arayüzü üzerinden yazar; aktarım AB Standart Sözleşme Maddelerine dayanır ve Anthropic bu verileri model eğitiminde kullanmaz. Cevaplarını adın ve e-posta adresin <i>olmadan</i> aktarıyoruz. Lütfen serbest metin alanlarına seni doğrudan tanıtan bilgiler yazma.",
-    "p5": "<b>E-posta gönderimi:</b> Onay e-postasını ve raporu e-posta sağlayıcımız ALL-INKL.COM (Almanya) üzerinden gönderiyoruz. Raporu yalnızca senin bildiğin kişisel bir linkten açarsın.",
-    "p6": "<b>Çerezsiz ziyaret ölçümü:</b> Sayfayı kaç kişinin ziyaret ettiğini ve nereden geldiğini görmek için Vercel Web Analytics (Vercel Inc.) kullanıyoruz. Çerez kullanılmaz, IP adresi saklanmaz; ziyaretler yalnızca anonim ve toplu olarak değerlendirilir (DSGVO md. 6/1-f). Reklam takibi yapmıyoruz, dış yazı tipi veya betik yüklemiyoruz.",
-    "p7": "<b>Uygulama özelliği:</b> Sayfayı uygulama olarak yüklersen veya tekrar ziyaret edersen tarayıcın sayfa dosyalarını (bilgilerini değil) saklar; böylece daha hızlı ve internetsiz de açılır. Tarayıcı ayarlarından istediğin zaman silebilirsin.",
-    "p8": "<b>Hakların:</b> Bilgi alma, düzeltme, silme, kısıtlama, veri taşınabilirliği ve rızayı geri alma (DSGVO md. 15–21) ile bir veri koruma denetim makamına, örneğin Hessen veri koruma yetkilisine şikayet hakkı."
-  },
-  "imp": {
-    "title": "Impressum",
-    "head": "Angaben gemäß § 5 DDG",
-    "phone": "Telefon:",
-    "email": "E-Mail:"
-  },
-  "copy": "© 2026 TechNS UG (haftungsbeschränkt)",
-  "langswitch": "Deutsch"
+    "p2": "<b>Ne için kullanıyoruz:</b> Bilgilerini sadece raporunu hazırlamak, sana e-postayla göndermek ve raporla ilgili sorularını cevaplamak için kullanıyoruz. Bunu senin onayına dayanarak yapıyoruz (AB Genel Veri Koruma Tüzüğü, DSGVO md. 6/1-a). Onayını istediğin zaman bize e-posta yazarak geri çekebilirsin.",
+    "p3": "<b>Nerede saklanıyor:</b> Bilgilerin, sitemizi barındıran Vercel Inc. ve onun veritabanı hizmeti Neon (Databricks, Inc.) üzerinden Frankfurt'taki sunucularda duruyor. Raporu sana gönderdikten en geç 90 gün sonra siliyoruz; istersen hemen sileriz.",
+    "p4": "<b>Rapor nasıl hazırlanıyor:</b> İlk taslağı Anthropic PBC'nin (ABD) yapay zeka modeli yazıyor. Verilerin ABD'ye gönderilmesi AB'nin standart sözleşme hükümlerine dayanıyor; Anthropic bu verileri kendi modellerini eğitmek için kullanmıyor. Adını ve e-posta adresini modele <i>göndermiyoruz</i>. Yine de yazı alanlarına seni doğrudan tanıtacak bilgiler yazma.",
+    "p5": "<b>E-postalar:</b> Onay e-postasını ve raporu ALL-INKL.COM (Almanya) üzerinden gönderiyoruz. Raporunu, sadece sana gönderdiğimiz kişisel bir linkle açarsın.",
+    "p6": "<b>Çerezsiz ziyaretçi sayımı:</b> Sayfaya kaç kişinin geldiğini ve nereden geldiğini Vercel Web Analytics ile görüyoruz. Çerez kullanılmıyor, IP adresi kaydedilmiyor; sadece isimsiz toplam sayıları görüyoruz (DSGVO md. 6/1-f). Reklam takibi yapmıyoruz, başka şirketlerin yazı tiplerini veya kodlarını yüklemiyoruz.",
+    "p7": "<b>Uygulama olarak kullanım:</b> Sayfayı uygulama olarak yüklersen veya tekrar açarsan, tarayıcın sayfanın dosyalarını saklar (girdiğin bilgileri değil). Böylece sayfa daha hızlı ve internet olmadan da açılır. Bu dosyaları tarayıcı ayarlarından istediğin zaman silebilirsin.",
+    "p8": "<b>Hakların:</b> Hakkındaki bilgileri öğrenme, düzelttirme, sildirme, kullanılmasını kısıtlatma, başka bir yere aktarılmasını isteme ve onayını geri çekme hakkın var (DSGVO md. 15–21). Ayrıca bir veri koruma kurumuna şikayette bulunabilirsin; örneğin Hessen eyaletinin veri koruma kurumuna (Hessischer Beauftragter für Datenschutz und Informationsfreiheit)."
+  }
 }

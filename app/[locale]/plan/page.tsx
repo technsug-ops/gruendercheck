@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { INTL_LOCALE, toLocale } from "@/lib/i18n";
 import { OPERATOR } from "@/lib/operator";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { getPlanForm } from "@/lib/data/plans";
@@ -11,15 +12,16 @@ type Props = PageProps<"/[locale]/plan">;
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { locale } = await params;
+  const locale = toLocale((await params).locale);
   const t = await getTranslations({ locale, namespace: "plan" });
   return { title: t("kicker") };
 }
 
 export default async function PlanPage({ params, searchParams }: Props) {
-  const { locale } = await params;
+  const locale = toLocale((await params).locale);
   setRequestLocale(locale);
   const t = await getTranslations("plan");
+  const tl = await getTranslations("common.legal");
   const q = (await searchParams).id;
   const id = typeof q === "string" ? q : "";
   const data = await getPlanForm(id);
@@ -27,7 +29,7 @@ export default async function PlanPage({ params, searchParams }: Props) {
   let form = null;
   if (data) {
     const pre = data.prefill;
-    const costSub = pre.fixed_costs ? `${t("costsub")} ${t("costhint", { x: Number(pre.fixed_costs).toLocaleString("de-DE") })}` : t("costsub");
+    const costSub = pre.fixed_costs ? `${t("costsub")} ${t("costhint", { x: Number(pre.fixed_costs).toLocaleString(INTL_LOCALE[locale]) })}` : t("costsub");
     form = <PlanForm id={id} flags={condFlags(pre)} values={initialValues(pre, data.plan)} costSub={costSub} />;
   }
 
@@ -44,17 +46,17 @@ export default async function PlanPage({ params, searchParams }: Props) {
       <footer>
         <p>{t("disclaimer")}</p>
         <details>
-          <summary>{t("dsh")}</summary>
+          <summary>{tl("privacy")}</summary>
           <div id="dsbody">
             <p>{t.rich("ds1", { ...OPERATOR, b: (c) => <b>{c}</b> })}</p>
             <p>{t("ds2")}</p>
           </div>
         </details>
         <details>
-          <summary>{t("imp")}</summary>
+          <summary>{tl("imprint")}</summary>
           <div id="impbody">
-            <p>{t("imp1")}</p>
-            <p>{t.rich("imp2", { ...OPERATOR, br: () => <br />, mail: (c) => <a href={`mailto:${OPERATOR.email}`}>{c}</a> })}</p>
+            <p>{tl("imprintHead")}</p>
+            <p>{t.rich("imp2", { ...OPERATOR, ceo: `${tl("ceo")}: ${OPERATOR.ceoName}`, vat: `${tl("vat")} ${OPERATOR.vatId}`, phoneLabel: tl("phone"), emailLabel: tl("email"), br: () => <br />, mail: (c) => <a href={`mailto:${OPERATOR.email}`}>{c}</a> })}</p>
           </div>
         </details>
       </footer>

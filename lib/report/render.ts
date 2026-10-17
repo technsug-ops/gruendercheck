@@ -1,18 +1,14 @@
 // Rapor Markdown'ı → HTML (rapor sayfası, admin önizleme, tanıtım sayfasındaki örnek rapor).
 // v1: legacy/render.js. Fark: v1'de dil modül düzeyinde (setLang) tutuluyordu; sunucuda eş zamanlı
 // isteklerde karışmasın diye burada her çağrıya parametre olarak verilir. Çıktı birebir aynı.
-export const L = {
-  de: { report: "Gründungs-Check – Bericht", plan: "Gründungs-Check – Businessplan", for: "für", date: "Stand", verdict: "Einschätzung",
-    tiers: { green: "Tragfähig", amber: "Tragfähig mit Auflagen", red: "So nicht tragfähig" }, warn: "zu prüfen", brand: "foundercheck.de",
-    foot: "Dieses Dokument ist eine allgemeine Information und keine Rechts-, Steuer- oder Finanzberatung. TechNS UG (haftungsbeschränkt), Ludwig-Erhard-Str. 16A, 61440 Oberursel · info@dgitmarkt.de" },
-  tr: { report: "İş Fikri Kontrolü – Rapor", plan: "İş Fikri Kontrolü – İş planı", for: "", date: "Tarih", verdict: "Karar",
-    tiers: { green: "Yürür", amber: "Şartlı yürür", red: "Bu haliyle yürümez" }, warn: "doğrulanmalı", brand: "foundercheck.de",
-    foot: "Bu belge genel bilgidir; hukuki, vergisel veya finansal danışmanlık değildir. TechNS UG (haftungsbeschränkt), Ludwig-Erhard-Str. 16A, 61440 Oberursel · info@dgitmarkt.de" },
-};
-export type Lang = keyof typeof L;
-type Texts = (typeof L)[Lang];
+import { LOCALES, toLocale, type Locale } from "@/lib/i18n";
+import { fillOperator } from "@/lib/operator";
+import { DOC, type DocTexts } from "@/messages/doc";
+// Etiketler messages/<dil>/report.json → "doc" alanında (messages/doc.ts); alt bilgideki işletmeci verisi lib/operator.ts.
+export const L = Object.fromEntries(LOCALES.map((l) => [l, { ...DOC[l], foot: fillOperator(DOC[l].foot) }])) as Record<Locale, DocTexts>;
+type Texts = DocTexts;
 type Tier = keyof Texts["tiers"];
-const texts = (lang: string): Texts => (lang === "tr" ? L.tr : L.de);
+const texts = (lang: string): Texts => L[toLocale(lang)];
 
 const ESC: Record<string, string> = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" };
 export const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ESC[c]);

@@ -1,5 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { OPERATOR_SHORT_ADDRESS } from "@/lib/operator";
+import { DEFAULT_LOCALE, homePath, LOCALES, toLocale } from "@/lib/i18n";
+import { MESSAGES } from "@/messages";
+import { fillOperator, OPERATOR_SHORT_ADDRESS } from "@/lib/operator";
+
+const NAV = ["so-gehts", "beispiel", "ueber-uns", "faq"] as const;
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { redirect } from "next/navigation";
 import { esc, md } from "@/lib/report/render";
@@ -18,7 +22,7 @@ const TRUST_ICONS: IconName[] = ["book", "calc", "person", "lock"];
 const GET_ICONS: IconName[] = ["gauge", "shield", "scale", "grid", "chart", "flag"];
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const t = await getTranslations({ locale: (await params).locale, namespace: "start" });
+  const t = await getTranslations({ locale: toLocale((await params).locale), namespace: "start" });
   return { title: t("title"), description: t("description") };
 }
 export const viewport: Viewport = { colorScheme: "light" };
@@ -35,22 +39,26 @@ function Photo({ src, label, icon }: { src: string; label: string; icon: IconNam
 }
 
 export default async function StartPage({ params, searchParams }: Props) {
-  const { locale } = await params;
+  const locale = toLocale((await params).locale);
   setRequestLocale(locale);
   const { kq, lang } = await channelQuery(searchParams);
   // v1: /?lang=tr Türkçe sayfayı gösterirdi.
   if (locale === "de" && lang === "tr") redirect(`/tr/start${kq}`);
 
   const t = await getTranslations("start");
+  const tl = await getTranslations("common.legal");
   const r = <T,>(key: string) => t.raw(key) as T;
   const formUrl = `/${locale}${kq}`;
-  const other = r<{ lang: string; label: string }>("other");
-  const otherUrl = (other.lang === "tr" ? "/tr/start" : "/") + kq;
-  const nav = r<{ href: string; label: string }[]>("nav");
+  // Diğer dil: kendi adıyla (Deutsch / Türkçe). Menü hedefleri sayfadaki bölüm kimlikleri (veri, çeviri değil).
+  const otherLocale = LOCALES.find((l) => l !== locale) ?? DEFAULT_LOCALE;
+  const other = { lang: otherLocale, label: MESSAGES[otherLocale].common.langName };
+  const otherUrl = homePath(otherLocale) + kq;
+  const navLabels = r<Record<(typeof NAV)[number], string>>("nav");
+  const nav = NAV.map((id) => ({ href: `#${id}`, label: navLabels[id] }));
   const sample = r<string>("sample");
   const sampleHtml = md(sample, locale);
   const previewHtml = md(sample.split("\n\n").slice(0, 2).join("\n\n"), locale);
-  const aboutFacts = r<{ label: string; value: string }[]>("aboutFacts");
+  const aboutFacts = r<{ label: string; value: string }[]>("aboutFacts").map((f) => ({ ...f, value: fillOperator(f.value) }));
 
   return (
     <>
@@ -109,7 +117,7 @@ export default async function StartPage({ params, searchParams }: Props) {
           <div className="head"><h2>{t("aboutH")}</h2></div>
           <div className="about">
             <div><figure className="portrait" style={{ margin: 0 }}><img src="/img/halil.jpg" alt="Halil Yaprakli" /><span className="ini">HY</span></figure>
-              <div className="name">Halil Yaprakli</div><div className="role">{`${aboutFacts[3].label}, TechNS UG`}</div></div>
+              <div className="name">{OP.ceoName}</div><div className="role">{`${aboutFacts[3].label}, ${OP.companyShort}`}</div></div>
             <div className="txt">
               <p className="quote">{`${t("aboutBig")} ${t("aboutBadge")}`}</p>
               {/* Metin dosyasındaki sabit <i>/<b> işaretleri (kullanıcı girdisi değil). */}
@@ -130,7 +138,7 @@ export default async function StartPage({ params, searchParams }: Props) {
         <div className="cols">
           <div><div className="logo">{t("brand")}</div><p style={{ margin: 0 }}>{OP.company}<br />{OP.address}<br /><a href={`mailto:${OP.email}`}>{OP.email}</a></p></div>
           <div><b>{t("pages")}</b><ul>{nav.map(({ href, label }) => <li key={href}><a href={href}>{label}</a></li>)}<li><a href={otherUrl}>{other.label}</a></li></ul></div>
-          <div><b>{t("legal")}</b><ul><li><details><summary>{t("imp")}</summary><p>{t("impTitle")}<br />{OP.company}<br />{OP.address}<br />{OP.ceo}<br />{OP.register}<br />{OP.vat}<br />{`${t("phone")}: ${OP.phone}`}<br />{`${t("email")}: `}<a href={`mailto:${OP.email}`}>{OP.email}</a></p></details></li><li><a href={`${formUrl}#datenschutz`}>{t("dsLink")}</a></li></ul></div>
+          <div><b>{t("legal")}</b><ul><li><details><summary>{tl("imprint")}</summary><p>{tl("imprintHead")}<br />{OP.company}<br />{OP.address}<br />{`${tl("ceo")}: ${OP.ceoName}`}<br />{OP.register}<br />{`${tl("vat")} ${OP.vatId}`}<br />{`${tl("phone")}: ${OP.phone}`}<br />{`${tl("email")}: `}<a href={`mailto:${OP.email}`}>{OP.email}</a></p></details></li><li><a href={`${formUrl}#datenschutz`}>{t("dsLink")}</a></li></ul></div>
         </div>
         <div className="base">{`© ${new Date().getFullYear()} ${OP.company}. ${t("dsLine")}`}</div>
       </div></footer>

@@ -2,6 +2,7 @@
 // İsim ve e-posta bu metne asla girmez (Q'da yoklar).
 // v1: legacy/brief.js
 import { type Answers, calculate, suggestVat, toText } from "./calc";
+import { LOCALE_NAME_TR, toLocale } from "@/lib/i18n";
 
 export const Q: Record<string, string> = {
   idea: "1. İş fikri", current_solution: "2. Müşteriler bugün nasıl çözüyor", talked: "3. Konuşulan potansiyel müşteri sayısı",
@@ -32,7 +33,7 @@ export const calcText = (it: Answers, vatKey?: string) => toText(calculate(it, v
 
 /** "Claude için kopyala" metni: form cevapları + kodla hesaplanan sayılar. submittedAt: ISO tarih. */
 export function briefText(it: Answers, submittedAt: string, vatKey?: string): string {
-  const langName = it.lang === "tr" ? "Türkçe" : "Almanca";
+  const langName = LOCALE_NAME_TR[toLocale(it.lang)];
   const lines = [`Rapor yaz. Form dili: ${langName} → raporu ${langName} yaz.`, `Gönderim tarihi: ${String(submittedAt).slice(0, 10)}`, ""];
   for (const [k, label] of Object.entries(Q)) {
     if (it[k] === undefined || it[k] === "") continue;

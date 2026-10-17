@@ -1,3 +1,13 @@
 {
-  "brand": "İş Fikri Kontrolü"
+  "brand": "İş Fikri Kontrolü",
+  "langName": "Türkçe",
+  "legal": {
+    "privacy": "Veri koruma",
+    "imprint": "Künye",
+    "imprintHead": "Yasal bilgiler (§ 5 DDG)",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "ceo": "Şirket müdürü",
+    "vat": "KDV numarası (USt-IdNr.)"
+  }
 }

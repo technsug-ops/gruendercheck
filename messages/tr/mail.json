@@ -1,0 +1,12 @@
+{
+  "confirm": {
+    "from": "İş Fikri Kontrolü",
+    "subject": "Lütfen e-postanı onayla – İş Fikri Kontrolü",
+    "text": "Merhaba{name},\n\nbilgilerin için teşekkürler. Raporunu hazırlayabilmemiz için lütfen e-posta adresini onayla:\n{url}\n\nOnaydan sonra raporun yaklaşık 30 dakika içinde gelir.\n\nBu kontrolü sen istemediysen bu e-postayı dikkate alma. Onaylanmayan bilgileri 7 gün sonra siliyoruz.\n\nSelamlar\nİş Fikri Kontrolü\n\n—\n{company} · {street} · {zipTown}\nRapor genel bilgidir, hukuki veya vergisel danışmanlık değildir."
+  },
+  "report": {
+    "from": "İş Fikri Kontrolü",
+    "subject": "Raporun hazır – İş Fikri Kontrolü",
+    "text": "Merhaba{name},\n\nfikrine özel raporun hazır:\n{url}\n\nSayfadan PDF olarak da kaydedebilirsin.\n\nRapor işine yaradı mı? İki dakikalık geri bildirimin bize çok yardımcı olur:\n{feedbackUrl}\n\nSorun olursa bu e-postaya cevap yazman yeterli.\n\nSelamlar\nİş Fikri Kontrolü\n\n—\n{company} · {street} · {zipTown}\nRapor genel bilgidir, hukuki veya vergisel danışmanlık değildir."
+  }
+}

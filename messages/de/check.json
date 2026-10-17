@@ -88,239 +88,83 @@
   "err_rate": "Du hast heute schon mehrere Anfragen gesendet. Bitte versuch es morgen wieder oder antworte auf unsere E-Mail.",
   "err_send": "Das hat nicht geklappt. Bitte versuch es in ein paar Minuten noch einmal.",
   "disclaimer": "Der Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung.",
-  "dsh": "Datenschutz",
   "opt": {
-    "talked": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "0",
-        "Mit niemandem"
-      ],
-      [
-        "1-5",
-        "1–5"
-      ],
-      [
-        "6-20",
-        "6–20"
-      ],
-      [
-        "20+",
-        "Mehr als 20"
-      ]
-    ],
-    "paid": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "no",
-        "Nein"
-      ],
-      [
-        "yes",
-        "Ja"
-      ]
-    ],
-    "business_type": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "location",
-        "Ladenlokal, Café, Salon (fester Standort)"
-      ],
-      [
-        "onsite_service",
-        "Dienstleistung beim Kunden vor Ort"
-      ],
-      [
-        "online_service",
-        "Online-Dienstleistung"
-      ],
-      [
-        "online_products",
-        "Online-Verkauf von Produkten"
-      ],
-      [
-        "production",
-        "Herstellung / Produktion"
-      ],
-      [
-        "other",
-        "Sonstiges"
-      ]
-    ],
-    "customers": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "b2c",
-        "Privatpersonen"
-      ],
-      [
-        "b2b",
-        "Unternehmen"
-      ],
-      [
-        "both",
-        "Beides"
-      ]
-    ],
-    "rev_model": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "one_time",
-        "Einmaliger Verkauf pro Kunde/Auftrag"
-      ],
-      [
-        "subscription",
-        "Monatliches Abo / Wartungsvertrag"
-      ],
-      [
-        "project",
-        "Projekte mit unterschiedlichem Umfang"
-      ],
-      [
-        "commission",
-        "Provision / Vermittlung"
-      ]
-    ],
-    "residence": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "de_eu",
-        "Deutsche/r oder EU/EWR/Schweiz"
-      ],
-      [
-        "settlement",
-        "Niederlassungserlaubnis / Daueraufenthalt-EU"
-      ],
-      [
-        "student",
-        "Aufenthaltserlaubnis zum Studium"
-      ],
-      [
-        "job_search",
-        "Aufenthaltserlaubnis zur Arbeitsplatzsuche nach dem Studium"
-      ],
-      [
-        "blue_card",
-        "Blaue Karte EU / Fachkraft"
-      ],
-      [
-        "family",
-        "Familiennachzug"
-      ],
-      [
-        "other",
-        "Sonstiges"
-      ],
-      [
-        "abroad",
-        "Ich lebe noch nicht in Deutschland"
-      ]
-    ],
-    "situation": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "employed_full",
-        "Angestellt, Vollzeit"
-      ],
-      [
-        "employed_part",
-        "Angestellt, Teilzeit"
-      ],
-      [
-        "alg1",
-        "Arbeitslos (ALG I)"
-      ],
-      [
-        "buergergeld",
-        "Bürgergeld"
-      ],
-      [
-        "student",
-        "Studium"
-      ],
-      [
-        "self_employed",
-        "Bereits selbstständig"
-      ]
-    ],
-    "founders": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "1",
-        "Allein"
-      ],
-      [
-        "2",
-        "Zu zweit"
-      ],
-      [
-        "3+",
-        "Drei oder mehr"
-      ]
-    ],
-    "capital": [
-      [
-        "",
-        "Bitte wählen"
-      ],
-      [
-        "0-5k",
-        "0–5.000 €"
-      ],
-      [
-        "5-15k",
-        "5.000–15.000 €"
-      ],
-      [
-        "15-50k",
-        "15.000–50.000 €"
-      ],
-      [
-        "50k+",
-        "Mehr als 50.000 €"
-      ]
-    ]
+    "talked": {
+      "_": "Bitte wählen",
+      "0": "Mit niemandem",
+      "1-5": "1–5",
+      "6-20": "6–20",
+      "20+": "Mehr als 20"
+    },
+    "paid": {
+      "_": "Bitte wählen",
+      "no": "Nein",
+      "yes": "Ja"
+    },
+    "business_type": {
+      "_": "Bitte wählen",
+      "location": "Ladenlokal, Café, Salon (fester Standort)",
+      "onsite_service": "Dienstleistung beim Kunden vor Ort",
+      "online_service": "Online-Dienstleistung",
+      "online_products": "Online-Verkauf von Produkten",
+      "production": "Herstellung / Produktion",
+      "other": "Sonstiges"
+    },
+    "customers": {
+      "_": "Bitte wählen",
+      "b2c": "Privatpersonen",
+      "b2b": "Unternehmen",
+      "both": "Beides"
+    },
+    "rev_model": {
+      "_": "Bitte wählen",
+      "one_time": "Einmaliger Verkauf pro Kunde/Auftrag",
+      "subscription": "Monatliches Abo / Wartungsvertrag",
+      "project": "Projekte mit unterschiedlichem Umfang",
+      "commission": "Provision / Vermittlung"
+    },
+    "residence": {
+      "_": "Bitte wählen",
+      "de_eu": "Deutsche/r oder EU/EWR/Schweiz",
+      "settlement": "Niederlassungserlaubnis / Daueraufenthalt-EU",
+      "student": "Aufenthaltserlaubnis zum Studium",
+      "job_search": "Aufenthaltserlaubnis zur Arbeitsplatzsuche nach dem Studium",
+      "blue_card": "Blaue Karte EU / Fachkraft",
+      "family": "Familiennachzug",
+      "other": "Sonstiges",
+      "abroad": "Ich lebe noch nicht in Deutschland"
+    },
+    "situation": {
+      "_": "Bitte wählen",
+      "employed_full": "Angestellt, Vollzeit",
+      "employed_part": "Angestellt, Teilzeit",
+      "alg1": "Arbeitslos (ALG I)",
+      "buergergeld": "Bürgergeld",
+      "student": "Studium",
+      "self_employed": "Bereits selbstständig"
+    },
+    "founders": {
+      "_": "Bitte wählen",
+      "1": "Allein",
+      "2": "Zu zweit",
+      "3+": "Drei oder mehr"
+    },
+    "capital": {
+      "_": "Bitte wählen",
+      "0-5k": "0–5.000 €",
+      "5-15k": "5.000–15.000 €",
+      "15-50k": "15.000–50.000 €",
+      "50k+": "Mehr als 50.000 €"
+    }
   },
   "ds": {
     "p1": "<b>Verantwortlich:</b> {company}, {address}. Kontakt: {email}",
-    "p2": "<b>Zweck:</b> Wir verarbeiten deine Angaben ausschließlich, um deinen persönlichen Bericht zu erstellen und dir per E-Mail zu senden, sowie für Rückfragen zu deinem Bericht. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO), die du jederzeit per E-Mail widerrufen kannst.",
-    "p3": "<b>Speicherung:</b> Die Angaben werden bei unserem Hosting-Dienstleister Vercel Inc. auf Servern in Frankfurt am Main gespeichert. Wir löschen sie spätestens 90 Tage nach Versand des Berichts, auf Wunsch sofort.",
-    "p4": "<b>Erstellung des Berichts:</b> Einen ersten Entwurf erstellt ein KI-Modell der Anthropic PBC (USA) über deren Programmierschnittstelle; die Übermittlung stützt sich auf die EU-Standardvertragsklauseln, und Anthropic nutzt diese Daten nicht zum Training. Dabei geben wir deine Antworten <i>ohne</i> Namen und E-Mail-Adresse weiter. Bitte schreib in die Freitextfelder keine Daten, die dich direkt identifizieren.",
-    "p5": "<b>E-Mail-Versand:</b> Bestätigung und Bericht versenden wir über unseren E-Mail-Anbieter ALL-INKL.COM (Deutschland). Den Bericht rufst du über einen persönlichen Link ab, den nur du kennst.",
-    "p6": "<b>Reichweitenmessung ohne Cookies:</b> Um zu sehen, wie viele Menschen die Seite besuchen und woher sie kommen, nutzen wir Vercel Web Analytics (Vercel Inc.). Dabei werden keine Cookies gesetzt und keine IP-Adressen gespeichert; Besuche werden nur anonym und zusammengefasst ausgewertet (Art. 6 Abs. 1 lit. f DSGVO). Werbe-Tracker setzen wir nicht ein, externe Schriften oder Skripte laden wir nicht.",
-    "p7": "<b>App-Funktion:</b> Wenn du die Seite als App installierst oder erneut besuchst, speichert dein Browser die Seitendateien (nicht deine Angaben), damit sie schneller und auch ohne Internet öffnet. Du kannst sie in den Browser-Einstellungen jederzeit löschen.",
-    "p8": "<b>Deine Rechte:</b> Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit und Widerruf (Art. 15–21 DSGVO) sowie Beschwerde bei einer Datenschutzaufsichtsbehörde, z. B. dem Hessischen Beauftragten für Datenschutz und Informationsfreiheit."
-  },
-  "imp": {
-    "title": "Impressum",
-    "head": "Angaben gemäß § 5 DDG",
-    "phone": "Telefon:",
-    "email": "E-Mail:"
-  },
-  "copy": "© 2026 TechNS UG (haftungsbeschränkt)",
-  "langswitch": "Deutsch"
+    "p2": "<b>Zweck:</b> Wir nutzen deine Angaben nur, um deinen Bericht zu erstellen, ihn dir per E-Mail zu schicken und deine Rückfragen dazu zu beantworten. Rechtsgrundlage ist deine Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Du kannst sie jederzeit per E-Mail widerrufen.",
+    "p3": "<b>Speicherung:</b> Deine Angaben liegen bei unserem Hosting-Anbieter Vercel Inc. und dessen Datenbankdienst Neon (Databricks, Inc.) auf Servern in Frankfurt am Main. Wir löschen sie spätestens 90 Tage, nachdem wir dir den Bericht geschickt haben – auf Wunsch auch sofort.",
+    "p4": "<b>Erstellung des Berichts:</b> Den ersten Entwurf schreibt ein KI-Modell von Anthropic PBC (USA). Die Übermittlung in die USA stützt sich auf die EU-Standardvertragsklauseln; Anthropic verwendet die Daten nicht zum Training seiner Modelle. Deinen Namen und deine E-Mail-Adresse geben wir dabei <i>nicht</i> weiter. Bitte schreib in die Freitextfelder nichts, woran man dich direkt erkennen kann.",
+    "p5": "<b>E-Mail-Versand:</b> Die Bestätigung und den Bericht verschicken wir über unseren E-Mail-Anbieter ALL-INKL.COM (Deutschland). Den Bericht öffnest du über einen persönlichen Link, den nur du bekommst.",
+    "p6": "<b>Besucherzählung ohne Cookies:</b> Mit Vercel Web Analytics sehen wir, wie viele Menschen die Seite besuchen und woher sie kommen. Dabei werden keine Cookies gesetzt und keine IP-Adressen gespeichert; wir sehen nur anonyme Gesamtzahlen (Art. 6 Abs. 1 lit. f DSGVO). Werbe-Tracker sowie Schriften oder Skripte fremder Anbieter verwenden wir nicht.",
+    "p7": "<b>App-Funktion:</b> Wenn du die Seite als App installierst oder erneut aufrufst, speichert dein Browser die Seitendateien – nicht deine Angaben –, damit sie schneller und auch ohne Internet lädt. Du kannst diese Dateien jederzeit in den Browser-Einstellungen löschen.",
+    "p8": "<b>Deine Rechte:</b> Du kannst Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung verlangen, deine Daten übertragen lassen und deine Einwilligung widerrufen (Art. 15–21 DSGVO). Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit."
+  }
 }

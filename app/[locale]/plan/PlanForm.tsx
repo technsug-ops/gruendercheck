@@ -15,6 +15,8 @@ interface Props {
 // v1 (legacy/plan.html) formu: aynı DOM, aynı gönderim (POST /api/plan, JSON).
 export default function PlanForm({ id, flags, values, costSub }: Props) {
   const t = useTranslations("plan");
+  // Alan/bölüm anahtarları koddaki şemadan (fields.ts) üretilir; dillerin anahtar uyumunu messages/index.ts tipi denetler.
+  const tk = (key: string) => t(key as Parameters<typeof t>[0]);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
   const [formError, setFormError] = useState("");
@@ -36,7 +38,7 @@ export default function PlanForm({ id, flags, values, costSub }: Props) {
       case "select":
         return (
           <select id={key} name={key} defaultValue={dv}>
-            {f.options!.map((v) => <option key={v} value={v}>{t(`fields.${key}.options.${v || "none"}`)}</option>)}
+            {f.options!.map((v) => <option key={v} value={v}>{tk(`fields.${key}.options.${v || "none"}`)}</option>)}
           </select>
         );
       case "lines":
@@ -61,9 +63,9 @@ export default function PlanForm({ id, flags, values, costSub }: Props) {
     return (
       <div key={key} className={f.cond && !flags[f.cond] ? "field hidden" : "field"} data-cond={f.cond} id={`w_${key}`}>
         <label className="q" htmlFor={key}>
-          {t(`fields.${key}.label`)}
+          {tk(`fields.${key}.label`)}
           {f.req && <span className="req">*</span>}
-          {f.hint && <span className="hint">{t(`fields.${key}.hint`)}</span>}
+          {f.hint && <span className="hint">{tk(`fields.${key}.hint`)}</span>}
         </label>
         {input(f)}
         {err(key)}
@@ -106,11 +108,11 @@ export default function PlanForm({ id, flags, values, costSub }: Props) {
         <div className="hp" aria-hidden="true"><label>Website<input type="text" name="website" tabIndex={-1} autoComplete="off" /></label></div>
         <div id="sections">
           {SECTIONS.map((s) => {
-            const sub = s.subKey ? costSub : s.sub ? t(`sections.${s.id}.sub`) : "";
+            const sub = s.subKey ? costSub : s.sub ? tk(`sections.${s.id}.sub`) : "";
             const body = s.f.map(field);
             return (
               <section className="card" id={`sec_${s.id}`} key={s.id}>
-                <h2>{t(`sections.${s.id}.h`)}</h2>
+                <h2>{tk(`sections.${s.id}.h`)}</h2>
                 {sub ? <p className="sub" id={`sub_${s.id}`}>{sub}</p> : null}
                 {s.grid ? <div className="grid2">{body}</div> : body}
                 {s.after ? <div style={{ marginTop: 18 }}>{s.after.map(field)}</div> : null}

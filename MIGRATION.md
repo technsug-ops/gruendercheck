@@ -93,7 +93,8 @@ Not: `confirm_token` düz değil hash'lenmiş saklansın.
 9. **Geçiş:** Yeni Vercel projesinde önizleme ile test → veri taşıma → `foundercheck.de` ve `gruenderchek.de` alan adlarını yeni projeye taşı → eski projeyi 2 hafta yedek olarak tut. Eski adresler (`/de`, `/tr`, `/de/r?id=`, `/tr/feedback?id=` …) yönlendirmeyle çalışmaya devam etmeli; e-postalardaki linkler kırılmasın.
 
 ## Canlıya almadan önce (açık işler)
-- **Datenschutz metni:** veriler artık Vercel Blob'da değil, Neon (Postgres, Frankfurt) veritabanında. Formdaki, plan ve geri bildirim sayfalarındaki Datenschutz metni yeni hizmet sağlayıcıyı adıyla anmalı (CLAUDE.md kuralı). Neon bağlanınca metin iki dilde güncellenecek.
+- ✅ **Datenschutz metni:** Neon (Databricks, Inc.) adıyla eklendi, iki dilde yeniden yazıldı (2026-10-17, Halil onayladı). Türkçe metinler doğal dile çekildi; Almanca sızıntılar giderildi.
+- ✅ **Çok dilli yapı:** bkz. CLAUDE.md "Çok dilli yapı". Kök adres tarayıcı diline göre (çerezsiz).
 - Kural tabanı 2026-10-15 formda olmayan alanlar istiyor (diploma ülkesi, ALG I başlangıç/bitiş tarihi, sertifikalar). Form değişikliği ayrı karar.
 
 ## 8. Sonra (karar kapısı geçilince)

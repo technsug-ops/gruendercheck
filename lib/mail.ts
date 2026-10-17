@@ -1,7 +1,12 @@
 // E-posta: ALL-INKL SMTP üzerinden. Ayarlar Vercel ortam değişkenlerinde (SMTP_*, MAIL_FROM, NOTIFY_TO, MAIL_DRY).
-// Gönderim hatası kaydı asla bozmaz; sadece loglanır. v1: legacy/lib/mail.js (metinler birebir).
+// Gönderim hatası kaydı asla bozmaz; sadece loglanır. v1: legacy/lib/mail.js. Başvurana giden metinler
+// messages/<dil>/mail.json'da; yönetici bildirimleri (Halil'e) Türkçe ve kodda.
 import nodemailer, { type Transporter } from "nodemailer";
+import { createTranslator } from "next-intl";
+import { toLocale } from "@/lib/i18n";
 import { SITE } from "@/lib/ids";
+import { MESSAGES } from "@/messages";
+import { OPERATOR } from "@/lib/operator";
 
 const ADMIN_URL = `${SITE}/admin`;
 let transport: Transporter | undefined;
@@ -69,40 +74,20 @@ export function notifyAdmin(
 
 type Applicant = { lang: string; firstName?: string | null; email: string };
 
-const CONFIRM = {
-  de: (name: string, url: string) => ({
-    from: 'Gründungs-Check',
-    subject: 'Bitte bestätige deine E-Mail – Gründungs-Check',
-    text: `Hallo${name ? ' ' + name : ''},\n\ndanke für deine Angaben zum Gründungs-Check. Bitte bestätige kurz deine E-Mail-Adresse, damit wir deinen Bericht erstellen können:\n${url}\n\nNach der Bestätigung bekommst du deinen Bericht in etwa 30 Minuten.\n\nDu hast den Gründungs-Check nicht angefordert? Dann ignoriere diese E-Mail. Unbestätigte Angaben löschen wir nach 7 Tagen.\n\nViele Grüße\nGründungs-Check\n\n—\nTechNS UG (haftungsbeschränkt) · Ludwig-Erhard-Str. 16A · 61440 Oberursel\nDer Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung.`,
-  }),
-  tr: (name: string, url: string) => ({
-    from: 'İş Fikri Kontrolü',
-    subject: 'Lütfen e-postanı onayla – İş Fikri Kontrolü',
-    text: `Merhaba${name ? ' ' + name : ''},\n\nbilgilerin için teşekkürler. Raporunu hazırlayabilmemiz için lütfen e-posta adresini onayla:\n${url}\n\nOnaydan sonra raporun yaklaşık 30 dakika içinde gelir.\n\nBu kontrolü sen istemediysen bu e-postayı dikkate alma. Onaylanmayan bilgileri 7 gün sonra siliyoruz.\n\nSelamlar\nİş Fikri Kontrolü\n\n—\nTechNS UG (haftungsbeschränkt) · Ludwig-Erhard-Str. 16A · 61440 Oberursel\nRapor genel bilgidir, hukuki veya vergisel danışmanlık değildir.`,
-  }),
-};
-
-/** Başvurana e-posta onay linki; formun dilinde. */
-export function confirmApplicant(rec: Applicant, url: string): Promise<MailResult> {
-  const c = (rec.lang === "tr" ? CONFIRM.tr : CONFIRM.de)(short(rec.firstName, 40), url);
-  return send({ from: `${c.from} <${FROM_ADDR()}>`, to: rec.email, replyTo: FROM_ADDR(), subject: c.subject, text: c.text });
+/** Başvurana giden e-posta: metinler messages/<dil>/mail.json, başvurunun dilinde. */
+function applicantMail(kind: "confirm" | "report", rec: Applicant, values: { url: string; feedbackUrl?: string }) {
+  const locale = toLocale(rec.lang);
+  const t = createTranslator({ locale, messages: MESSAGES[locale], namespace: "mail" });
+  const first = short(rec.firstName, 40);
+  const text = t(`${kind}.text`, {
+    name: first ? " " + first : "", url: values.url, feedbackUrl: values.feedbackUrl ?? "",
+    company: OPERATOR.company, street: OPERATOR.street, zipTown: OPERATOR.zipTown,
+  });
+  return send({ from: `${t(`${kind}.from`)} <${FROM_ADDR()}>`, to: rec.email, replyTo: FROM_ADDR(), subject: t(`${kind}.subject`), text });
 }
 
-const REPORT = {
-  de: (name: string, url: string, fb: string) => ({
-    from: 'Gründungs-Check',
-    subject: 'Dein Bericht ist fertig – Gründungs-Check',
-    text: `Hallo${name ? ' ' + name : ''},\n\ndein persönlicher Bericht zu deiner Geschäftsidee ist fertig:\n${url}\n\nAuf der Seite kannst du ihn auch als PDF speichern.\n\nWar der Bericht hilfreich? Zwei Minuten Rückmeldung helfen uns sehr:\n${fb}\n\nFragen beantworten wir gern – antworte einfach auf diese E-Mail.\n\nViele Grüße\nGründungs-Check\n\n—\nTechNS UG (haftungsbeschränkt) · Ludwig-Erhard-Str. 16A · 61440 Oberursel\nDer Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung.`,
-  }),
-  tr: (name: string, url: string, fb: string) => ({
-    from: 'İş Fikri Kontrolü',
-    subject: 'Raporun hazır – İş Fikri Kontrolü',
-    text: `Merhaba${name ? ' ' + name : ''},\n\nfikrine özel raporun hazır:\n${url}\n\nSayfadan PDF olarak da kaydedebilirsin.\n\nRapor işine yaradı mı? İki dakikalık geri bildirimin bize çok yardımcı olur:\n${fb}\n\nSorun olursa bu e-postaya cevap yazman yeterli.\n\nSelamlar\nİş Fikri Kontrolü\n\n—\nTechNS UG (haftungsbeschränkt) · Ludwig-Erhard-Str. 16A · 61440 Oberursel\nRapor genel bilgidir, hukuki veya vergisel danışmanlık değildir.`,
-  }),
-};
+/** Başvurana e-posta onay linki. */
+export const confirmApplicant = (rec: Applicant, url: string) => applicantMail("confirm", rec, { url });
 
 /** Onaylanan raporun linkini başvurana gönderir. */
-export function sendReport(rec: Applicant, url: string, fb: string): Promise<MailResult> {
-  const c = (rec.lang === "tr" ? REPORT.tr : REPORT.de)(short(rec.firstName, 40), url, fb);
-  return send({ from: `${c.from} <${FROM_ADDR()}>`, to: rec.email, replyTo: FROM_ADDR(), subject: c.subject, text: c.text });
-}
+export const sendReport = (rec: Applicant, url: string, feedbackUrl: string) => applicantMail("report", rec, { url, feedbackUrl });
