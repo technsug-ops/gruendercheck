@@ -1,0 +1,32 @@
+{
+  "id": "sample-kinderbuchhandlung",
+  "source": "Kamuya açık, kurgusal örnek iş planından (\"Muster eines Unternehmenskonzeptes\", Mart 2013: Kinder- und Jugendbuchhandlung, Musterstadt) form cevaplarına çevrildi; kişi ve yer kurgusal. Halil onayı 2026-10-17.",
+  "lang": "de",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "de",
+    "idea": "Ich eröffne eine Buchhandlung für Kinder- und Jugendliteratur mit Ladenlokal und eigenem Online-Shop. Zielgruppe sind Kinder, Eltern, Großeltern sowie Kindergärten und Schulen. Neben Büchern verkaufe ich Hörbücher, E-Books und Papeterie.",
+    "current_solution": "Familien kaufen heute in großen Buchhandelsketten in der Innenstadt oder online bei großen Versandhändlern; Kitas bestellen beim Großhandel.",
+    "talked": "6-20",
+    "paid": "no",
+    "business_type": "location",
+    "customers": "both",
+    "city": "Bielefeld",
+    "residence": "de_eu",
+    "situation": "alg1",
+    "hours": "45",
+    "founders": "1",
+    "experience": "Ausbildung zur Buchhändlerin, seit 2006 Fachwirtin des Buchhandels (IHK), seit vielen Jahren in Buchhandlungen angestellt, gute Kontakte zu Verlagen.",
+    "capital": "15-50k",
+    "rev_model": "one_time",
+    "price": "14",
+    "unit_cost": "9,5",
+    "fixed_costs": "1200",
+    "rent": "450",
+    "investment": "21520",
+    "price_is_net": false,
+    "personal_need": "1600",
+    "worry": "Der Buchhandel ist schwierig und die Preise sind durch die Buchpreisbindung festgelegt. Reicht die Marge, um davon zu leben, und wie finanziere ich den Warenbestand?"
+  },
+  "notes": "Zor yanları: çok düşük marj (kitapta sabit fiyat — Buchpreisbindung, kural tabanında yok; model uydurmamalı, 'doğrula' veya genel bilgi), büyük stok finansmanı (kaynak plan: 100.000 € mal, KfW StartGeld), ALG I + Gründungszuschuss sırası ve tarihleri, Hessen dışı (NRW), mekan: kira/ciro ve kapasite. Kaynak plandaki zayıflık (ayırt edici özellik = cephe rengi) raporda dürüstçe söylenmeli."
+}

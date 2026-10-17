@@ -1,0 +1,32 @@
+{
+  "id": "derived-baklava-online",
+  "source": "Halil'in gerçek bir danışmanlık vakasından türetildi (Lezzeti Antep strateji raporu, Haziran 2026); işletme adı, sosyal medya hesapları, şube devri ve ayırt edici ayrıntılar çıkarıldı, şehir eyalet düzeyine genelleştirildi. Halil onayı 2026-10-17.",
+  "lang": "tr",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "tr",
+    "idea": "Kendi baklava ve tatlı imalathanemiz ve dükkânımız var; hem bireysel müşterilere hem kafe ve restoranlara satıyoruz. Baklavayı kendi online mağazamız üzerinden kargoyla önce Almanya'ya, sonra Fransa, Hollanda ve Belçika'ya satmak istiyoruz. Künefe ve katmeri de online denemek istiyoruz.",
+    "current_solution": "Müşteriler bugün büyük online baklava satıcılarından alıyor; 1 kg Antep fıstıklı baklava kargo dahil yaklaşık 35–45 €. Bizden ise sadece dükkâna gelerek alabiliyorlar.",
+    "talked": "20+",
+    "paid": "yes",
+    "business_type": "online_products",
+    "customers": "both",
+    "city": "Niedersachsen (büyük şehir)",
+    "residence": "settlement",
+    "situation": "self_employed",
+    "hours": "40",
+    "founders": "1",
+    "experience": "15 yıldır baklava ustasıyım, Türkiye'de ustalık belgem var; dükkânı 6 yıldır işletiyorum. Google'da yorumlarımız çok iyi ama online satış ve reklam konusunda deneyimim yok.",
+    "capital": "5-15k",
+    "rev_model": "one_time",
+    "price": "39",
+    "unit_cost": "14",
+    "fixed_costs": "1500",
+    "investment": "8000",
+    "price_is_net": false,
+    "personal_need": "2500",
+    "delivery_days": "3",
+    "worry": "Daha önce influencer reklamı verdik ama satış gelmedi. Kargo pahalı ve ürün yolda bozulursa ne olacak, bilmiyorum."
+  },
+  "notes": "Zor yanları: mevcut işletme (yeni kuruluş değil); Konditor/Bäcker Anlage A (üretim + işletmelere satış, Türk ustalık belgesi → denklik); online gıda satışı yükümlülükleri (kural tabanında henüz yok: LUCID, LMIV mesafeli satış, bozulabilir gıdada cayma istisnası, AB'ye satışta OSS-KDV); künefe/katmer soğuk zincir; Hessen dışı (Niedersachsen); influencer başarısızlığının nedeni (ölçüm altyapısı yok)."
+}

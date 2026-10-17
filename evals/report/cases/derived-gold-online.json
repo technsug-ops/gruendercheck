@@ -1,0 +1,31 @@
+{
+  "id": "derived-gold-online",
+  "source": "Halil'in gerçek bir web sitesi raporundan türetildi (değerli maden işletmesi, Frankfurt, Haziran 2026); işletme adı, alan adı ve sağlayıcı ayrıntıları çıkarıldı. Halil onayı 2026-10-17.",
+  "lang": "de",
+  "submittedDate": "2026-10-17",
+  "answers": {
+    "lang": "de",
+    "idea": "Wir haben ein Ladengeschäft für Gold- und Silberbarren und Anlagemünzen in Frankfurt und wollen einen Online-Shop für Privatkunden starten: Preise live nach Börsenkurs, Versand versichert, Abholung im Laden möglich.",
+    "current_solution": "Kunden kaufen heute bei großen Online-Edelmetallhändlern oder bei der Bank. Der Aufpreis über dem Börsenkurs liegt je nach Produkt bei etwa 3–8 %.",
+    "talked": "20+",
+    "paid": "yes",
+    "business_type": "online_products",
+    "customers": "b2c",
+    "city": "Frankfurt am Main",
+    "residence": "de_eu",
+    "situation": "self_employed",
+    "hours": "40",
+    "founders": "2",
+    "experience": "Wir führen seit 8 Jahren ein Edelmetallgeschäft vor Ort und kennen den Markt, aber nicht den Online-Handel.",
+    "capital": "5-15k",
+    "rev_model": "commission",
+    "price": "45",
+    "unit_cost": "12",
+    "fixed_costs": "600",
+    "investment": "4000",
+    "price_is_net": true,
+    "personal_need": "0",
+    "worry": "Wie gehen wir online mit der Geldwäsche-Identifizierung um, ohne dass Kunden im Checkout abspringen? Und was müssen wir rechtlich auf der Website zeigen?"
+  },
+  "notes": "Zor yanları: GwG kimlik eşiği (kural tabanı: nakitte 2.000 €; kaynak rapor: tüm siparişlerde 2.000 €+ → çelişki, doğrulanmalı) ve goAML; yatırım altını KDV muafiyeti (§25c UStG) vs gümüş; mevcut işletme, 2 kurucu; 'Preis' burada sipariş başına ortalama marj (komisyon modeli); Hessen (Mikrodarlehen uygun olabilir)."
+}
