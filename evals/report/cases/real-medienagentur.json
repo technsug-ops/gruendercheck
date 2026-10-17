@@ -1,0 +1,28 @@
+{
+  "id": "real-medienagentur",
+  "source": "v1 gerçek başvuru, anonimleştirildi (PLZ → Hochtaunuskreis, deneyimde ayırt edici ayrıntı genelleştirildi); Halil onayı 2026-10-17",
+  "lang": "de",
+  "submittedDate": "2026-10-14",
+  "answers": {
+    "lang": "de",
+    "idea": "\"Ich möchte eine Medienagentur gründen. In vielen Restaurants sind die Speisekarten sehr ähnlich. Es soll kurze Videos geben, die fotografierte Versionen eines Großteils dieser Gerichte zeigen. Interessenten können dann gegen eine Gebühr ein beliebiges Video personalisieren lassen und auf ihrer eigenen Website einbinden.\"",
+    "current_solution": "Viele Restaurants geben für ähnliche Arbeiten sehr viel Geld aus. Wir bieten einen vergleichsweise günstigeren Zugang und eine schnellere Produktion",
+    "talked": "0",
+    "paid": "no",
+    "business_type": "online_service",
+    "customers": "b2b",
+    "city": "Hochtaunuskreis",
+    "residence": "settlement",
+    "situation": "employed_part",
+    "hours": "15",
+    "founders": "1",
+    "experience": "Ich habe einen Master in Wirtschaftswissenschaften, habe an vielen Projekten im Bereich der Künstlichen Intelligenz (KI) gearbeitet und Erfahrung im Aufbau einer Bildungseinrichtung.",
+    "capital": "0-5k",
+    "unit_cost": "5",
+    "fixed_costs": "50",
+    "investment": "2000",
+    "price_is_net": false,
+    "personal_need": "1000",
+    "worry": "Ich bin gut in der Produktion, habe aber Schwierigkeiten beim Marketing."
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "real-junk-input",
+  "source": "v1 deneme girişi (tüm alanlar anlamsız). v1 bunun için 9.370 karakterlik rapor yazıp gönderdi: beklenen davranış YETERSİZ",
+  "lang": "tr",
+  "submittedDate": "2026-10-14",
+  "answers": {
+    "lang": "tr",
+    "idea": "fds",
+    "current_solution": "fds",
+    "talked": "0",
+    "paid": "no",
+    "business_type": "onsite_service",
+    "customers": "b2c",
+    "city": "fds",
+    "residence": "settlement",
+    "situation": "employed_full",
+    "hours": "32",
+    "founders": "1",
+    "experience": "fdsfsd",
+    "capital": "0-5k",
+    "price": "55.99",
+    "unit_cost": "32",
+    "fixed_costs": "3232",
+    "investment": "3232",
+    "price_is_net": false,
+    "personal_need": "23232",
+    "worry": "fdsf",
+    "src": "test",
+    "rev_model": "one_time",
+    "price_unknown": false
+  },
+  "v1SentReportChars": 9370
+}
