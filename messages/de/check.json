@@ -90,8 +90,8 @@
   "disclaimer": "Der Bericht ist eine allgemeine Information und keine Rechts- oder Steuerberatung.",
   "opt": {
     "talked": {
-      "_": "Bitte wählen",
       "0": "Mit niemandem",
+      "_": "Bitte wählen",
       "1-5": "1–5",
       "6-20": "6–20",
       "20+": "Mehr als 20"
@@ -144,9 +144,9 @@
       "self_employed": "Bereits selbstständig"
     },
     "founders": {
-      "_": "Bitte wählen",
       "1": "Allein",
       "2": "Zu zweit",
+      "_": "Bitte wählen",
       "3+": "Drei oder mehr"
     },
     "capital": {
@@ -165,6 +165,7 @@
     "p5": "<b>E-Mail-Versand:</b> Die Bestätigung und den Bericht verschicken wir über unseren E-Mail-Anbieter ALL-INKL.COM (Deutschland). Den Bericht öffnest du über einen persönlichen Link, den nur du bekommst.",
     "p6": "<b>Besucherzählung ohne Cookies:</b> Mit Vercel Web Analytics sehen wir, wie viele Menschen die Seite besuchen und woher sie kommen. Dabei werden keine Cookies gesetzt und keine IP-Adressen gespeichert; wir sehen nur anonyme Gesamtzahlen (Art. 6 Abs. 1 lit. f DSGVO). Werbe-Tracker sowie Schriften oder Skripte fremder Anbieter verwenden wir nicht.",
     "p7": "<b>App-Funktion:</b> Wenn du die Seite als App installierst oder erneut aufrufst, speichert dein Browser die Seitendateien – nicht deine Angaben –, damit sie schneller und auch ohne Internet lädt. Du kannst diese Dateien jederzeit in den Browser-Einstellungen löschen.",
-    "p8": "<b>Deine Rechte:</b> Du kannst Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung verlangen, deine Daten übertragen lassen und deine Einwilligung widerrufen (Art. 15–21 DSGVO). Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit."
+    "p8": "<b>Deine Rechte:</b> Du kannst Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung verlangen, deine Daten übertragen lassen und deine Einwilligung widerrufen (Art. 15–21 DSGVO). Außerdem kannst du dich bei einer Datenschutz-Aufsichtsbehörde beschweren, zum Beispiel beim Hessischen Beauftragten für Datenschutz und Informationsfreiheit.",
+    "quality": "<b>Verbesserung der Berichte:</b> Um die Qualität unserer Berichte zu prüfen, werten wir Angaben und Berichte auch in anonymisierter Form aus – ohne Namen, E-Mail-Adresse und ohne Angaben, die auf dich schließen lassen. Rechtsgrundlage ist unser berechtigtes Interesse an guten Berichten (Art. 6 Abs. 1 lit. f DSGVO). Du kannst jederzeit widersprechen."
   }
 }

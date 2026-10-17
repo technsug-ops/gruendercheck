@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]">): Prom
 }
 export const viewport: Viewport = { themeColor: "#0f2d4a", colorScheme: "light" };
 
-const DS = ["p1", "p2", "p3", "p4", "p5", "p6", "p7", "p8"] as const;
+const DS = ["p1", "p2", "p3", "p4", "quality", "p5", "p6", "p7", "p8"] as const;
 
 export default async function CheckPage({ params }: PageProps<"/[locale]">) {
   const locale = toLocale((await params).locale);

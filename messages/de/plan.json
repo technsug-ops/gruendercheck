@@ -22,7 +22,7 @@
   "err_send": "Das hat nicht geklappt. Bitte versuch es in ein paar Minuten noch einmal.",
   "disclaimer": "Der Businessplan ist eine Planungshilfe und keine Rechts-, Steuer- oder Finanzberatung.",
   "ds1": "<b>Verantwortlich:</b> {company}, {address}. Kontakt: {email}",
-  "ds2": "Wir nutzen diese Angaben nur, um deinen Businessplan zu erstellen (Art. 6 Abs. 1 lit. a DSGVO; du kannst deine Einwilligung jederzeit per E-Mail widerrufen). Sie liegen bei Vercel Inc. und Neon (Databricks, Inc.) auf Servern in Frankfurt am Main und werden spätestens 90 Tage nach Übergabe des Plans gelöscht. Beim Erstellen helfen uns KI-Werkzeuge; deinen Namen und deine E-Mail-Adresse geben wir dabei nicht weiter. Keine Cookies, kein Tracking. Du hast die Rechte aus Art. 15–21 DSGVO und kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren.",
+  "ds2": "Wir nutzen diese Angaben nur, um deinen Businessplan zu erstellen (Art. 6 Abs. 1 lit. a DSGVO; du kannst deine Einwilligung jederzeit per E-Mail widerrufen). Sie liegen bei Vercel Inc. und Neon (Databricks, Inc.) auf Servern in Frankfurt am Main und werden spätestens 90 Tage nach Übergabe des Plans gelöscht. Beim Erstellen helfen uns KI-Werkzeuge; deinen Namen und deine E-Mail-Adresse geben wir dabei nicht weiter. Zur Verbesserung unserer Pläne werten wir Angaben auch anonymisiert aus (Art. 6 Abs. 1 lit. f DSGVO; Widerspruch jederzeit möglich). Keine Cookies, kein Tracking. Du hast die Rechte aus Art. 15–21 DSGVO und kannst dich bei einer Datenschutz-Aufsichtsbehörde beschweren.",
   "imp2": "{company}<br></br>{address}<br></br>{ceo}<br></br>{register}<br></br>{vat}<br></br>{phoneLabel}: {phone}<br></br>{emailLabel}: <mail>{email}</mail>",
   "sections": {
     "offer": {

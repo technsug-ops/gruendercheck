@@ -90,8 +90,8 @@
   "disclaimer": "Rapor genel bilgidir, hukuki veya vergisel danışmanlık değildir.",
   "opt": {
     "talked": {
-      "_": "Seç",
       "0": "Kimseyle",
+      "_": "Seç",
       "1-5": "1–5",
       "6-20": "6–20",
       "20+": "20'den fazla"
@@ -144,9 +144,9 @@
       "self_employed": "Zaten serbest çalışıyorum"
     },
     "founders": {
-      "_": "Seç",
       "1": "Tek başıma",
       "2": "İki kişi",
+      "_": "Seç",
       "3+": "Üç veya daha fazla"
     },
     "capital": {
@@ -165,6 +165,7 @@
     "p5": "<b>E-postalar:</b> Onay e-postasını ve raporu ALL-INKL.COM (Almanya) üzerinden gönderiyoruz. Raporunu, sadece sana gönderdiğimiz kişisel bir linkle açarsın.",
     "p6": "<b>Çerezsiz ziyaretçi sayımı:</b> Sayfaya kaç kişinin geldiğini ve nereden geldiğini Vercel Web Analytics ile görüyoruz. Çerez kullanılmıyor, IP adresi kaydedilmiyor; sadece isimsiz toplam sayıları görüyoruz (DSGVO md. 6/1-f). Reklam takibi yapmıyoruz, başka şirketlerin yazı tiplerini veya kodlarını yüklemiyoruz.",
     "p7": "<b>Uygulama olarak kullanım:</b> Sayfayı uygulama olarak yüklersen veya tekrar açarsan, tarayıcın sayfanın dosyalarını saklar (girdiğin bilgileri değil). Böylece sayfa daha hızlı ve internet olmadan da açılır. Bu dosyaları tarayıcı ayarlarından istediğin zaman silebilirsin.",
-    "p8": "<b>Hakların:</b> Hakkındaki bilgileri öğrenme, düzelttirme, sildirme, kullanılmasını kısıtlatma, başka bir yere aktarılmasını isteme ve onayını geri çekme hakkın var (DSGVO md. 15–21). Ayrıca bir veri koruma kurumuna şikayette bulunabilirsin; örneğin Hessen eyaletinin veri koruma kurumuna (Hessischer Beauftragter für Datenschutz und Informationsfreiheit)."
+    "p8": "<b>Hakların:</b> Hakkındaki bilgileri öğrenme, düzelttirme, sildirme, kullanılmasını kısıtlatma, başka bir yere aktarılmasını isteme ve onayını geri çekme hakkın var (DSGVO md. 15–21). Ayrıca bir veri koruma kurumuna şikayette bulunabilirsin; örneğin Hessen eyaletinin veri koruma kurumuna (Hessischer Beauftragter für Datenschutz und Informationsfreiheit).",
+    "quality": "<b>Raporları iyileştirmek için:</b> Raporlarımızın kalitesini kontrol etmek için bilgileri ve raporları anonim hale getirerek de inceliyoruz. Adın, e-posta adresin ve seni tanıtabilecek bilgiler bu incelemeye girmez. Dayanağı, iyi rapor hazırlamaktaki meşru menfaatimiz (DSGVO md. 6/1-f). Buna istediğin zaman itiraz edebilirsin."
   }
 }

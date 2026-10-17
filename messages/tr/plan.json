@@ -22,7 +22,7 @@
   "err_send": "Gönderilemedi. Lütfen birkaç dakika sonra tekrar dene.",
   "disclaimer": "İş planı bir planlama yardımıdır; hukuki, vergisel veya finansal danışmanlık değildir.",
   "ds1": "<b>Sorumlu:</b> {company}, {address}. İletişim: {email}",
-  "ds2": "Bu bilgileri sadece iş planını hazırlamak için kullanıyoruz (DSGVO md. 6/1-a; onayını istediğin zaman e-postayla geri çekebilirsin). Bilgiler Vercel Inc. ve Neon (Databricks, Inc.) üzerinden Frankfurt'taki sunucularda duruyor ve planı teslim ettikten en geç 90 gün sonra siliniyor. Planı hazırlarken yapay zeka araçlarından yardım alıyoruz; adını ve e-posta adresini bu araçlara vermiyoruz. Çerez ve takip yok. DSGVO md. 15–21'deki haklara sahipsin ve bir veri koruma kurumuna şikayette bulunabilirsin.",
+  "ds2": "Bu bilgileri sadece iş planını hazırlamak için kullanıyoruz (DSGVO md. 6/1-a; onayını istediğin zaman e-postayla geri çekebilirsin). Bilgiler Vercel Inc. ve Neon (Databricks, Inc.) üzerinden Frankfurt'taki sunucularda duruyor ve planı teslim ettikten en geç 90 gün sonra siliniyor. Planı hazırlarken yapay zeka araçlarından yardım alıyoruz; adını ve e-posta adresini bu araçlara vermiyoruz. Planlarımızı iyileştirmek için bilgileri anonim hale getirerek de inceliyoruz (DSGVO md. 6/1-f; istediğin zaman itiraz edebilirsin). Çerez ve takip yok. DSGVO md. 15–21'deki haklara sahipsin ve bir veri koruma kurumuna şikayette bulunabilirsin.",
   "imp2": "{company}<br></br>{address}<br></br>{ceo}<br></br>{register}<br></br>{vat}<br></br>{phoneLabel}: {phone}<br></br>{emailLabel}: <mail>{email}</mail>",
   "sections": {
     "offer": {
