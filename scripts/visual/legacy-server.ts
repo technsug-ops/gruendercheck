@@ -10,7 +10,7 @@ const REWRITES: Record<string, string> = {
   "/": "/landing", "/de/start": "/landing", "/tr/start": "/landing", "/de": "/app", "/tr": "/app",
   "/de/plan": "/plan", "/tr/plan": "/plan", "/de/feedback": "/feedback", "/tr/feedback": "/feedback", "/de/r": "/bericht", "/tr/r": "/bericht",
 };
-const TYPES: Record<string, string> = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".webmanifest": "application/manifest+json" };
+const TYPES: Record<string, string> = { ".html": "text/html; charset=utf-8", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".jpg": "image/jpeg", ".webmanifest": "application/manifest+json" };
 const PREFILL = ["lang", "business_type", "customers", "situation", "founders", "price", "unit_cost", "fixed_costs", "rent", "investment", "personal_need", "price_is_net"];
 const known = (id: string | null) => id === DEV_IDS.de || id === DEV_IDS.tr;
 const langOf = (id: string | null) => (id === DEV_IDS.tr ? "tr" : "de") as "de" | "tr";
