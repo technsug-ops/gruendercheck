@@ -34,6 +34,10 @@ async function channelQuery(searchParams: Props["searchParams"]) {
   return { kq: k && /^[a-z0-9_-]{1,30}$/i.test(k) ? `?k=${encodeURIComponent(k.toLowerCase())}` : "", lang: sp.lang };
 }
 
+function Photo({ src, label, icon }: { src: string; label: string; icon: IconName }) {
+  return <figure className="ph" style={{ margin: 0 }}><img src={src} alt={label} loading="lazy" /><Icon name={icon} cls="pi" /></figure>;
+}
+
 export default async function StartPage({ params, searchParams }: Props) {
   const locale = toLocale((await params).locale);
   setRequestLocale(locale);
@@ -77,6 +81,7 @@ export default async function StartPage({ params, searchParams }: Props) {
             <ul className="checks">{r<string[]>("facts").map((f) => <li key={f}><CheckIcon />{f}</li>)}</ul>
           </div>
           <div className="visual">
+            <Photo src="/img/hero.jpg" label={t("phHero")} icon="store" />
             <div className="card-float doc" aria-hidden="true" dangerouslySetInnerHTML={{ __html: `<p class="ct">${esc(t("cardTitle"))}</p>${previewHtml}` }} />
           </div>
         </div></section>
@@ -87,7 +92,8 @@ export default async function StartPage({ params, searchParams }: Props) {
           <div className="head" style={{ margin: 0 }}><h2>{t("painH")}</h2><p>{t("painP")}</p></div>
           <div className="qs">{r<Item[]>("pains").map(({ title, text }) => <div key={title}><h3>{title}</h3><p>{text}</p></div>)}</div>
         </div></section>
-        <section className="soft"><div className="wrap">
+        <section className="soft"><div className="wrap withph">
+          <Photo src="/img/beratung.jpg" label={t("phDesk")} icon="docs" />
           <div>
             <div className="head"><h2>{t("getH")}</h2><p>{t("getP")}</p></div>
             <div className="gets">{r<Item[]>("gets").map(({ title, text }, i) => <div className="g" key={title}><span className="ib"><Icon name={GET_ICONS[i]} /></span><div><h3>{title}</h3><p>{text}</p></div></div>)}</div>
